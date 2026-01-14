@@ -1,0 +1,84 @@
+/* --- Base Styles --- */
+body {
+    scroll-behavior: smooth;
+}
+
+/* --- Badge Style --- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    border-radius: 9999px;
+    background-color: rgba(52, 211, 153, 0.1);
+    padding: 0.25rem 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 500;
+    color: #34d399;
+    border: 1px solid rgba(52, 211, 153, 0.2);
+}
+
+/* --- Spotlight Effect --- */
+.spotlight-card {
+    position: relative;
+    /* CSS variables updated by JS */
+    --mouse-x: 0px;
+    --mouse-y: 0px;
+}
+
+.spotlight-overlay {
+    pointer-events: none;
+    position: absolute;
+    inset: -1px;
+    opacity: 0;
+    transition: opacity 0.3s;
+    background: radial-gradient(
+        600px circle at var(--mouse-x) var(--mouse-y),
+        rgba(16, 185, 129, 0.15),
+        transparent 40%
+    );
+    z-index: 0;
+}
+
+.spotlight-card:hover .spotlight-overlay {
+    opacity: 1;
+}
+
+/* --- Background Grid --- */
+.grid-bg {
+    background-image: 
+        linear-gradient(to right, #80808012 1px, transparent 1px),
+        linear-gradient(to bottom, #80808012 1px, transparent 1px);
+    background-size: 24px 24px;
+    mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+    -webkit-mask-image: radial-gradient(ellipse 60% 50% at 50% 0%, #000 70%, transparent 100%);
+}
+
+/* --- Animations --- */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.3s ease-out forwards;
+}
+
+/* --- Scrollbar --- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0a0a0a;
+}
+::-webkit-scrollbar-thumb {
+    background: #262626;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #10b981;
+}
