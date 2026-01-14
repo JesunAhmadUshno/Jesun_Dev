@@ -346,49 +346,17 @@ function initEmailModal() {
             const senderEmail = document.getElementById('sender-email').value;
             const inquiry = document.getElementById('inquiry').value;
             const message = document.getElementById('message').value;
-            const submitBtn = emailForm.querySelector('button[type="submit"]');
             
-            // Disable button and show loading state
-            const originalText = submitBtn.innerHTML;
-            submitBtn.disabled = true;
-            submitBtn.innerHTML = '<i class="animate-spin" data-lucide="loader-2"></i> Sending...';
-            lucide.createIcons();
-
-            try {
-                // Send via FormSubmit (FREE, absolutely no setup needed!)
-                const response = await fetch('https://formsubmit.co/jesunushno@gmail.com', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        email: senderEmail,
-                        subject: inquiry,
-                        message: message,
-                        name: senderEmail
-                    })
-                });
-
-                if (response.ok) {
-                    alert('✨ Email sent successfully! Please check your inbox and click "Activate Form" in the FormSubmit email to enable the contact form.');
-                    emailForm.reset();
-                    emailModal.classList.add('hidden');
-                    submitBtn.disabled = false;
-                    submitBtn.innerHTML = originalText;
-                } else {
-                    throw new Error('Submit failed');
-                }
-            } catch (error) {
-                console.error('Email error:', error);
-                // Fallback: Open mailto link
-                const mailtoLink = `mailto:jesunushno@gmail.com?subject=${encodeURIComponent(`New Contact: ${inquiry}`)}&body=${encodeURIComponent(`From: ${senderEmail}\n\n${message}`)}`;
-                window.location.href = mailtoLink;
-                alert('Opening your email client...');
-                emailForm.reset();
-                emailModal.classList.add('hidden');
-                submitBtn.disabled = false;
-                submitBtn.innerHTML = originalText;
-            }
+            // Create mailto link
+            const body = `From: ${senderEmail}\n\n${message}`;
+            const mailtoLink = `mailto:jesunushno@gmail.com?subject=${encodeURIComponent(inquiry)}&body=${encodeURIComponent(body)}`;
+            
+            // Open default email client
+            window.location.href = mailtoLink;
+            
+            // Close modal
+            emailForm.reset();
+            emailModal.classList.add('hidden');
         });
     }
 }
