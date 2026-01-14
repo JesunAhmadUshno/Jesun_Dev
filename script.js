@@ -2,6 +2,19 @@
 // PASTE YOUR API KEY HERE
 const apiKey = "AIzaSyBJuiZntBK6O8Qyjo-KpvByJSDuO5m-EFc"; 
 
+// --- EMAIL CONFIGURATION (FORMSPREE) ---
+// The contact form uses Formspree (https://formspree.io/) - FREE & NO SETUP NEEDED!
+// 1. Visit https://formspree.io/ and sign up (free)
+// 2. Create a new form and get your form ID
+// 3. Replace 'f/xyzqwvab' in initEmailModal() with your Formspree form ID
+// 4. That's it! Emails will be sent to: jesunushno@gmail.com
+// 
+// Alternative: Use EmailJS instead by following these steps:
+// 1. Sign up at https://www.emailjs.com/ (free plan: 200 emails/month)
+// 2. Create an email service (Gmail, Outlook, etc.)
+// 3. Create a template with variables: {{from_email}}, {{subject}}, {{message}}, {{reply_to}}
+// 4. Update the fetch URL and body in initEmailModal() with your Service ID and Template ID 
+
 // --- HERO CAROUSEL DATA ---
 const HERO_CONTENT = [
     {
@@ -79,6 +92,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initSpotlight();
     initChat();
     initVibeGenerator();
+    initEmailModal();
     renderTechStack();
     
     // Navbar Scroll Effect
@@ -295,4 +309,86 @@ function renderTechStack() {
         span.innerText = tech;
         container.appendChild(span);
     });
+}
+
+function initEmailModal() {
+    const emailBtn = document.getElementById('contact-email-btn');
+    const emailModal = document.getElementById('email-modal');
+    const closeModalBtn = document.getElementById('close-email-modal');
+    const emailForm = document.getElementById('email-form');
+
+    // Open modal
+    if (emailBtn) {
+        emailBtn.addEventListener('click', () => {
+            emailModal.classList.remove('hidden');
+        });
+    }
+
+    // Close modal
+    if (closeModalBtn) {
+        closeModalBtn.addEventListener('click', () => {
+            emailModal.classList.add('hidden');
+        });
+    }
+
+    // Close modal when clicking outside
+    emailModal.addEventListener('click', (e) => {
+        if (e.target === emailModal) {
+            emailModal.classList.add('hidden');
+        }
+    });
+
+    // Handle form submission
+    if (emailForm) {
+        emailForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const senderEmail = document.getElementById('sender-email').value;
+            const inquiry = document.getElementById('inquiry').value;
+            const message = document.getElementById('message').value;
+            const submitBtn = emailForm.querySelector('button[type="submit"]');
+            
+            // Disable button and show loading state
+            const originalText = submitBtn.innerHTML;
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="animate-spin" data-lucide="loader-2"></i> Sending...';
+            lucide.createIcons();
+
+            try {
+                // Send via FormSubmit (FREE, absolutely no setup needed!)
+                const response = await fetch('https://formsubmit.co/jesunushno@gmail.com', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        email: senderEmail,
+                        subject: inquiry,
+                        message: message,
+                        name: senderEmail
+                    })
+                });
+
+                if (response.ok) {
+                    alert('✨ Email sent successfully! Please check your inbox and click "Activate Form" in the FormSubmit email to enable the contact form.');
+                    emailForm.reset();
+                    emailModal.classList.add('hidden');
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = originalText;
+                } else {
+                    throw new Error('Submit failed');
+                }
+            } catch (error) {
+                console.error('Email error:', error);
+                // Fallback: Open mailto link
+                const mailtoLink = `mailto:jesunushno@gmail.com?subject=${encodeURIComponent(`New Contact: ${inquiry}`)}&body=${encodeURIComponent(`From: ${senderEmail}\n\n${message}`)}`;
+                window.location.href = mailtoLink;
+                alert('Opening your email client...');
+                emailForm.reset();
+                emailModal.classList.add('hidden');
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = originalText;
+            }
+        });
+    }
 }

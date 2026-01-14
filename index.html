@@ -37,7 +37,9 @@
     
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
-</head>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png"></head>
 <body class="bg-neutral-950 text-neutral-200 selection:bg-emerald-500/30 selection:text-emerald-200">
 
     <!-- Navigation -->
@@ -86,9 +88,9 @@
             </div>
             
             <div class="flex flex-wrap gap-4 mt-8">
-                <button onclick="document.getElementById('projects').scrollIntoView({behavior: 'smooth'})" class="flex items-center gap-2 rounded-full bg-emerald-500 px-8 py-4 font-bold text-neutral-950 hover:bg-emerald-400 transition-all hover:scale-105">
-                    View Work <i data-lucide="chevron-down" class="w-4 h-4"></i>
-                </button>
+                <a href="https://calendly.com/jesunahmadushno/30min" target="_blank" class="flex items-center gap-2 rounded-full bg-emerald-500 px-8 py-4 font-bold text-neutral-950 hover:bg-emerald-400 transition-all hover:scale-105">
+                    Let's Vibe <i data-lucide="chevron-down" class="w-4 h-4"></i>
+                </a>
                 <a href="https://github.com/JesunAhmadUshno" target="_blank" class="flex items-center gap-2 rounded-full border border-neutral-700 bg-neutral-900 px-8 py-4 font-bold text-white hover:bg-neutral-800 transition-all">
                     <i data-lucide="github" class="w-4 h-4"></i> GitHub
                 </a>
@@ -249,25 +251,25 @@
             <!-- Bento Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[300px]">
                 
-                <!-- Card 1 -->
+                <!-- Card 1: SonicClear -->
                 <div class="spotlight-card md:col-span-2 row-span-1 group relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/50 p-6">
                     <div class="spotlight-overlay"></div>
                     <div class="relative h-full flex flex-col justify-between z-10">
                         <div>
                             <div class="flex justify-between items-start mb-4">
-                                <div class="p-3 bg-emerald-500/10 rounded-lg text-emerald-400"><i data-lucide="cpu"></i></div>
-                                <i data-lucide="external-link" class="text-neutral-500 group-hover:text-white transition-colors"></i>
+                                <div class="p-3 bg-cyan-500/10 rounded-lg text-cyan-400"><i data-lucide="mic-2"></i></div>
+                                <a href="https://github.com/JesunAhmadUshno/SonicClear-AI-Studio-Grade-Audio-Enhancer" target="_blank" class="text-neutral-500 group-hover:text-white transition-colors"><i data-lucide="external-link"></i></a>
                             </div>
-                            <h3 class="text-2xl font-bold text-white mb-2">Automatic Fabric Defect Detection</h3>
-                            <p class="text-neutral-400">Published research designing an autonomous framework to detect and classify fabric defects using Wavelet Transform and Neural Networks.</p>
+                            <h3 class="text-2xl font-bold text-white mb-2">SonicClear AI</h3>
+                            <p class="text-neutral-400">Studio-grade audio enhancement tool using deep learning to remove background noise and restore vocal clarity in real-time.</p>
                         </div>
                         <div class="mt-4 flex flex-wrap gap-2">
-                            <span class="badge">Deep Learning</span><span class="badge">Computer Vision</span><span class="badge">Python</span>
+                            <span class="badge">Audio DSP</span><span class="badge">PyTorch</span><span class="badge">FastAPI</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Card 2 -->
+                <!-- Card 2: KPMG AI Challenge -->
                 <div class="spotlight-card md:col-span-1 md:row-span-2 group relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/50 p-6">
                     <div class="spotlight-overlay"></div>
                     <div class="relative h-full flex flex-col justify-between z-10">
@@ -283,29 +285,64 @@
                     </div>
                 </div>
 
-                <!-- Card 3 -->
+                <!-- Card 3: WordMe -->
                 <div class="spotlight-card md:col-span-1 group relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/50 p-6">
                     <div class="spotlight-overlay"></div>
                     <div class="relative h-full flex flex-col justify-between z-10">
                         <div>
-                            <div class="p-3 bg-blue-500/10 rounded-lg text-blue-400 w-fit mb-4"><i data-lucide="globe"></i></div>
-                            <h3 class="text-xl font-bold text-white mb-2">Global Optimization</h3>
-                            <p class="text-neutral-400 text-sm">Research on Elitist Particle Swarm Optimization (PSO) with adaptive inertia weight.</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="p-3 bg-yellow-500/10 rounded-lg text-yellow-400"><i data-lucide="type"></i></div>
+                                <a href="https://github.com/JesunAhmadUshno/WordMe" target="_blank" class="text-neutral-500 group-hover:text-white transition-colors"><i data-lucide="external-link"></i></a>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">WordMe</h3>
+                            <p class="text-neutral-400 text-sm">AI-powered vocabulary builder using LLMs to generate contextual examples and mnemonics for language learners.</p>
                         </div>
-                        <div class="mt-2 flex flex-wrap gap-2"><span class="badge">Algorithms</span><span class="badge">Research</span></div>
+                        <div class="mt-2 flex flex-wrap gap-2"><span class="badge">NLP</span><span class="badge">React</span></div>
                     </div>
                 </div>
 
-                 <!-- Card 4 -->
-                 <div class="spotlight-card md:col-span-1 group relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/50 p-6">
+                <!-- Card 4: Refract -->
+                <div class="spotlight-card md:col-span-1 group relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/50 p-6">
                     <div class="spotlight-overlay"></div>
                     <div class="relative h-full flex flex-col justify-between z-10">
                         <div>
-                            <div class="p-3 bg-orange-500/10 rounded-lg text-orange-400 w-fit mb-4"><i data-lucide="briefcase"></i></div>
-                            <h3 class="text-xl font-bold text-white mb-2">Freelance Digital Exec</h3>
-                            <p class="text-neutral-400 text-sm">Served 300+ clients, managing sales automation and chatbots to drive 40% business growth.</p>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="p-3 bg-pink-500/10 rounded-lg text-pink-400"><i data-lucide="layers"></i></div>
+                                <a href="https://github.com/JesunAhmadUshno/Refract" target="_blank" class="text-neutral-500 group-hover:text-white transition-colors"><i data-lucide="external-link"></i></a>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Refract</h3>
+                            <p class="text-neutral-400 text-sm">A minimalist design framework focused on advanced glassmorphism effects and high-performance CSS transitions.</p>
                         </div>
-                        <div class="mt-2 flex flex-wrap gap-2"><span class="badge">Automation</span><span class="badge">Marketing</span></div>
+                        <div class="mt-2 flex flex-wrap gap-2"><span class="badge">UI/UX</span><span class="badge">Tailwind</span></div>
+                    </div>
+                </div>
+
+                <!-- Card 5: Fabric Defect Detection -->
+                <div class="spotlight-card md:col-span-1 group relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/50 p-6">
+                    <div class="spotlight-overlay"></div>
+                    <div class="relative h-full flex flex-col justify-between z-10">
+                        <div>
+                            <div class="flex justify-between items-start mb-4">
+                                <div class="p-3 bg-emerald-500/10 rounded-lg text-emerald-400"><i data-lucide="cpu"></i></div>
+                                <a href="https://doi.org/10.13140/RG.2.2.10516.99203" target="_blank" class="text-neutral-500 group-hover:text-white transition-colors"><i data-lucide="external-link"></i></a>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Fabric Defect Detection</h3>
+                            <p class="text-neutral-400 text-sm">Published research using Wavelet Transform and Neural Networks for industrial quality control and defect classification.</p>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2"><span class="badge">Deep Learning</span><span class="badge">CV</span></div>
+                    </div>
+                </div>
+
+                <!-- Card 6: GDG UNFC BUILD WITH AI -->
+                <div class="spotlight-card md:col-span-1 group relative overflow-hidden rounded-xl border border-neutral-800 bg-neutral-900/50 p-6">
+                    <div class="spotlight-overlay"></div>
+                    <div class="relative h-full flex flex-col justify-between z-10">
+                        <div>
+                            <div class="p-3 bg-red-500/10 rounded-lg text-red-400 w-fit mb-4"><i data-lucide="zap"></i></div>
+                            <h3 class="text-xl font-bold text-white mb-2">GDG UNFC Build With AI</h3>
+                            <p class="text-neutral-400 text-sm">Google Developer Group session exploring practical AI implementation patterns, leveraging Gemini API and LLM strategies for real-world applications.</p>
+                        </div>
+                        <div class="mt-2 flex flex-wrap gap-2"><span class="badge">AI/ML</span><span class="badge">Gemini</span></div>
                     </div>
                 </div>
 
@@ -319,12 +356,18 @@
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Ready to create something amazing?</h2>
                 <p class="text-xl text-neutral-400 max-w-2xl mx-auto mb-10">I am currently based in Toronto and open to full-time opportunities or freelance collaborations.</p>
                 
-                <div class="flex flex-col md:flex-row gap-4 justify-center items-center">
-                    <a href="mailto:jesunushno@gmail.com" class="flex items-center gap-3 bg-white text-neutral-950 px-8 py-4 rounded-full font-bold hover:bg-emerald-400 transition-all hover:scale-105">
+                <div class="flex flex-col md:flex-row gap-4 justify-center items-center flex-wrap">
+                    <button id="contact-email-btn" class="flex items-center gap-3 bg-white text-neutral-950 px-8 py-4 rounded-full font-bold hover:bg-emerald-400 transition-all hover:scale-105 cursor-pointer">
                         <i data-lucide="mail"></i> Send Email
-                    </a>
-                    <a href="https://linkedin.com/in/jesunahmadushno" class="flex items-center gap-3 bg-neutral-800 text-white px-8 py-4 rounded-full font-bold hover:bg-neutral-700 transition-all border border-neutral-700">
+                    </button>
+                    <a href="https://linkedin.com/in/jesunahmadushno" target="_blank" class="flex items-center gap-3 bg-neutral-800 text-white px-8 py-4 rounded-full font-bold hover:bg-neutral-700 transition-all border border-neutral-700">
                         <i data-lucide="linkedin"></i> LinkedIn
+                    </a>
+                    <a href="https://github.com/JesunAhmadUshno" target="_blank" class="flex items-center gap-3 bg-neutral-800 text-white px-8 py-4 rounded-full font-bold hover:bg-neutral-700 transition-all border border-neutral-700">
+                        <i data-lucide="github"></i> Github
+                    </a>
+                    <a href="Jesun_resume.pdf" download class="flex items-center gap-3 bg-purple-600 text-white px-8 py-4 rounded-full font-bold hover:bg-purple-500 transition-all hover:scale-105">
+                        <i data-lucide="download"></i> Request Resume
                     </a>
                 </div>
             </div>
@@ -334,12 +377,45 @@
         <footer class="border-t border-neutral-800 pt-12 pb-8 text-center text-neutral-500 text-sm">
             <p class="mb-4">Designed & Vibe Coded by Jesun Ahmad Ushno.</p>
             <div class="flex justify-center gap-6">
-                <a href="#" class="hover:text-emerald-400 transition-colors">Resume</a>
+                <a href="Jesun_resume.pdf" download class="hover:text-emerald-400 transition-colors">Resume</a>
                 <a href="https://github.com/JesunAhmadUshno" class="hover:text-emerald-400 transition-colors">GitHub</a>
                 <a href="https://linkedin.com/in/jesunahmadushno" class="hover:text-emerald-400 transition-colors">LinkedIn</a>
             </div>
         </footer>
 
+    </div>
+
+    <!-- Email Modal -->
+    <div id="email-modal" class="fixed inset-0 bg-black/50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-neutral-900 rounded-2xl border border-neutral-800 p-8 max-w-md w-full animate-in fade-in zoom-in duration-300">
+            <div class="flex justify-between items-center mb-6">
+                <h3 class="text-2xl font-bold text-white">Send me an Email</h3>
+                <button id="close-email-modal" class="text-neutral-400 hover:text-white">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            
+            <form id="email-form" class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-neutral-300 mb-2">Your Email</label>
+                    <input type="email" id="sender-email" placeholder="your@email.com" required class="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-emerald-500 transition-colors">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-neutral-300 mb-2">Subject/Inquiry</label>
+                    <input type="text" id="inquiry" placeholder="What would you like to discuss?" required class="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-emerald-500 transition-colors">
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-medium text-neutral-300 mb-2">Message</label>
+                    <textarea id="message" placeholder="Tell me more details..." rows="4" required class="w-full bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-emerald-500 transition-colors resize-none"></textarea>
+                </div>
+                
+                <button type="submit" class="w-full bg-emerald-500 hover:bg-emerald-400 text-neutral-950 font-bold py-2 rounded-lg transition-all flex items-center justify-center gap-2">
+                    <i data-lucide="send" class="w-4 h-4"></i> Send Email
+                </button>
+            </form>
+        </div>
     </div>
 
     <!-- Chat Widget -->
