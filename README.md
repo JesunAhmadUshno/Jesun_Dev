@@ -3,8 +3,8 @@
 # JESUN<span style="color: #10b981">.</span>
 **Data Analytics & Vibe Coding Studio**
 
-[![Live Demo](https://img.shields.io/badge/Live-Demo-10b981?style=for-the-badge)](https://jesunahmadushno.com) 
-[![GitHub Stars](https://img.shields.io/github/stars/JesunAhmadUshno/portfolio?style=for-the-badge&color=ffd700)](https://github.com/JesunAhmadUshno/Jesun_Dev)
+[![Live Demo](https://img.shields.io/badge/Live-Demo-10b981?style=for-the-badge)](http://jesunahmadushno.com/) 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
 [Live Demo](#-live-demo) • [Features](#-features) • [Tech Stack](#-tech-stack) • [Setup](#-running-locally)
 
@@ -39,8 +39,8 @@ My work focuses on translating raw data into business intelligence through these
 The architecture is designed to be lightweight and infinitely scalable without requiring a traditional backend server.
 
 * **Core:** HTML5, CSS3, Vanilla JavaScript (ES6+).
-* **Styling:** Tailwind CSS, Custom CSS Variables, Glassmorphism.
-* **AI Engine:** Google Gemini API (2.5 Flash).
+* **Styling:** Tailwind CSS (via CDN), Custom CSS Variables, Glassmorphism.
+* **AI Engine:** Google Gemini API (2.5 Flash Preview).
 * **Deployment:** GitHub Pages with Custom Domain mapping.
 
 ---
@@ -48,7 +48,35 @@ The architecture is designed to be lightweight and infinitely scalable without r
 ## 💻 Running Locally
 If you wish to run this offline or audit the code:
 
-1. **Clone the repository**
-   ```bash
-   git clone [https://github.com/JesunAhmadUshno/portfolio.git](https://github.com/JesunAhmadUshno/portfolio.git)
-   cd portfolio
+1.  **Clone the repository**
+    ```bash
+    git clone [https://github.com/JesunAhmadUshno/portfolio.git](https://github.com/JesunAhmadUshno/portfolio.git)
+    cd portfolio
+    ```
+
+2.  **Configuration**
+    Open `script.js` and insert your Gemini API Key:
+    ```javascript
+    const apiKey = "YOUR_GEMINI_API_KEY";
+    ```
+
+3.  **Launch**
+    Simply open the `index.html` file in any modern web browser.
+
+## 🎨 Customization
+The design system is centered around a sophisticated dark-mode palette. Modify the variables in the `:root` style to change the brand identity:
+
+```css
+:root {
+    --bg-dark: #0a0a0a;       /* Deep Black */
+    --accent: #10b981;        /* Emerald Green */
+    --surface: #171717;       /* Card Background */
+}
+<br />
+
+<div align="center">
+
+🌐 Launch Portfolio
+<small>Designed & Vibe Coded by Jesun Ahmad Ushno © 2026</small>
+
+</div>
