@@ -339,6 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initEmailModal();
     initCertifications();
     renderTechStack();
+    initAutoScroll(); // Initialize auto-scroll feature
     
     // Navbar Scroll Effect
     window.addEventListener('scroll', () => {
@@ -352,6 +353,136 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// --- AUTO-SCROLL FEATURE ---
+function initAutoScroll() {
+    const chatWidget = document.getElementById('chat-widget-container');
+    const coffeeBtn = document.getElementById('coffee-button');
+    
+    let autoScrollInterval = null;
+    let idleTimeout = null;
+    let buttonsVisible = false;
+    let scrollingActive = false;
+    let interactionEnabled = false; // Don't detect interaction until scroll starts
+    const INITIAL_DELAY = 10000; // 10 seconds before first scroll
+    const IDLE_DELAY = 15000; // 15 seconds idle before resuming
+    const SCROLL_SPEED = 2; // pixels per frame
+    const SCROLL_INTERVAL = 16; // ms between scroll steps (~60fps smooth)
+    const GRACE_PERIOD = 1000; // 1 second grace period after scroll starts
+    
+    // Show floating buttons with animation
+    function showFloatingButtons() {
+        if (buttonsVisible) return;
+        buttonsVisible = true;
+        
+        if (coffeeBtn) {
+            coffeeBtn.classList.remove('floating-hidden');
+            coffeeBtn.classList.add('floating-visible');
+        }
+        if (chatWidget) {
+            chatWidget.classList.remove('floating-hidden');
+            chatWidget.classList.add('floating-visible');
+        }
+    }
+    
+    // Start auto-scrolling
+    function startAutoScroll() {
+        if (autoScrollInterval) return; // Already scrolling
+        
+        scrollingActive = true;
+        
+        // Show buttons when scroll starts
+        if (!buttonsVisible) {
+            showFloatingButtons();
+        }
+        
+        // Enable interaction detection after grace period
+        setTimeout(() => {
+            interactionEnabled = true;
+        }, GRACE_PERIOD);
+        
+        autoScrollInterval = setInterval(() => {
+            // Check if we've reached the bottom
+            const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+            if (window.scrollY >= maxScroll - 10) {
+                stopAutoScroll();
+                return;
+            }
+            
+            window.scrollBy(0, SCROLL_SPEED);
+        }, SCROLL_INTERVAL);
+    }
+    
+    // Stop auto-scrolling
+    function stopAutoScroll() {
+        if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+        }
+        scrollingActive = false;
+    }
+    
+    // Reset idle timer
+    function resetIdleTimer() {
+        // Only respond to interactions if enabled and scrolling is active
+        if (!interactionEnabled) return;
+        
+        // Stop current auto-scroll
+        stopAutoScroll();
+        
+        // Clear existing idle timeout
+        if (idleTimeout) {
+            clearTimeout(idleTimeout);
+        }
+        
+        // Set new idle timeout to resume scrolling
+        idleTimeout = setTimeout(() => {
+            interactionEnabled = false; // Reset for new grace period
+            startAutoScroll();
+        }, IDLE_DELAY);
+    }
+    
+    // User interaction events - only active clicks, keys, touch, and wheel
+    // Removed mousemove as it's too sensitive
+    const interactionEvents = ['mousedown', 'keydown', 'touchstart', 'wheel'];
+    
+    interactionEvents.forEach(event => {
+        window.addEventListener(event, () => {
+            // Show buttons on any interaction too
+            if (!buttonsVisible) {
+                showFloatingButtons();
+            }
+            resetIdleTimer();
+        }, { passive: true });
+    });
+    
+    // Manual scroll detection (user scrolling themselves)
+    let lastScrollTop = window.scrollY;
+    window.addEventListener('scroll', () => {
+        if (!buttonsVisible) {
+            showFloatingButtons();
+        }
+        
+        // Only trigger if user is manually scrolling (not auto-scroll)
+        if (interactionEnabled && !scrollingActive) {
+            resetIdleTimer();
+        }
+        
+        // Detect if scroll direction changed or speed is different (user took over)
+        const currentScroll = window.scrollY;
+        const scrollDiff = Math.abs(currentScroll - lastScrollTop);
+        if (scrollingActive && scrollDiff > SCROLL_SPEED * 3) {
+            // User probably scrolled manually - bigger jump than auto-scroll
+            resetIdleTimer();
+        }
+        lastScrollTop = currentScroll;
+    }, { passive: true });
+    
+    // Start initial auto-scroll after delay
+    setTimeout(() => {
+        startAutoScroll();
+    }, INITIAL_DELAY);
+}
 
 // --- CERTIFICATIONS TOGGLE ---
 function initCertifications() {
