@@ -56,6 +56,231 @@
     <link rel="icon" type="image/png" href="favicon.png"></head>
 <body class="bg-neutral-950 text-neutral-200 selection:bg-emerald-500/30 selection:text-emerald-200">
 
+    <!-- GODLIKE CINEMATIC BOOTLOADER -->
+    <div id="bootloader" class="bootloader">
+        <!-- CRT Effects -->
+        <div class="crt-overlay"></div>
+        <div class="crt-flicker"></div>
+        <div class="vignette"></div>
+        <div class="screen-glitch" id="screen-glitch"></div>
+        
+        <!-- Glitch Slices -->
+        <div class="glitch-slices" id="glitch-slices">
+            <div class="glitch-slice"></div>
+            <div class="glitch-slice"></div>
+            <div class="glitch-slice"></div>
+            <div class="glitch-slice"></div>
+            <div class="glitch-slice"></div>
+        </div>
+        
+        <!-- Power Surge Flash -->
+        <div class="power-surge" id="power-surge"></div>
+        
+        <!-- Mouse Trail Canvas -->
+        <canvas id="trail-canvas"></canvas>
+        
+        <!-- Canvases -->
+        <canvas id="particle-canvas"></canvas>
+        <canvas id="matrix-canvas"></canvas>
+        <canvas id="lightning-canvas"></canvas>
+        
+        <!-- Data Stream Container -->
+        <div class="data-streams" id="data-streams"></div>
+        
+        <!-- Circuit Traces -->
+        <svg class="circuit-traces" id="circuit-traces" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <path class="circuit-path" d="M0,20 H30 L35,25 H50 L55,20 H70 L75,30 H100"/>
+            <path class="circuit-path" d="M0,50 H20 L25,45 H45 L50,55 H65 L70,50 H100"/>
+            <path class="circuit-path" d="M0,80 H35 L40,75 H55 L60,85 H75 L80,80 H100"/>
+        </svg>
+        
+        <!-- Holographic Scan Line -->
+        <div class="holo-scan"></div>
+        
+        <!-- Hexagon Grid Background -->
+        <div class="hex-grid"></div>
+        
+        <!-- Radar Pulse Rings -->
+        <div class="radar-container" id="radar-container">
+            <div class="radar-ring"></div>
+            <div class="radar-ring"></div>
+            <div class="radar-ring"></div>
+        </div>
+        
+        <!-- Phase 1: System Boot -->
+        <div class="boot-phase phase-1" id="phase-1">
+            <div class="boot-logo">
+                <div class="logo-glitch-container">
+                    <div class="logo-text" data-text="JESUN.DEV">JESUN<span class="logo-dot">.</span>DEV</div>
+                    <div class="logo-text glitch-1" aria-hidden="true">JESUN<span class="logo-dot">.</span>DEV</div>
+                    <div class="logo-text glitch-2" aria-hidden="true">JESUN<span class="logo-dot">.</span>DEV</div>
+                </div>
+                <div class="logo-tagline">SYSTEM INITIALIZATION</div>
+                <!-- Heartbeat Monitor -->
+                <div class="heartbeat-container">
+                    <svg class="heartbeat-svg" viewBox="0 0 200 50">
+                        <polyline class="heartbeat-line" points="0,25 20,25 25,25 30,10 35,40 40,25 45,25 65,25 70,25 75,10 80,40 85,25 90,25 110,25 115,25 120,10 125,40 130,25 135,25 155,25 160,25 165,10 170,40 175,25 180,25 200,25"/>
+                    </svg>
+                </div>
+            </div>
+            <div class="boot-spinner">
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-ring"></div>
+                <div class="spinner-core"></div>
+            </div>
+            <div class="boot-percentage" id="boot-percentage">0%</div>
+        </div>
+        
+        <!-- Phase 2: Diagnostics -->
+        <div class="boot-phase phase-2" id="phase-2">
+            <!-- Main Terminal -->
+            <div class="boot-terminal" id="boot-terminal">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <span class="terminal-title">jesun@dev: ~/portfolio</span>
+                        <span class="terminal-status" id="terminal-status">RUNNING</span>
+                    </div>
+                    <div class="terminal-body" id="terminal-output"></div>
+                    <div class="terminal-progress">
+                        <div class="progress-bar" id="progress-bar"></div>
+                        <span class="progress-text" id="progress-text">0.00%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Side Diagnostics Panel -->
+            <div class="diagnostics-panel" id="diagnostics-panel">
+                <div class="diag-header">
+                    <span class="diag-icon">◉</span> SYSTEM DIAGNOSTICS
+                </div>
+                <div class="diag-item" id="diag-cpu">
+                    <span class="diag-label">CPU</span>
+                    <div class="diag-bar"><div class="diag-fill" data-value="0"></div></div>
+                    <span class="diag-value">0%</span>
+                </div>
+                <div class="diag-item" id="diag-mem">
+                    <span class="diag-label">MEM</span>
+                    <div class="diag-bar"><div class="diag-fill" data-value="0"></div></div>
+                    <span class="diag-value">0%</span>
+                </div>
+                <div class="diag-item" id="diag-net">
+                    <span class="diag-label">NET</span>
+                    <div class="diag-bar"><div class="diag-fill" data-value="0"></div></div>
+                    <span class="diag-value">0%</span>
+                </div>
+                <div class="diag-item" id="diag-ai">
+                    <span class="diag-label">AI</span>
+                    <div class="diag-bar"><div class="diag-fill" data-value="0"></div></div>
+                    <span class="diag-value">0%</span>
+                </div>
+                <div class="diag-stats">
+                    <div class="stat"><span class="stat-num" id="stat-projects">0</span><span class="stat-label">Projects</span></div>
+                    <div class="stat"><span class="stat-num" id="stat-certs">0</span><span class="stat-label">Certs</span></div>
+                    <div class="stat"><span class="stat-num" id="stat-hours">0</span><span class="stat-label">Hours</span></div>
+                </div>
+            </div>
+            
+            <!-- Floating Code Snippets -->
+            <div class="floating-code" id="float-code-1">
+                <pre>const developer = {
+  name: "Jesun Ahmad Ushno",
+  role: "Data Analyst",
+  vibes: Infinity
+};</pre>
+            </div>
+            <div class="floating-code" id="float-code-2">
+                <pre>async function createMagic() {
+  await loadCreativity();
+  return innovation;
+}</pre>
+            </div>
+            <div class="floating-code" id="float-code-3">
+                <pre>SELECT excellence
+FROM skills
+WHERE passion = TRUE;</pre>
+            </div>
+        </div>
+        
+        <!-- Phase 3: Final Reveal -->
+        <div class="boot-phase phase-3" id="phase-3">
+            <!-- Particle Vortex Canvas -->
+            <canvas id="vortex-canvas"></canvas>
+            
+            <div class="reveal-container">
+                <!-- Multiple Shockwaves -->
+                <div class="shockwave" id="shockwave"></div>
+                <div class="shockwave shockwave-2" id="shockwave-2"></div>
+                <div class="shockwave shockwave-3" id="shockwave-3"></div>
+                
+                <!-- Lens Flare -->
+                <div class="lens-flare" id="lens-flare"></div>
+                
+                <!-- Chromatic Aberration Container -->
+                <div class="chromatic-container">
+                    <!-- Main Text with Scramble -->
+                    <div class="reveal-text">
+                        <span class="reveal-line" id="reveal-line"></span>
+                        <span class="reveal-highlight" id="reveal-highlight"></span>
+                    </div>
+                    <!-- Chromatic Layers -->
+                    <div class="reveal-text chromatic-red">
+                        <span class="reveal-line" id="reveal-line-r"></span>
+                        <span class="reveal-highlight" id="reveal-highlight-r"></span>
+                    </div>
+                    <div class="reveal-text chromatic-blue">
+                        <span class="reveal-line" id="reveal-line-b"></span>
+                        <span class="reveal-highlight" id="reveal-highlight-b"></span>
+                    </div>
+                </div>
+                
+                <!-- Subtitle -->
+                <div class="reveal-subtitle" id="reveal-subtitle"></div>
+                
+                <!-- Decorative Elements -->
+                <div class="reveal-deco left"></div>
+                <div class="reveal-deco right"></div>
+                
+                <!-- Corner Brackets -->
+                <div class="corner-bracket top-left"></div>
+                <div class="corner-bracket top-right"></div>
+                <div class="corner-bracket bottom-left"></div>
+                <div class="corner-bracket bottom-right"></div>
+            </div>
+        </div>
+        
+        <!-- Skip Button -->
+        <button class="skip-btn" id="skip-btn">
+            <span class="skip-icon">⏭</span>
+            SKIP 
+            <span class="skip-key">[SPACE]</span>
+        </button>
+        
+        <!-- Sound Wave Visualizer -->
+        <div class="sound-wave" id="sound-wave">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+        </div>
+        
+        <!-- Click hint -->
+        <div class="click-hint" id="click-hint">Click anywhere for sparks ✨</div>
+    </div>
+
     <!-- Cinematic Progress Bar -->
     <div class="slide-progress" id="slide-progress"></div>
 
