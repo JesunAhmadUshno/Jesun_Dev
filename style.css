@@ -165,6 +165,39 @@ body {
     }
 }
 
+/* --- Floating Buttons Initial State --- */
+.floating-hidden {
+    opacity: 0;
+    transform: scale(0.5) translateY(20px);
+    pointer-events: none;
+}
+
+.floating-visible {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+    pointer-events: auto;
+    transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Chat widget container */
+#chat-widget-container {
+    transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Coffee button */
+#coffee-button {
+    transition: opacity 0.5s ease-out, transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Staggered pop-up animation */
+#coffee-button.floating-visible {
+    transition-delay: 0.1s;
+}
+
+#chat-widget-container.floating-visible {
+    transition-delay: 0.25s;
+}
+
 /* --- Certifications Section --- */
 #more-certs {
     animation: expandDown 0.3s ease-out;
