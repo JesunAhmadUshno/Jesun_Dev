@@ -111,3 +111,95 @@ body {
 .typing-dot:nth-child(3) {
     animation-delay: 0.4s;
 }
+
+/* Quick reply buttons */
+.quick-reply-btn {
+    animation: fadeInUp 0.3s ease-out forwards;
+    opacity: 0;
+}
+
+.quick-reply-btn:nth-child(1) { animation-delay: 0.1s; }
+.quick-reply-btn:nth-child(2) { animation-delay: 0.2s; }
+.quick-reply-btn:nth-child(3) { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Chat message animation */
+#chat-messages > div {
+    animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* User messages slide from right */
+#chat-messages > div.items-end {
+    animation: slideInRight 0.3s ease-out;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* --- Certifications Section --- */
+#more-certs {
+    animation: expandDown 0.3s ease-out;
+}
+
+@keyframes expandDown {
+    from {
+        opacity: 0;
+        max-height: 0;
+    }
+    to {
+        opacity: 1;
+        max-height: 400px;
+    }
+}
+
+#cert-chevron {
+    transition: transform 0.3s ease;
+}
+
+/* Custom scrollbar for certifications */
+#more-certs > div::-webkit-scrollbar {
+    width: 6px;
+}
+
+#more-certs > div::-webkit-scrollbar-track {
+    background: #171717;
+    border-radius: 3px;
+}
+
+#more-certs > div::-webkit-scrollbar-thumb {
+    background: #404040;
+    border-radius: 3px;
+}
+
+#more-certs > div::-webkit-scrollbar-thumb:hover {
+    background: #10b981;
+}
