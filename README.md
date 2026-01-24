@@ -24,6 +24,30 @@ Built with a focus on performance and aesthetics, the application uses a **smart
 
 ## ✨ Features
 
+### 🎬 GODLIKE Cinematic Bootloader
+- **Matrix rain effect** — Japanese characters cascading down the screen
+- **3-Phase boot sequence** — Logo → Diagnostics → Epic Reveal
+- **Lightning storms** — Random procedural lightning bolts
+- **Particle vortex** — 150 particles spiraling into the center
+- **Mouse trail** — Neon glow trail following your cursor
+- **Text scramble** — Characters shuffle before revealing final text
+- **Power surge flash** — Dramatic white flash on transitions
+- **Glitch slice effect** — Horizontal screen tears with hue rotation
+- **System sound effects** — Web Audio API sci-fi boot sounds
+- **CRT overlay** — Scanlines, flicker, and vignette effects
+- **Hexagon grid** — Animated cyberpunk background
+- **Heartbeat monitor** — Real-time pulse animation
+- **Circuit traces** — Animated SVG circuit board paths
+
+### 🎥 Cinematic 3D Scroll (Desktop)
+- **Dramatic zoom transitions** — Slides zoom in/out with depth
+- **Parallax depth layers** — Multi-layer parallax effects
+- **Blur depth of field** — Far slides blur for focus effect
+- **Zigzag animations** — Alternating slide directions
+- **Keyboard & touch support** — Arrow keys, wheel, and swipe
+- **Auto-advance** — Automatic slide progression after idle
+- **Mobile fallback** — Clean standard scroll on mobile devices
+
 ### 🤖 Smart AI Chat (Jesun.AI Twin)
 - **Intelligent keyword matching** with fuzzy search
 - **Conversation memory** and context awareness
@@ -36,6 +60,8 @@ Built with a focus on performance and aesthetics, the application uses a **smart
 - **Smart Carousel** — Dynamic text timing based on content length
 - **Spotlight UI** — Cursor-tracking lighting effects on project cards
 - **Expandable Certifications** — 30+ certifications in a clean, collapsible grid
+- **Auto-scroll** — Automatic page scroll with 10s initial delay
+- **Floating buttons** — Coffee & chat buttons appear after scroll starts
 
 ### 📱 Modern Design
 - **Glassmorphism** cards with frosted glass effects
@@ -59,6 +85,8 @@ Built with a focus on performance and aesthetics, the application uses a **smart
 |-------|------------|
 | **Core** | HTML5, CSS3, Vanilla JavaScript (ES6+) |
 | **Styling** | Tailwind CSS (CDN), Custom CSS, Glassmorphism |
+| **Graphics** | Canvas API (Matrix rain, particles, lightning, vortex) |
+| **Audio** | Web Audio API (procedural sci-fi sounds) |
 | **Icons** | Lucide Icons |
 | **AI** | Smart offline response system (no API needed) |
 | **Deployment** | GitHub Pages + Custom Domain |

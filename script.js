@@ -331,21 +331,31 @@ KNOWLEDGE_BASE.default = {
 
 // --- INITIALIZATION ---
 document.addEventListener('DOMContentLoaded', () => {
-    lucide.createIcons(); // Initialize Icons
-    initCarousel();
-    initSpotlight();
-    initChat();
-    initVibeGenerator();
-    initEmailModal();
-    initCertifications();
-    renderTechStack();
-    
-    // Initialize cinematic scroll for desktop, fallback for mobile
-    if (window.innerWidth > 1024) {
-        initCinematicScroll();
-    } else {
-        initAutoScroll(); // Mobile uses regular auto-scroll
-    }
+    // Start bootloader first, then initialize rest
+    initBootloader(() => {
+        lucide.createIcons(); // Initialize Icons
+        initCarousel();
+        initSpotlight();
+        initChat();
+        initVibeGenerator();
+        initEmailModal();
+        initCertifications();
+        renderTechStack();
+        
+        // Initialize cinematic scroll for desktop, fallback for mobile
+        if (window.innerWidth > 1024) {
+            initCinematicScroll();
+        } else {
+            // Mobile: Remove all cinematic classes and ensure clean state
+            const slides = document.querySelectorAll('.cinematic-slide');
+            slides.forEach(slide => {
+                slide.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next', 'zigzag-reverse');
+                slide.style.transform = 'none';
+                slide.style.opacity = '1';
+                slide.style.filter = 'none';
+            });
+            initAutoScroll(); // Mobile uses regular auto-scroll
+        }
     
     // Navbar Scroll Effect (only for mobile/fallback)
     window.addEventListener('scroll', () => {
@@ -358,7 +368,988 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.classList.add('py-6');
         }
     });
+    }); // Close bootloader callback
 });
+
+// --- ULTIMATE CINEMATIC BOOTLOADER ---
+function initBootloader(onComplete) {
+    const bootloader = document.getElementById('bootloader');
+    const matrixCanvas = document.getElementById('matrix-canvas');
+    const particleCanvas = document.getElementById('particle-canvas');
+    const lightningCanvas = document.getElementById('lightning-canvas');
+    const trailCanvas = document.getElementById('trail-canvas');
+    const vortexCanvas = document.getElementById('vortex-canvas');
+    const phase1 = document.getElementById('phase-1');
+    const phase2 = document.getElementById('phase-2');
+    const phase3 = document.getElementById('phase-3');
+    const terminalOutput = document.getElementById('terminal-output');
+    const bootTerminal = document.getElementById('boot-terminal');
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    const revealLine = document.getElementById('reveal-line');
+    const revealHighlight = document.getElementById('reveal-highlight');
+    const revealSubtitle = document.getElementById('reveal-subtitle');
+    const shockwave = document.getElementById('shockwave');
+    const shockwave2 = document.getElementById('shockwave-2');
+    const shockwave3 = document.getElementById('shockwave-3');
+    const lensFlare = document.getElementById('lens-flare');
+    const screenGlitch = document.getElementById('screen-glitch');
+    const glitchSlices = document.getElementById('glitch-slices');
+    const powerSurge = document.getElementById('power-surge');
+    const skipBtn = document.getElementById('skip-btn');
+    const bootPercentage = document.getElementById('boot-percentage');
+    
+    let isSkipped = false;
+    let matrixInterval, particleInterval, lightningInterval, trailInterval, vortexInterval;
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let vortexActive = false;
+    
+    // Skip if already seen
+    if (sessionStorage.getItem('bootloaderShown')) {
+        bootloader.style.display = 'none';
+        onComplete();
+        return;
+    }
+    
+    // ========== WEB AUDIO API SOUNDS ==========
+    let audioContext = null;
+    
+    function initAudio() {
+        if (!audioContext) {
+            audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        }
+    }
+    
+    // Deep system boot tone - subtle low frequency hum
+    function playSystemTone(freq = 80, duration = 0.3) {
+        if (!audioContext) return;
+        try {
+            const osc = audioContext.createOscillator();
+            const osc2 = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            const filter = audioContext.createBiquadFilter();
+            
+            // Deep base tone
+            osc.type = 'sine';
+            osc.frequency.value = freq;
+            
+            // Subtle harmonic
+            osc2.type = 'sine';
+            osc2.frequency.value = freq * 1.5;
+            
+            filter.type = 'lowpass';
+            filter.frequency.value = 200;
+            filter.Q.value = 1;
+            
+            gain.gain.setValueAtTime(0.04, audioContext.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + duration);
+            
+            osc.connect(filter);
+            osc2.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioContext.destination);
+            
+            osc.start();
+            osc2.start();
+            osc.stop(audioContext.currentTime + duration);
+            osc2.stop(audioContext.currentTime + duration);
+        } catch(e) {}
+    }
+    
+    // Soft digital click - like a relay or HDD
+    function playDigitalClick() {
+        if (!audioContext) return;
+        try {
+            const noise = audioContext.createBufferSource();
+            const bufferSize = audioContext.sampleRate * 0.02;
+            const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const data = buffer.getChannelData(0);
+            
+            for (let i = 0; i < bufferSize; i++) {
+                const env = Math.exp(-i / (bufferSize * 0.1));
+                data[i] = (Math.random() * 2 - 1) * env * 0.3;
+            }
+            
+            noise.buffer = buffer;
+            const filter = audioContext.createBiquadFilter();
+            filter.type = 'highpass';
+            filter.frequency.value = 2000;
+            
+            const gain = audioContext.createGain();
+            gain.gain.value = 0.03;
+            
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioContext.destination);
+            noise.start();
+        } catch(e) {}
+    }
+    
+    // Soft data processing sound
+    function playDataProcess() {
+        if (!audioContext) return;
+        try {
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            const filter = audioContext.createBiquadFilter();
+            
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(1200, audioContext.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(800, audioContext.currentTime + 0.05);
+            
+            filter.type = 'bandpass';
+            filter.frequency.value = 1000;
+            filter.Q.value = 5;
+            
+            gain.gain.setValueAtTime(0.02, audioContext.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.05);
+            
+            osc.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioContext.destination);
+            osc.start();
+            osc.stop(audioContext.currentTime + 0.05);
+        } catch(e) {}
+    }
+    
+    // Transition whoosh - filtered sweep
+    function playWhoosh() {
+        if (!audioContext) return;
+        try {
+            const noise = audioContext.createBufferSource();
+            const bufferSize = audioContext.sampleRate * 0.4;
+            const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const data = buffer.getChannelData(0);
+            
+            for (let i = 0; i < bufferSize; i++) {
+                const env = Math.sin((i / bufferSize) * Math.PI) * 0.5;
+                data[i] = (Math.random() * 2 - 1) * env;
+            }
+            
+            noise.buffer = buffer;
+            const filter = audioContext.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.setValueAtTime(200, audioContext.currentTime);
+            filter.frequency.exponentialRampToValueAtTime(1500, audioContext.currentTime + 0.2);
+            filter.frequency.exponentialRampToValueAtTime(400, audioContext.currentTime + 0.4);
+            filter.Q.value = 3;
+            
+            const gain = audioContext.createGain();
+            gain.gain.setValueAtTime(0.06, audioContext.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.4);
+            
+            noise.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioContext.destination);
+            noise.start();
+        } catch(e) {}
+    }
+    
+    // Power surge - deep rumble with high shimmer
+    function playPowerUp() {
+        if (!audioContext) return;
+        try {
+            // Deep rumble
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(40, audioContext.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(80, audioContext.currentTime + 0.5);
+            gain.gain.setValueAtTime(0.05, audioContext.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.6);
+            osc.connect(gain);
+            gain.connect(audioContext.destination);
+            osc.start();
+            osc.stop(audioContext.currentTime + 0.6);
+            
+            // High shimmer
+            const noise = audioContext.createBufferSource();
+            const bufferSize = audioContext.sampleRate * 0.5;
+            const buffer = audioContext.createBuffer(1, bufferSize, audioContext.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                const env = Math.exp(-i / (bufferSize * 0.3));
+                data[i] = (Math.random() * 2 - 1) * env * 0.2;
+            }
+            noise.buffer = buffer;
+            const filter = audioContext.createBiquadFilter();
+            filter.type = 'highpass';
+            filter.frequency.value = 3000;
+            const noiseGain = audioContext.createGain();
+            noiseGain.gain.setValueAtTime(0.03, audioContext.currentTime);
+            noiseGain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.5);
+            noise.connect(filter);
+            filter.connect(noiseGain);
+            noiseGain.connect(audioContext.destination);
+            noise.start();
+        } catch(e) {}
+    }
+    
+    // Subtle confirmation tone
+    function playConfirm() {
+        if (!audioContext) return;
+        try {
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(600, audioContext.currentTime);
+            osc.frequency.setValueAtTime(800, audioContext.currentTime + 0.08);
+            gain.gain.setValueAtTime(0.02, audioContext.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, audioContext.currentTime + 0.15);
+            osc.connect(gain);
+            gain.connect(audioContext.destination);
+            osc.start();
+            osc.stop(audioContext.currentTime + 0.15);
+        } catch(e) {}
+    }
+    
+    // Initialize audio on first interaction
+    bootloader.addEventListener('click', initAudio, { once: true });
+    
+    // ========== MOUSE PARALLAX ==========
+    bootloader.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        // Subtle parallax on phases
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const deltaX = (e.clientX - centerX) / centerX;
+        const deltaY = (e.clientY - centerY) / centerY;
+        
+        const phases = [phase1, phase2, phase3];
+        phases.forEach(phase => {
+            if (phase && phase.classList.contains('active')) {
+                phase.style.transform = `translate(${deltaX * 10}px, ${deltaY * 10}px)`;
+            }
+        });
+    });
+    
+    // ========== MOUSE TRAIL ==========
+    const trailCtx = trailCanvas ? trailCanvas.getContext('2d') : null;
+    const trailPoints = [];
+    const maxTrailPoints = 30;
+    
+    if (trailCanvas) {
+        trailCanvas.width = window.innerWidth;
+        trailCanvas.height = window.innerHeight;
+    }
+    
+    function updateTrail() {
+        if (!trailCtx || isSkipped) return;
+        
+        trailPoints.push({ x: mouseX, y: mouseY, alpha: 1 });
+        if (trailPoints.length > maxTrailPoints) {
+            trailPoints.shift();
+        }
+        
+        trailCtx.clearRect(0, 0, trailCanvas.width, trailCanvas.height);
+        
+        for (let i = 1; i < trailPoints.length; i++) {
+            const p1 = trailPoints[i - 1];
+            const p2 = trailPoints[i];
+            const alpha = i / trailPoints.length * 0.6;
+            
+            trailCtx.beginPath();
+            trailCtx.moveTo(p1.x, p1.y);
+            trailCtx.lineTo(p2.x, p2.y);
+            trailCtx.strokeStyle = `rgba(16, 185, 129, ${alpha})`;
+            trailCtx.lineWidth = (i / trailPoints.length) * 6;
+            trailCtx.lineCap = 'round';
+            trailCtx.shadowBlur = 15;
+            trailCtx.shadowColor = '#10b981';
+            trailCtx.stroke();
+            trailCtx.shadowBlur = 0;
+        }
+        
+        // Glow at cursor
+        if (trailPoints.length > 0) {
+            const last = trailPoints[trailPoints.length - 1];
+            const gradient = trailCtx.createRadialGradient(last.x, last.y, 0, last.x, last.y, 20);
+            gradient.addColorStop(0, 'rgba(16, 185, 129, 0.4)');
+            gradient.addColorStop(1, 'transparent');
+            trailCtx.fillStyle = gradient;
+            trailCtx.fillRect(last.x - 20, last.y - 20, 40, 40);
+        }
+    }
+    
+    trailInterval = setInterval(updateTrail, 35);
+    
+    // ========== DATA STREAMS ==========
+    function createDataStreams() {
+        const container = document.getElementById('data-streams');
+        if (!container) return;
+        
+        for (let i = 0; i < 8; i++) {
+            const stream = document.createElement('div');
+            stream.className = 'data-stream';
+            stream.style.top = `${Math.random() * 100}%`;
+            stream.style.animationDuration = `${3 + Math.random() * 4}s`;
+            stream.style.animationDelay = `${Math.random() * 2}s`;
+            
+            // Generate random binary/hex data
+            let data = '';
+            for (let j = 0; j < 50; j++) {
+                data += Math.random() > 0.5 
+                    ? Math.random().toString(2).substr(2, 8) + ' '
+                    : Math.random().toString(16).substr(2, 4).toUpperCase() + ' ';
+            }
+            stream.textContent = data;
+            container.appendChild(stream);
+        }
+    }
+    createDataStreams();
+    
+    // ========== PARTICLE VORTEX ==========
+    const vortexCtx = vortexCanvas ? vortexCanvas.getContext('2d') : null;
+    const vortexParticles = [];
+    
+    if (vortexCanvas) {
+        vortexCanvas.width = window.innerWidth;
+        vortexCanvas.height = window.innerHeight;
+        
+        for (let i = 0; i < 150; i++) {
+            vortexParticles.push({
+                x: Math.random() * vortexCanvas.width,
+                y: Math.random() * vortexCanvas.height,
+                angle: Math.random() * Math.PI * 2,
+                radius: 100 + Math.random() * Math.max(vortexCanvas.width, vortexCanvas.height) / 2,
+                speed: 0.02 + Math.random() * 0.03,
+                size: 1 + Math.random() * 2,
+                color: ['#10b981', '#06b6d4', '#8b5cf6', '#ec4899'][Math.floor(Math.random() * 4)]
+            });
+        }
+    }
+    
+    function drawVortex() {
+        if (!vortexCtx || !vortexActive) return;
+        
+        vortexCtx.fillStyle = 'rgba(0, 0, 0, 0.1)';
+        vortexCtx.fillRect(0, 0, vortexCanvas.width, vortexCanvas.height);
+        
+        const centerX = vortexCanvas.width / 2;
+        const centerY = vortexCanvas.height / 2;
+        
+        for (const p of vortexParticles) {
+            p.angle += p.speed;
+            p.radius *= 0.995; // Spiral inward
+            
+            p.x = centerX + Math.cos(p.angle) * p.radius;
+            p.y = centerY + Math.sin(p.angle) * p.radius;
+            
+            if (p.radius < 5) {
+                p.radius = 100 + Math.random() * Math.max(vortexCanvas.width, vortexCanvas.height) / 2;
+                p.angle = Math.random() * Math.PI * 2;
+            }
+            
+            vortexCtx.beginPath();
+            vortexCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            vortexCtx.fillStyle = p.color;
+            vortexCtx.shadowBlur = 10;
+            vortexCtx.shadowColor = p.color;
+            vortexCtx.fill();
+            vortexCtx.shadowBlur = 0;
+        }
+    }
+    
+    vortexInterval = setInterval(drawVortex, 35);
+    
+    // ========== SCREEN GLITCH EFFECT ==========
+    function triggerScreenGlitch() {
+        if (screenGlitch) {
+            screenGlitch.classList.add('active');
+            setTimeout(() => screenGlitch.classList.remove('active'), 200);
+        }
+    }
+    
+    // ========== GLITCH SLICES ==========
+    function triggerGlitchSlices() {
+        if (glitchSlices) {
+            glitchSlices.classList.add('active');
+            setTimeout(() => glitchSlices.classList.remove('active'), 300);
+        }
+    }
+    
+    // ========== POWER SURGE ==========
+    function triggerPowerSurge() {
+        if (powerSurge) {
+            powerSurge.classList.add('active');
+            playPowerUp();
+            setTimeout(() => powerSurge.classList.remove('active'), 600);
+        }
+    }
+    
+    // ========== TEXT SCRAMBLE EFFECT ==========
+    const scrambleChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*<>[]{}';
+    
+    function scrambleText(element, finalText, duration = 1500) {
+        const chars = finalText.split('');
+        const iterations = 8;
+        const intervalTime = duration / (chars.length * iterations);
+        let currentIteration = 0;
+        
+        element.innerHTML = '';
+        chars.forEach((char, i) => {
+            const span = document.createElement('span');
+            span.className = 'char';
+            span.textContent = char === ' ' ? '\u00A0' : scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+            span.style.animationDelay = `${i * 60}ms`;
+            element.appendChild(span);
+        });
+        
+        const spans = element.querySelectorAll('.char');
+        
+        const interval = setInterval(() => {
+            currentIteration++;
+            spans.forEach((span, i) => {
+                const charIndex = Math.floor(currentIteration / iterations);
+                if (i < charIndex) {
+                    span.textContent = chars[i] === ' ' ? '\u00A0' : chars[i];
+                } else if (i === charIndex) {
+                    span.textContent = chars[i] === ' ' ? '\u00A0' : scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
+                }
+            });
+            
+            if (currentIteration >= chars.length * iterations) {
+                clearInterval(interval);
+                spans.forEach((span, i) => {
+                    span.textContent = chars[i] === ' ' ? '\u00A0' : chars[i];
+                });
+            }
+        }, intervalTime);
+    }
+    
+    // ========== SPARK PARTICLES ON CLICK ==========
+    const sparkParticles = [];
+    
+    bootloader.addEventListener('click', (e) => {
+        if (isSkipped) return;
+        initAudio();
+        playDigitalClick();
+        
+        const sparkCount = 15;
+        for (let i = 0; i < sparkCount; i++) {
+            sparkParticles.push({
+                x: e.clientX,
+                y: e.clientY,
+                vx: (Math.random() - 0.5) * 18,
+                vy: (Math.random() - 0.5) * 18,
+                life: 1,
+                color: ['#10b981', '#06b6d4', '#8b5cf6', '#ec4899', '#f59e0b'][Math.floor(Math.random() * 5)]
+            });
+        }
+        triggerScreenGlitch();
+    });
+    
+    // ========== MATRIX RAIN ==========
+    const matrixCtx = matrixCanvas.getContext('2d');
+    matrixCanvas.width = window.innerWidth;
+    matrixCanvas.height = window.innerHeight;
+    
+    const chars = 'アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲンABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%^&*<>[]{}|';
+    const charArray = chars.split('');
+    const fontSize = 14;
+    const columns = Math.floor(matrixCanvas.width / fontSize);
+    const drops = Array(columns).fill(0).map(() => Math.random() * -100);
+    const speeds = Array(columns).fill(0).map(() => 0.3 + Math.random() * 1.2);
+    
+    function drawMatrix() {
+        matrixCtx.fillStyle = 'rgba(0, 0, 0, 0.04)';
+        matrixCtx.fillRect(0, 0, matrixCanvas.width, matrixCanvas.height);
+        
+        for (let i = 0; i < drops.length; i++) {
+            const char = charArray[Math.floor(Math.random() * charArray.length)];
+            const x = i * fontSize;
+            const y = drops[i] * fontSize;
+            
+            const rand = Math.random();
+            if (rand > 0.98) {
+                matrixCtx.fillStyle = '#ffffff';
+                matrixCtx.shadowBlur = 25;
+                matrixCtx.shadowColor = '#ffffff';
+            } else if (rand > 0.9) {
+                matrixCtx.fillStyle = '#6ee7b7';
+                matrixCtx.shadowBlur = 15;
+                matrixCtx.shadowColor = '#10b981';
+            } else {
+                matrixCtx.fillStyle = '#10b981';
+                matrixCtx.shadowBlur = 8;
+                matrixCtx.shadowColor = '#10b981';
+            }
+            
+            matrixCtx.font = `${fontSize}px JetBrains Mono, monospace`;
+            matrixCtx.fillText(char, x, y);
+            matrixCtx.shadowBlur = 0;
+            
+            if (y > matrixCanvas.height && Math.random() > 0.99) {
+                drops[i] = 0;
+            }
+            drops[i] += speeds[i];
+        }
+    }
+    
+    // ========== PARTICLES ==========
+    const particleCtx = particleCanvas.getContext('2d');
+    particleCanvas.width = window.innerWidth;
+    particleCanvas.height = window.innerHeight;
+    
+    const particles = [];
+    const particleCount = 80;
+    
+    for (let i = 0; i < particleCount; i++) {
+        particles.push({
+            x: Math.random() * particleCanvas.width,
+            y: Math.random() * particleCanvas.height,
+            vx: (Math.random() - 0.5) * 0.5,
+            vy: (Math.random() - 0.5) * 0.5,
+            size: Math.random() * 2 + 1,
+            alpha: Math.random() * 0.5 + 0.2,
+            color: Math.random() > 0.5 ? '#10b981' : '#06b6d4'
+        });
+    }
+    
+    function drawParticles() {
+        particleCtx.clearRect(0, 0, particleCanvas.width, particleCanvas.height);
+        
+        // Draw connections
+        for (let i = 0; i < particles.length; i++) {
+            for (let j = i + 1; j < particles.length; j++) {
+                const dx = particles[i].x - particles[j].x;
+                const dy = particles[i].y - particles[j].y;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                
+                if (dist < 120) {
+                    particleCtx.beginPath();
+                    particleCtx.strokeStyle = `rgba(16, 185, 129, ${0.15 * (1 - dist / 120)})`;
+                    particleCtx.lineWidth = 0.5;
+                    particleCtx.moveTo(particles[i].x, particles[i].y);
+                    particleCtx.lineTo(particles[j].x, particles[j].y);
+                    particleCtx.stroke();
+                }
+            }
+        }
+        
+        // Draw particles
+        for (const p of particles) {
+            p.x += p.vx;
+            p.y += p.vy;
+            
+            if (p.x < 0 || p.x > particleCanvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > particleCanvas.height) p.vy *= -1;
+            
+            particleCtx.beginPath();
+            particleCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+            particleCtx.fillStyle = p.color;
+            particleCtx.globalAlpha = p.alpha;
+            particleCtx.fill();
+            particleCtx.globalAlpha = 1;
+        }
+        
+        // Draw spark particles from clicks
+        for (let i = sparkParticles.length - 1; i >= 0; i--) {
+            const sp = sparkParticles[i];
+            sp.x += sp.vx;
+            sp.y += sp.vy;
+            sp.vy += 0.3; // gravity
+            sp.life -= 0.03;
+            
+            if (sp.life <= 0) {
+                sparkParticles.splice(i, 1);
+                continue;
+            }
+            
+            particleCtx.beginPath();
+            particleCtx.arc(sp.x, sp.y, 3, 0, Math.PI * 2);
+            particleCtx.fillStyle = sp.color;
+            particleCtx.globalAlpha = sp.life;
+            particleCtx.shadowBlur = 10;
+            particleCtx.shadowColor = sp.color;
+            particleCtx.fill();
+            particleCtx.shadowBlur = 0;
+            particleCtx.globalAlpha = 1;
+        }
+    }
+    
+    // ========== LIGHTNING ==========
+    const lightningCtx = lightningCanvas ? lightningCanvas.getContext('2d') : null;
+    if (lightningCanvas) {
+        lightningCanvas.width = window.innerWidth;
+        lightningCanvas.height = window.innerHeight;
+    }
+    
+    let lightningBolts = [];
+    
+    function createLightningBolt(x1, y1, x2, y2, depth = 0) {
+        if (depth > 4) return [];
+        
+        const bolts = [];
+        const midX = (x1 + x2) / 2 + (Math.random() - 0.5) * 100;
+        const midY = (y1 + y2) / 2 + (Math.random() - 0.5) * 100;
+        
+        bolts.push({ x1, y1, x2: midX, y2: midY, alpha: 1, width: 3 - depth * 0.5 });
+        bolts.push({ x1: midX, y1: midY, x2, y2, alpha: 1, width: 3 - depth * 0.5 });
+        
+        if (Math.random() > 0.5) {
+            const branchX = midX + (Math.random() - 0.5) * 150;
+            const branchY = midY + (Math.random() - 0.5) * 150;
+            bolts.push(...createLightningBolt(midX, midY, branchX, branchY, depth + 1));
+        }
+        
+        return bolts;
+    }
+    
+    function triggerLightning() {
+        if (!lightningCtx) return;
+        const startX = Math.random() * lightningCanvas.width;
+        const endX = Math.random() * lightningCanvas.width;
+        lightningBolts = createLightningBolt(startX, 0, endX, lightningCanvas.height);
+    }
+    
+    function drawLightning() {
+        if (!lightningCtx) return;
+        lightningCtx.clearRect(0, 0, lightningCanvas.width, lightningCanvas.height);
+        
+        for (let i = lightningBolts.length - 1; i >= 0; i--) {
+            const bolt = lightningBolts[i];
+            bolt.alpha -= 0.08;
+            
+            if (bolt.alpha <= 0) {
+                lightningBolts.splice(i, 1);
+                continue;
+            }
+            
+            lightningCtx.beginPath();
+            lightningCtx.moveTo(bolt.x1, bolt.y1);
+            lightningCtx.lineTo(bolt.x2, bolt.y2);
+            lightningCtx.strokeStyle = `rgba(16, 185, 129, ${bolt.alpha})`;
+            lightningCtx.lineWidth = bolt.width;
+            lightningCtx.shadowBlur = 20;
+            lightningCtx.shadowColor = '#10b981';
+            lightningCtx.stroke();
+            lightningCtx.shadowBlur = 0;
+        }
+    }
+    
+    // ========== TERMINAL ==========
+    const terminalCommands = [
+        { type: 'command', text: 'sudo ./init-portfolio.sh --mode=cinematic', delay: 0, progress: 3 },
+        { type: 'output', text: '[sudo] password: ********', delay: 300, progress: 5 },
+        { type: 'success', text: '✓ Root access granted', delay: 500, progress: 8 },
+        { type: 'output', text: '', delay: 600, progress: 8 },
+        { type: 'cyan', text: '╔════════════════════════════════════════╗', delay: 700, progress: 10 },
+        { type: 'cyan', text: '║   JESUN.DEV PORTFOLIO SYSTEM v2.0    ║', delay: 800, progress: 12 },
+        { type: 'cyan', text: '╚════════════════════════════════════════╝', delay: 900, progress: 14 },
+        { type: 'output', text: '', delay: 1000, progress: 14 },
+        { type: 'output', text: '[●] Initializing quantum core...', delay: 1100, progress: 20 },
+        { type: 'success', text: '    ✓ Neural networks calibrated', delay: 1400, progress: 25 },
+        { type: 'output', text: '[●] Loading creativity matrix...', delay: 1700, progress: 32 },
+        { type: 'success', text: '    ✓ Vibe protocols engaged', delay: 2000, progress: 38 },
+        { type: 'output', text: '[●] Syncing KPMG modules...', delay: 2300, progress: 45 },
+        { type: 'success', text: '    ✓ 200+ automation hours loaded', delay: 2600, progress: 52 },
+        { type: 'output', text: '[●] Mounting project repository...', delay: 2900, progress: 60 },
+        { type: 'success', text: '    ✓ 10+ flagship projects ready', delay: 3200, progress: 68 },
+        { type: 'output', text: '[●] Verifying certifications...', delay: 3500, progress: 76 },
+        { type: 'success', text: '    ✓ 30+ credentials validated', delay: 3800, progress: 84 },
+        { type: 'output', text: '[●] Optimizing experience layers...', delay: 4100, progress: 92 },
+        { type: 'success', text: '    ✓ All systems optimal', delay: 4400, progress: 98 },
+        { type: 'output', text: '', delay: 4600, progress: 98 },
+        { type: 'highlight', text: '▶ INITIALIZATION COMPLETE', delay: 4800, progress: 100 },
+        { type: 'pink', text: '▶ LAUNCHING CINEMATIC MODE...', delay: 5000, progress: 100 },
+    ];
+    
+    function updateProgress(percent) {
+        progressBar.style.setProperty('--progress', `${percent}%`);
+        progressText.textContent = `${percent}%`;
+    }
+    
+    function typeTerminalLine(cmd) {
+        if (isSkipped) return;
+        
+        const line = document.createElement('div');
+        line.className = 'terminal-line';
+        
+        const colorMap = {
+            'command': `<span class="prompt">$</span> <span class="command">${cmd.text}</span>`,
+            'success': `<span class="success">${cmd.text}</span>`,
+            'highlight': `<span class="highlight">${cmd.text}</span>`,
+            'warning': `<span class="warning">${cmd.text}</span>`,
+            'cyan': `<span class="cyan">${cmd.text}</span>`,
+            'pink': `<span class="pink">${cmd.text}</span>`,
+            'output': `<span class="output">${cmd.text}</span>`
+        };
+        
+        line.innerHTML = colorMap[cmd.type] || colorMap['output'];
+        terminalOutput.appendChild(line);
+        terminalOutput.scrollTop = terminalOutput.scrollHeight;
+        updateProgress(cmd.progress);
+    }
+    
+    // ========== DIAGNOSTICS ==========
+    function animateDiagnostics() {
+        const items = [
+            { id: 'diag-cpu', target: 87 },
+            { id: 'diag-mem', target: 64 },
+            { id: 'diag-net', target: 98 },
+            { id: 'diag-ai', target: 100 }
+        ];
+        
+        items.forEach((item, index) => {
+            setTimeout(() => {
+                if (isSkipped) return;
+                const el = document.getElementById(item.id);
+                if (!el) return;
+                const fill = el.querySelector('.diag-fill');
+                const value = el.querySelector('.diag-value');
+                
+                let current = 0;
+                const interval = setInterval(() => {
+                    if (current >= item.target || isSkipped) {
+                        clearInterval(interval);
+                        return;
+                    }
+                    current += 2;
+                    fill.style.width = `${current}%`;
+                    value.textContent = `${Math.min(current, item.target)}%`;
+                }, 30);
+            }, index * 400 + 500);
+        });
+        
+        // Animate stats
+        const stats = [
+            { id: 'stat-projects', target: 10 },
+            { id: 'stat-certs', target: 30 },
+            { id: 'stat-hours', target: 200 }
+        ];
+        
+        stats.forEach((stat, index) => {
+            setTimeout(() => {
+                if (isSkipped) return;
+                const el = document.getElementById(stat.id);
+                if (!el) return;
+                let current = 0;
+                const increment = stat.target / 30;
+                const interval = setInterval(() => {
+                    if (current >= stat.target || isSkipped) {
+                        clearInterval(interval);
+                        el.textContent = stat.target + '+';
+                        return;
+                    }
+                    current += increment;
+                    el.textContent = Math.floor(current);
+                }, 50);
+            }, index * 300 + 1500);
+        });
+    }
+    
+    // ========== REVEAL ==========
+    function revealTextCharByChar(element, text, baseDelay = 0, charDelay = 60) {
+        element.innerHTML = '';
+        text.split('').forEach((char, i) => {
+            const span = document.createElement('span');
+            span.className = 'char';
+            span.textContent = char === ' ' ? '\u00A0' : char;
+            span.style.animationDelay = `${baseDelay + (i * charDelay)}ms`;
+            element.appendChild(span);
+        });
+    }
+    
+    // ========== SKIP ==========
+    function skipBootloader() {
+        if (isSkipped) return;
+        isSkipped = true;
+        
+        clearInterval(matrixInterval);
+        clearInterval(particleInterval);
+        if (lightningInterval) clearInterval(lightningInterval);
+        if (trailInterval) clearInterval(trailInterval);
+        if (vortexInterval) clearInterval(vortexInterval);
+        bootloader.classList.add('fade-out');
+        sessionStorage.setItem('bootloaderShown', 'true');
+        
+        setTimeout(() => {
+            bootloader.style.display = 'none';
+            onComplete();
+        }, 500);
+    }
+    
+    skipBtn.addEventListener('click', skipBootloader);
+    document.addEventListener('keydown', (e) => {
+        if (e.code === 'Space' && bootloader.style.display !== 'none') {
+            e.preventDefault();
+            skipBootloader();
+        }
+    });
+    
+    // ========== BOOT PERCENTAGE ANIMATION ==========
+    function animateBootPercentage() {
+        if (!bootPercentage) return;
+        let percent = 0;
+        const targetDuration = 2300; // Match phase 1 duration
+        const steps = 100;
+        const stepTime = targetDuration / steps;
+        
+        const interval = setInterval(() => {
+            if (isSkipped || percent >= 100) {
+                clearInterval(interval);
+                if (bootPercentage) bootPercentage.textContent = '100.00%';
+                return;
+            }
+            percent += 1;
+            // Add decimal randomness for hacker feel
+            const decimal = (Math.random() * 99).toFixed(0).padStart(2, '0');
+            bootPercentage.textContent = `${percent}.${decimal}%`;
+        }, stepTime);
+    }
+    
+    // ========== START SEQUENCE ==========
+    matrixInterval = setInterval(drawMatrix, 35);
+    particleInterval = setInterval(drawParticles, 35);
+    lightningInterval = setInterval(drawLightning, 35);
+    
+    // Random lightning strikes
+    setInterval(() => {
+        if (!isSkipped && Math.random() > 0.92) {
+            triggerLightning();
+        }
+    }, 500);
+    
+    // Phase 1: Boot Logo
+    phase1.classList.add('active');
+    animateBootPercentage();
+    
+    // Boot sequence - deep system initialization tone
+    setTimeout(() => { initAudio(); playSystemTone(60, 0.5); }, 100);
+    setTimeout(() => playSystemTone(80, 0.4), 400);
+    setTimeout(() => playDigitalClick(), 800);
+    
+    // Transition to Phase 2
+    setTimeout(() => {
+        if (isSkipped) return;
+        phase1.classList.remove('active');
+        phase2.classList.add('active');
+        animateDiagnostics();
+        triggerGlitchSlices();
+        playWhoosh();
+        
+        // Type terminal commands
+        terminalCommands.forEach((cmd) => {
+            setTimeout(() => {
+                if (!isSkipped) {
+                    typeTerminalLine(cmd);
+                    
+                    // Soft data processing sound
+                    if (cmd.type === 'command' || cmd.type === 'success') {
+                        playDataProcess();
+                    }
+                    
+                    // Glitch at milestones + screen glitch
+                    if (cmd.progress === 50 || cmd.progress === 100) {
+                        bootTerminal.classList.add('glitch');
+                        triggerScreenGlitch();
+                        triggerGlitchSlices();
+                        triggerLightning();
+                        playPowerUp();
+                        setTimeout(() => bootTerminal.classList.remove('glitch'), 400);
+                    }
+                }
+            }, cmd.delay);
+        });
+    }, 2500);
+    
+    // Transition to Phase 3
+    setTimeout(() => {
+        if (isSkipped) return;
+        
+        // Trigger power surge
+        triggerPowerSurge();
+        playWhoosh();
+        
+        // Trigger lightning storm
+        triggerLightning();
+        setTimeout(() => triggerLightning(), 100);
+        setTimeout(() => triggerLightning(), 200);
+        setTimeout(() => triggerLightning(), 300);
+        
+        // Activate particle vortex
+        vortexActive = true;
+        
+        bootloader.classList.add('shake');
+        triggerScreenGlitch();
+        triggerGlitchSlices();
+        setTimeout(() => bootloader.classList.remove('shake'), 800);
+        
+        phase2.classList.remove('active');
+        phase3.classList.add('active');
+        
+        // Trigger shockwaves
+        setTimeout(() => {
+            if (isSkipped) return;
+            shockwave.classList.add('active');
+            if (shockwave2) shockwave2.classList.add('active');
+            if (shockwave3) shockwave3.classList.add('active');
+            if (lensFlare) lensFlare.classList.add('active');
+            playSystemTone(50, 0.8);
+        }, 200);
+        
+        // Reveal "I do" with scramble effect
+        setTimeout(() => {
+            if (isSkipped) return;
+            scrambleText(revealLine, 'I do', 800);
+            playDataProcess();
+        }, 400);
+        
+        // Reveal "Vibe Coding." with scramble effect
+        setTimeout(() => {
+            if (isSkipped) return;
+            scrambleText(revealHighlight, 'Vibe Coding.', 1200);
+            playConfirm();
+            
+            // RGB Glitch + screen effects
+            setTimeout(() => {
+                if (isSkipped) return;
+                revealHighlight.classList.add('glitch');
+                triggerLightning();
+                triggerScreenGlitch();
+                triggerGlitchSlices();
+                playPowerUp();
+                setTimeout(() => revealHighlight.classList.remove('glitch'), 600);
+            }, 1500);
+        }, 900);
+        
+        // Subtitle
+        setTimeout(() => {
+            if (isSkipped) return;
+            revealSubtitle.textContent = 'Data Analytics • AI • Creative Development';
+            revealSubtitle.classList.add('active');
+            playConfirm();
+        }, 2500);
+        
+    }, 8500);
+    
+    // Complete
+    setTimeout(() => {
+        if (isSkipped) return;
+        
+        // Final power surge and sound
+        triggerPowerSurge();
+        playWhoosh();
+        triggerGlitchSlices();
+        
+        clearInterval(matrixInterval);
+        clearInterval(particleInterval);
+        if (lightningInterval) clearInterval(lightningInterval);
+        if (trailInterval) clearInterval(trailInterval);
+        if (vortexInterval) clearInterval(vortexInterval);
+        bootloader.classList.add('fade-out');
+        sessionStorage.setItem('bootloaderShown', 'true');
+        
+        setTimeout(() => {
+            bootloader.style.display = 'none';
+            onComplete();
+        }, 2500);
+    }, 12000);
+}
 
 // --- AUTO-SCROLL FEATURE ---
 function initAutoScroll() {
