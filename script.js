@@ -1,6 +1,5 @@
 // --- CONFIGURATION ---
-// PASTE YOUR API KEY HERE
-const apiKey = "AIzaSyBJuiZntBK6O8Qyjo-KpvByJSDuO5m-EFc"; 
+// No API key needed! Using smart offline AI responses.
 
 // --- EMAIL CONFIGURATION (FORMSPREE) ---
 // The contact form uses Formspree (https://formspree.io/) - FREE & NO SETUP NEEDED!
@@ -85,6 +84,98 @@ const RESUME_CONTEXT = `
   Personality: Innovative, tech-savvy, "Vibe Coder", combines engineering precision with creative flair.
 `;
 
+// --- SMART AI RESPONSE SYSTEM (No API needed!) ---
+const AI_RESPONSES = {
+    greetings: [
+        "Hey there! 👋 I'm Jesun's AI twin. Ask me about his work at KPMG, skills, or projects!",
+        "Hello! Great to meet you! I'm here to tell you all about Jesun. What would you like to know?",
+        "Hi! Welcome to Jesun.Dev! Ask me anything about his experience, skills, or vibe coding style! 🚀"
+    ],
+    kpmg: [
+        "At KPMG, Jesun worked as an IT Advisory Consultant from 2023-2024. He built 20+ Power BI dashboards and automated workflows saving 200+ hours annually! 📊",
+        "Jesun's KPMG journey was epic! He conducted ISO 27001 IT audits for banking clients and created data automation solutions. Real enterprise stuff! 💼",
+        "During his time at KPMG, Jesun specialized in data infrastructure for banking and healthcare clients. Power BI + Power Automate were his main tools!"
+    ],
+    skills: [
+        "Jesun's stack: Python (TensorFlow, Scikit-learn), SQL, Power BI, Tableau, React, Azure, and Oracle Cloud. Full-stack data wizard! 🧙‍♂️",
+        "Skills? Jesun's got: Data Engineering, AI/ML, Process Automation, and of course... Vibe Coding! Check out the About section for more! 💪",
+        "Python, SQL, Power BI, React, Azure - Jesun blends engineering precision with creative flair. That's the vibe coding way! ✨"
+    ],
+    education: [
+        "Jesun is pursuing his Master's in Data Analytics at University of Niagara Falls Canada (started Jan 2025). He has a BS in Computer Engineering from AIUB! 🎓",
+        "Education: Master's in Data Analytics (current) + BS in Computer Engineering from AIUB, Bangladesh. Academic excellence meets practical skills!",
+        "Currently a Master's candidate in Data Analytics! Before that, he completed his Computer Engineering degree at AIUB (2018-2023). 📚"
+    ],
+    projects: [
+        "Jesun has published research on 'Automatic Fabric Defect Detection' using Neural Networks and Wavelet Transforms. He also worked on PSO algorithm optimization! 🔬",
+        "Check out his research! Published papers on AI-powered fabric defect detection and global optimization algorithms. Real academic contributions! 📄",
+        "Projects include Neural Network research, Power BI dashboards, and this very website! Scroll down to see his Research & Projects section! 🚀"
+    ],
+    contact: [
+        "Want to connect? Hit the 'Let's Talk' button or check out the Contact section below! Jesun's open to opportunities in Toronto! 📧",
+        "Best way to reach Jesun: LinkedIn (linkedin.com/in/jesunahmadushno) or schedule a call via Calendly! He's actively looking for Data & AI roles! 🤝",
+        "Jesun's based in Toronto and open to work! Use the contact form below or connect on LinkedIn. Let's vibe! ✨"
+    ],
+    vibe: [
+        "Vibe Coding = Engineering precision + Creative flair! It's not just writing code; it's crafting experiences that feel as good as they look! ✨",
+        "The 'Vibe Coder' philosophy: Make it work, make it beautiful, make it memorable. That's Jesun's approach to every project! 🎨",
+        "Vibe Coding is about passion meeting precision. Whether it's a dashboard or an AI model, Jesun makes sure it has that special touch! 🚀"
+    ],
+    location: [
+        "Jesun is currently based in Toronto, Ontario, Canada! Open to work and ready for exciting Data & AI opportunities! 🍁",
+        "Location: Toronto, ON. Originally from Bangladesh, now pursuing his Master's and building the future in Canada! 🌍",
+        "Toronto is home now! Jesun moved to Canada for his Master's program and is actively seeking Data Analytics roles! 📍"
+    ],
+    default: [
+        "Great question! Jesun specializes in Data Analytics, AI/ML, and Vibe Coding. Try asking about his KPMG experience or skills! 💡",
+        "I'd love to help! Ask me about Jesun's education, projects, skills, or work at KPMG. I know a lot about him! 😊",
+        "Hmm, let me think... Try asking about Jesun's experience, skills, research, or what 'Vibe Coding' means! I've got answers! 🤔",
+        "Not sure about that one! But I can tell you all about Jesun's KPMG journey, his Master's program, or his tech stack. What interests you?"
+    ]
+};
+
+function getSmartResponse(message) {
+    const msg = message.toLowerCase();
+    
+    // Simulate typing delay (300-800ms)
+    const delay = 300 + Math.random() * 500;
+    
+    return new Promise(resolve => {
+        setTimeout(() => {
+            let category = 'default';
+            
+            // Keyword matching
+            if (msg.match(/\b(hi|hello|hey|greetings|sup|yo)\b/)) {
+                category = 'greetings';
+            } else if (msg.match(/\b(kpmg|consultant|advisory|audit|banking|healthcare)\b/)) {
+                category = 'kpmg';
+            } else if (msg.match(/\b(skill|stack|python|sql|power bi|tableau|react|azure|tensorflow|tool|technology|tech)\b/)) {
+                category = 'skills';
+            } else if (msg.match(/\b(education|study|master|degree|university|school|aiub|niagara|college)\b/)) {
+                category = 'education';
+            } else if (msg.match(/\b(project|research|paper|fabric|defect|neural|wavelet|pso|publication)\b/)) {
+                category = 'projects';
+            } else if (msg.match(/\b(contact|email|reach|hire|job|opportunity|connect|linkedin|calendly)\b/)) {
+                category = 'contact';
+            } else if (msg.match(/\b(vibe|coding style|philosophy|approach|creative)\b/)) {
+                category = 'vibe';
+            } else if (msg.match(/\b(location|where|live|based|city|toronto|canada|country)\b/)) {
+                category = 'location';
+            } else if (msg.match(/\b(experience|work|job|career|professional)\b/)) {
+                category = 'kpmg';
+            } else if (msg.match(/\b(who|about|tell me|introduce|yourself|jesun)\b/)) {
+                category = 'greetings';
+            }
+            
+            // Get random response from category
+            const responses = AI_RESPONSES[category];
+            const response = responses[Math.floor(Math.random() * responses.length)];
+            
+            resolve(response);
+        }, delay);
+    });
+}
+
 // --- INITIALIZATION ---
 document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons(); // Initialize Icons
@@ -107,33 +198,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
-
-// --- GEMINI API CALLER ---
-async function callGemini(prompt, systemInstruction) {
-    if (!apiKey) return "API Key not set. Please add your key in script.js";
-    
-    try {
-        const response = await fetch(
-            `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`,
-            {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    contents: [{ parts: [{ text: prompt }] }],
-                    systemInstruction: { parts: [{ text: systemInstruction }] },
-                }),
-            }
-        );
-
-        if (!response.ok) throw new Error("API call failed");
-        
-        const data = await response.json();
-        return data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, the vibe is off (API Error).";
-    } catch (error) {
-        console.error(error);
-        return "I'm having trouble connecting to the neural net right now. Try again later!";
-    }
-}
 
 // --- CAROUSEL LOGIC ---
 function initCarousel() {
@@ -209,6 +273,10 @@ function initChat() {
         const text = input.value.trim();
         if (!text) return;
 
+        // Disable input while processing
+        input.disabled = true;
+        sendBtn.disabled = true;
+
         // User Message
         addMessage(text, 'user');
         input.value = '';
@@ -216,25 +284,41 @@ function initChat() {
         // Loading
         const loadingDiv = addMessage("Thinking...", 'model', true);
 
-        // API Call
-        const systemPrompt = `You are an AI avatar for Jesun Ahmad Ushno. Context: ${RESUME_CONTEXT}. Keep answers cool, professional, under 50 words.`;
-        const response = await callGemini(text, systemPrompt);
+        try {
+            // Smart AI Response (no API needed!)
+            const response = await getSmartResponse(text);
 
-        // Remove loading and add response
-        loadingDiv.remove();
-        addMessage(response, 'model');
+            // Remove loading and add response
+            loadingDiv.remove();
+            addMessage(response, 'model');
+        } catch (error) {
+            loadingDiv.remove();
+            addMessage("Oops! Something went wrong. Please try again.", 'model');
+        } finally {
+            // Re-enable input
+            input.disabled = false;
+            sendBtn.disabled = false;
+            input.focus();
+        }
     }
 
     function addMessage(text, sender, isLoading = false) {
         const div = document.createElement('div');
         div.className = `flex ${sender === 'user' ? 'justify-end' : 'justify-start'}`;
+        
+        const loadingHTML = `
+            <span class="typing-dot inline-block w-2 h-2 bg-emerald-400 rounded-full mx-0.5"></span>
+            <span class="typing-dot inline-block w-2 h-2 bg-emerald-400 rounded-full mx-0.5"></span>
+            <span class="typing-dot inline-block w-2 h-2 bg-emerald-400 rounded-full mx-0.5"></span>
+        `;
+        
         div.innerHTML = `
             <div class="max-w-[85%] rounded-2xl px-4 py-2 text-sm ${
                 sender === 'user' 
                 ? 'bg-emerald-600 text-white rounded-tr-none' 
                 : 'bg-neutral-800 text-neutral-200 rounded-tl-none'
-            } ${isLoading ? 'animate-pulse' : ''}">
-                ${text}
+            }">
+                ${isLoading ? loadingHTML : text}
             </div>
         `;
         messages.appendChild(div);
@@ -250,7 +334,43 @@ function initChat() {
     });
 }
 
-// --- VIBE GENERATOR ---
+// --- VIBE GENERATOR (Smart Offline Version) ---
+const VIBE_TEMPLATES = [
+    { keywords: ['ai', 'ml', 'machine learning', 'neural', 'deep learning'], vibe: "Neural Ninja", stack: ["Python", "TensorFlow", "FastAPI", "Docker", "AWS"], desc: "Cutting-edge AI with a focus on scalability and performance. Train models that learn and evolve!" },
+    { keywords: ['web', 'website', 'frontend', 'ui', 'landing'], vibe: "Pixel Perfect", stack: ["React", "Tailwind CSS", "Framer Motion", "Vercel"], desc: "Modern, responsive design that captivates users from the first click. Beauty meets functionality!" },
+    { keywords: ['data', 'analytics', 'dashboard', 'visualization', 'report'], vibe: "Data Storyteller", stack: ["Python", "Power BI", "SQL", "Pandas", "Plotly"], desc: "Transform raw numbers into compelling narratives. Let the data speak through beautiful visualizations!" },
+    { keywords: ['mobile', 'app', 'ios', 'android', 'phone'], vibe: "Mobile Maverick", stack: ["React Native", "Firebase", "Expo", "TypeScript"], desc: "Cross-platform excellence with native performance. One codebase, infinite possibilities!" },
+    { keywords: ['automation', 'bot', 'script', 'automate', 'workflow'], vibe: "Automation Architect", stack: ["Python", "Power Automate", "Selenium", "Zapier", "n8n"], desc: "Set it and forget it! Build systems that work while you sleep. Efficiency is the ultimate luxury!" },
+    { keywords: ['api', 'backend', 'server', 'database', 'rest'], vibe: "Backend Beast", stack: ["Node.js", "PostgreSQL", "Redis", "Docker", "AWS Lambda"], desc: "Rock-solid infrastructure that scales effortlessly. The foundation that powers great apps!" },
+    { keywords: ['game', 'gaming', '3d', 'interactive', 'unity'], vibe: "Game Changer", stack: ["Unity", "C#", "Blender", "Firebase", "Photon"], desc: "Immersive experiences that keep players coming back. Where imagination meets interaction!" },
+    { keywords: ['ecommerce', 'shop', 'store', 'selling', 'product'], vibe: "Commerce Catalyst", stack: ["Next.js", "Stripe", "Shopify API", "Tailwind", "Vercel"], desc: "Seamless shopping experiences that convert browsers to buyers. Make every click count!" },
+    { keywords: ['social', 'community', 'chat', 'messaging', 'network'], vibe: "Social Spark", stack: ["React", "Socket.io", "MongoDB", "Redis", "AWS"], desc: "Connect people in meaningful ways. Build communities that thrive and engage!" },
+    { keywords: ['portfolio', 'personal', 'resume', 'showcase'], vibe: "Personal Brand Pro", stack: ["Next.js", "Tailwind CSS", "Framer Motion", "Vercel"], desc: "Stand out from the crowd! Your digital presence should be as unique as you are!" }
+];
+
+const DEFAULT_VIBE = { vibe: "Innovation Explorer", stack: ["Python", "React", "Node.js", "PostgreSQL", "Docker"], desc: "A versatile foundation for bringing any idea to life. Start building, keep iterating, stay creative!" };
+
+function generateVibeResponse(idea) {
+    const ideaLower = idea.toLowerCase();
+    
+    // Find matching template based on keywords
+    for (const template of VIBE_TEMPLATES) {
+        if (template.keywords.some(keyword => ideaLower.includes(keyword))) {
+            // Add some randomization to the stack
+            const extraTools = ["GitHub Actions", "Figma", "Notion", "Slack API", "OpenAI API", "Cloudflare"];
+            const randomExtra = extraTools[Math.floor(Math.random() * extraTools.length)];
+            
+            return {
+                vibe: template.vibe,
+                stack: [...template.stack.slice(0, 4), randomExtra],
+                desc: template.desc
+            };
+        }
+    }
+    
+    return DEFAULT_VIBE;
+}
+
 function initVibeGenerator() {
     const input = document.getElementById('vibe-input');
     const btn = document.getElementById('vibe-btn');
@@ -264,13 +384,11 @@ function initVibeGenerator() {
         btn.innerHTML = `<i class="animate-spin" data-lucide="loader-2"></i> Generating...`;
         lucide.createIcons();
 
-        const systemPrompt = `You are a creative 'Vibe Architect'. Given a project idea, suggest a 'Vibe' and a 'Tech Stack'. Return JSON: { "vibe": "string", "stack": ["tool1", "tool2"], "desc": "string" }.`;
-        const prompt = `Project idea: ${idea}. Return JSON only.`;
+        // Simulate processing delay
+        await new Promise(resolve => setTimeout(resolve, 800 + Math.random() * 700));
 
         try {
-            const text = await callGemini(prompt, systemPrompt);
-            const jsonStr = text.replace(/```json|```/g, '').trim();
-            const data = JSON.parse(jsonStr);
+            const data = generateVibeResponse(idea);
 
             resultDiv.innerHTML = `
                 <div class="grid md:grid-cols-2 gap-6">
