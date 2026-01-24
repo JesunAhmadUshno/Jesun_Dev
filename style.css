@@ -3,6 +3,321 @@ body {
     scroll-behavior: smooth;
 }
 
+/* ========================================
+   CINEMATIC 3D SCROLL EXPERIENCE (DESKTOP)
+   ======================================== */
+
+/* Main viewport container */
+.cinematic-viewport {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    perspective: 1500px;
+    perspective-origin: 50% 50%;
+    background: #0a0a0a;
+}
+
+/* Slides container with 3D depth */
+.slides-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transform: translateZ(-100px);
+}
+
+/* Individual slide */
+.cinematic-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    will-change: transform, opacity, filter;
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+                filter 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Slide states - DRAMATIC ZOOM + PARALLAX + DEPTH */
+.cinematic-slide.active {
+    transform: translateZ(0) rotateY(0) rotateX(0) scale(1);
+    opacity: 1;
+    z-index: 10;
+    filter: blur(0px) brightness(1);
+}
+
+.cinematic-slide.prev {
+    transform: translateX(-50%) translateZ(-600px) rotateY(45deg) scale(0.7);
+    opacity: 0;
+    z-index: 5;
+    pointer-events: none;
+    filter: blur(8px) brightness(0.5);
+}
+
+.cinematic-slide.next {
+    transform: translateX(50%) translateZ(-600px) rotateY(-45deg) scale(0.7);
+    opacity: 0;
+    z-index: 5;
+    pointer-events: none;
+    filter: blur(8px) brightness(0.5);
+}
+
+.cinematic-slide.far-prev {
+    transform: translateX(-100%) translateZ(-1200px) rotateY(60deg) scale(0.4);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    filter: blur(15px) brightness(0.3);
+}
+
+.cinematic-slide.far-next {
+    transform: translateX(100%) translateZ(-1200px) rotateY(-60deg) scale(0.4);
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+    filter: blur(15px) brightness(0.3);
+}
+
+/* Zigzag: Odd slides have reversed directions */
+.cinematic-slide.zigzag-reverse.prev {
+    transform: translateX(50%) translateZ(-600px) rotateY(-45deg) scale(0.7);
+}
+
+.cinematic-slide.zigzag-reverse.next {
+    transform: translateX(-50%) translateZ(-600px) rotateY(45deg) scale(0.7);
+}
+
+.cinematic-slide.zigzag-reverse.far-prev {
+    transform: translateX(100%) translateZ(-1200px) rotateY(-60deg) scale(0.4);
+}
+
+.cinematic-slide.zigzag-reverse.far-next {
+    transform: translateX(-100%) translateZ(-1200px) rotateY(60deg) scale(0.4);
+}
+
+/* Slide inner content animations - DRAMATIC PARALLAX */
+.cinematic-slide .slide-content {
+    opacity: 0;
+    transform: translateY(100px) translateZ(-50px) scale(0.95);
+    transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cinematic-slide.active .slide-content {
+    opacity: 1;
+    transform: translateY(0) translateZ(0) scale(1);
+}
+
+/* Staggered content entrance with parallax depth */
+.cinematic-slide.active .slide-content-1 { transition-delay: 0.1s; }
+.cinematic-slide.active .slide-content-2 { transition-delay: 0.25s; }
+.cinematic-slide.active .slide-content-3 { transition-delay: 0.4s; }
+.cinematic-slide.active .slide-content-4 { transition-delay: 0.55s; }
+.cinematic-slide.active .slide-content-5 { transition-delay: 0.7s; }
+
+/* Different parallax depths for content layers */
+.cinematic-slide .slide-content-1 { transform: translateY(80px) translateZ(-30px); }
+.cinematic-slide .slide-content-2 { transform: translateY(120px) translateZ(-60px); }
+.cinematic-slide .slide-content-3 { transform: translateY(160px) translateZ(-90px); }
+.cinematic-slide.active .slide-content-1,
+.cinematic-slide.active .slide-content-2,
+.cinematic-slide.active .slide-content-3 {
+    transform: translateY(0) translateZ(0);
+}
+
+/* Parallax layers within slides - ENHANCED */
+.parallax-bg {
+    position: absolute;
+    inset: -50px;
+    transform: translateZ(-300px) scale(1.4);
+    z-index: -1;
+    transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cinematic-slide.active .parallax-bg {
+    transform: translateZ(-200px) scale(1.2);
+}
+
+.parallax-mid {
+    transform: translateZ(-150px) scale(1.15);
+    transition: transform 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cinematic-slide.active .parallax-mid {
+    transform: translateZ(-100px) scale(1.1);
+}
+
+.parallax-front {
+    transform: translateZ(0);
+    transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cinematic-slide.active .parallax-front {
+    transform: translateZ(50px);
+}
+
+/* Slide Navigation Dots */
+.slide-nav {
+    position: fixed;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.slide-nav-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.slide-nav-dot:hover {
+    background: rgba(16, 185, 129, 0.5);
+    border-color: rgba(16, 185, 129, 0.8);
+    transform: scale(1.2);
+}
+
+.slide-nav-dot.active {
+    background: #10b981;
+    border-color: #10b981;
+    box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
+}
+
+.slide-nav-dot::before {
+    content: attr(data-label);
+    position: absolute;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.9);
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.slide-nav-dot:hover::before {
+    opacity: 1;
+}
+
+/* Progress bar */
+.slide-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #10b981, #06b6d4, #8b5cf6);
+    z-index: 1000;
+    transition: width 0.5s ease;
+}
+
+/* Slide counter - hidden but functional */
+.slide-counter {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 100;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.5);
+    display: none; /* Hidden as per user request */
+}
+
+.slide-counter .current {
+    color: #10b981;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Transition hint */
+.scroll-hint {
+    position: fixed;
+    bottom: 100px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+    animation: hintPulse 2s ease-in-out infinite;
+}
+
+.scroll-hint:hover {
+    opacity: 1;
+}
+
+@keyframes hintPulse {
+    0%, 100% { transform: translateX(-50%) translateY(0); }
+    50% { transform: translateX(-50%) translateY(10px); }
+}
+
+.scroll-hint-text {
+    font-size: 12px;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Mobile fallback - normal scrolling */
+@media (max-width: 1024px) {
+    .cinematic-viewport {
+        position: relative;
+        height: auto;
+        overflow: visible;
+        perspective: none;
+    }
+    
+    .slides-container {
+        display: block;
+    }
+    
+    .cinematic-slide {
+        position: relative;
+        transform: none !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+    }
+    
+    .cinematic-slide .slide-content {
+        opacity: 1;
+        transform: none;
+    }
+    
+    .slide-nav,
+    .slide-progress,
+    .slide-counter,
+    .scroll-hint {
+        display: none !important;
+    }
+}
+
+/* ========================================
+   END CINEMATIC SCROLL
+   ======================================== */
+
 /* --- Badge Style --- */
 .badge {
     display: inline-flex;
