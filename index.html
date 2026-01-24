@@ -56,6 +56,9 @@
     <link rel="icon" type="image/png" href="favicon.png"></head>
 <body class="bg-neutral-950 text-neutral-200 selection:bg-emerald-500/30 selection:text-emerald-200">
 
+    <!-- Cinematic Progress Bar -->
+    <div class="slide-progress" id="slide-progress"></div>
+
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 z-50 w-full transition-all duration-300 py-6">
         <div class="container mx-auto flex items-center justify-between px-6">
@@ -63,11 +66,12 @@
                 Jesun<span class="text-emerald-500">.Dev</span>
             </div>
             <div class="hidden md:flex gap-8 text-sm font-medium text-neutral-400">
-                <a href="#about" class="hover:text-emerald-400 transition-colors">About</a>
-                <a href="#experience" class="hover:text-emerald-400 transition-colors">Experience</a>
-                <a href="#certifications" class="hover:text-emerald-400 transition-colors">Certifications</a>
-                <a href="#projects" class="hover:text-emerald-400 transition-colors">Projects</a>
-                <a href="#contact" class="hover:text-emerald-400 transition-colors">Contact</a>
+                <a href="#" data-slide="0" class="slide-link hover:text-emerald-400 transition-colors">Home</a>
+                <a href="#" data-slide="1" class="slide-link hover:text-emerald-400 transition-colors">About</a>
+                <a href="#" data-slide="2" class="slide-link hover:text-emerald-400 transition-colors">Experience</a>
+                <a href="#" data-slide="3" class="slide-link hover:text-emerald-400 transition-colors">Certifications</a>
+                <a href="#" data-slide="4" class="slide-link hover:text-emerald-400 transition-colors">Projects</a>
+                <a href="#" data-slide="5" class="slide-link hover:text-emerald-400 transition-colors">Contact</a>
             </div>
             <a href="https://linkedin.com/in/jesunahmadushno" target="_blank" class="rounded-full bg-white px-5 py-2 text-sm font-bold text-neutral-950 hover:bg-emerald-400 transition-colors">
                 Let's Talk
@@ -75,10 +79,15 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section class="relative flex min-h-screen flex-col justify-center px-6 pt-20 overflow-hidden">
-        <!-- Background Grid -->
-        <div class="absolute inset-0 grid-bg opacity-30"></div>
+    <!-- Cinematic Viewport -->
+    <div class="cinematic-viewport" id="cinematic-viewport">
+        <div class="slides-container" id="slides-container">
+
+            <!-- SLIDE 0: Hero -->
+            <div class="cinematic-slide active" data-slide="0">
+                <section class="relative flex min-h-screen flex-col justify-center px-6 pt-20 overflow-hidden">
+                    <!-- Background Grid -->
+                    <div class="absolute inset-0 grid-bg opacity-30 parallax-bg"></div>
         
         <div class="container mx-auto relative z-10 max-w-5xl">
             <div class="mb-6 inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-3 py-1 text-sm text-emerald-400">
@@ -113,26 +122,28 @@
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-neutral-500">
-            <i data-lucide="chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- Stack Marquee -->
-    <div class="w-full border-y border-neutral-800 bg-neutral-900/50 py-10">
-        <div class="container mx-auto px-6">
-            <p class="text-center text-sm font-mono text-neutral-500 mb-8">POWERED BY MODERN STACK</p>
-            <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-70 grayscale transition-all duration-500 hover:grayscale-0" id="tech-stack">
-                <!-- Injected by JS -->
+                    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-neutral-500">
+                        <i data-lucide="chevron-down"></i>
+                    </div>
+                </section>
             </div>
-        </div>
-    </div>
+            <!-- END SLIDE 0 -->
 
-    <div class="container mx-auto px-6 py-24 space-y-32">
-        
-        <!-- About Section -->
-        <section id="about">
-           <div class="grid md:grid-cols-2 gap-12 items-center">
+            <!-- SLIDE 1: About -->
+            <div class="cinematic-slide next" data-slide="1">
+                <section class="min-h-screen flex items-center px-6 py-20 overflow-hidden">
+                    <div class="container mx-auto">
+                        <!-- Stack Marquee -->
+                        <div class="w-full border-y border-neutral-800 bg-neutral-900/50 py-6 mb-16 rounded-xl slide-content slide-content-1">
+                            <p class="text-center text-sm font-mono text-neutral-500 mb-6">POWERED BY MODERN STACK</p>
+                            <div class="flex flex-wrap justify-center gap-8 md:gap-16 opacity-70 grayscale transition-all duration-500 hover:grayscale-0" id="tech-stack">
+                                <!-- Injected by JS -->
+                            </div>
+                        </div>
+
+                        <!-- About Section -->
+                        <section id="about">
+                           <div class="grid md:grid-cols-2 gap-12 items-center">
               <div>
                   <div class="mb-12">
                     <h2 class="text-3xl font-bold text-white md:text-4xl lg:text-5xl tracking-tight">
@@ -196,16 +207,23 @@
               </div>
            </div>
         </section>
+                    </div>
+                </section>
+            </div>
+            <!-- END SLIDE 1 -->
 
-        <!-- Experience Section -->
+            <!-- SLIDE 2: Experience -->
+            <div class="cinematic-slide far-next" data-slide="2">
+                <section class="min-h-screen flex items-center px-6 py-20 overflow-hidden">
+                    <div class="container mx-auto">
         <section id="experience">
-            <div class="mb-12">
+            <div class="mb-12 slide-content slide-content-1">
                 <h2 class="text-3xl font-bold text-white md:text-4xl lg:text-5xl tracking-tight">
                     <span class="text-emerald-400">#</span> Journey
                 </h2>
                 <p class="mt-4 text-neutral-400 max-w-2xl text-lg">From Engineering to Consulting to Advanced Analytics.</p>
             </div>
-            <div class="max-w-3xl space-y-0">
+            <div class="max-w-3xl space-y-0 slide-content slide-content-2">
                 <!-- Experience Items (Injected via JS or hardcoded) -->
                 <div class="timeline-item relative border-l border-neutral-800 pb-12 pl-8 last:pb-0">
                     <div class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full bg-emerald-500 ring-4 ring-neutral-900"></div>
@@ -230,10 +248,17 @@
                 </div>
             </div>
         </section>
+                    </div>
+                </section>
+            </div>
+            <!-- END SLIDE 2 -->
 
-        <!-- Certifications Section -->
+            <!-- SLIDE 3: Certifications -->
+            <div class="cinematic-slide far-next" data-slide="3">
+                <section class="min-h-screen flex items-center px-6 py-20 overflow-hidden">
+                    <div class="container mx-auto">
         <section id="certifications">
-            <div class="mb-12">
+            <div class="mb-12 slide-content slide-content-1">
                 <h2 class="text-3xl font-bold text-white md:text-4xl lg:text-5xl tracking-tight">
                     <span class="text-emerald-400">#</span> Certifications
                 </h2>
@@ -241,7 +266,7 @@
             </div>
 
             <!-- Featured Certifications -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8 slide-content slide-content-2">
                 
                 <!-- Oracle AI -->
                 <div class="group p-5 rounded-xl border border-neutral-800 bg-neutral-900/50 hover:border-red-500/50 transition-all">
@@ -567,10 +592,17 @@
                 </div>
             </div>
         </section>
+                    </div>
+                </section>
+            </div>
+            <!-- END SLIDE 3 -->
 
-        <!-- Projects / Vibe Generator -->
+            <!-- SLIDE 4: Projects -->
+            <div class="cinematic-slide far-next" data-slide="4">
+                <section class="min-h-screen flex items-center px-6 py-20 overflow-hidden">
+                    <div class="container mx-auto">
         <section id="projects">
-            <div class="mb-12">
+            <div class="mb-12 slide-content slide-content-1">
                 <h2 class="text-3xl font-bold text-white md:text-4xl lg:text-5xl tracking-tight">
                     <span class="text-emerald-400">#</span> Selected Work
                 </h2>
@@ -578,7 +610,7 @@
             </div>
 
             <!-- Vibe Generator Tool -->
-            <div class="rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-950 p-8 relative overflow-hidden mb-16">
+            <div class="rounded-2xl border border-neutral-800 bg-gradient-to-br from-neutral-900 to-neutral-950 p-8 relative overflow-hidden mb-16 slide-content slide-content-2">
                 <div class="absolute top-0 right-0 p-32 bg-emerald-500/5 blur-[100px] rounded-full pointer-events-none"></div>
                 <div class="relative z-10 text-center max-w-2xl mx-auto">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 text-xs font-bold mb-4 border border-purple-500/20">
@@ -740,15 +772,22 @@
 
             </div>
         </section>
+                    </div>
+                </section>
+            </div>
+            <!-- END SLIDE 4 -->
 
-        <!-- Contact Section -->
-        <section id="contact" class="py-20">
+            <!-- SLIDE 5: Contact -->
+            <div class="cinematic-slide far-next" data-slide="5">
+                <section class="min-h-screen flex items-center px-6 py-20 overflow-hidden">
+                    <div class="container mx-auto">
+        <section id="contact" class="py-20 slide-content slide-content-1">
             <div class="rounded-3xl bg-gradient-to-br from-neutral-900 to-neutral-900 border border-neutral-800 p-8 md:p-16 text-center relative overflow-hidden">
                 <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-emerald-500 via-cyan-500 to-purple-500"></div>
                 <h2 class="text-4xl md:text-5xl font-bold text-white mb-6">Ready to create something amazing?</h2>
                 <p class="text-xl text-neutral-400 max-w-2xl mx-auto mb-10">I am currently based in Toronto and open to full-time opportunities or freelance collaborations.</p>
                 
-                <div class="flex flex-col md:flex-row gap-4 justify-center items-center flex-wrap">
+                <div class="flex flex-col md:flex-row gap-4 justify-center items-center flex-wrap slide-content slide-content-2">
                     <button id="contact-email-btn" class="flex items-center gap-3 bg-white text-neutral-950 px-8 py-4 rounded-full font-bold hover:bg-emerald-400 transition-all hover:scale-105 cursor-pointer">
                         <i data-lucide="mail"></i> Send Email
                     </button>
@@ -766,7 +805,7 @@
         </section>
 
         <!-- Footer -->
-        <footer class="border-t border-neutral-800 pt-12 pb-8 text-center text-neutral-500 text-sm">
+        <footer class="border-t border-neutral-800 pt-12 pb-8 text-center text-neutral-500 text-sm slide-content slide-content-3">
             <p class="mb-4">Designed & Vibe Coded by Jesun Ahmad Ushno.</p>
             <div class="flex justify-center gap-6">
                 <a href="https://raw.githubusercontent.com/JesunAhmadUshno/Jesun_Dev/main/Jesun_Resume.pdf" target="_blank" class="hover:text-emerald-400 transition-colors">Resume</a>
@@ -774,7 +813,33 @@
                 <a href="https://linkedin.com/in/jesunahmadushno" class="hover:text-emerald-400 transition-colors">LinkedIn</a>
             </div>
         </footer>
+                    </div>
+                </section>
+            </div>
+            <!-- END SLIDE 5 -->
 
+        </div><!-- End slides-container -->
+    </div><!-- End cinematic-viewport -->
+
+    <!-- Slide Navigation Dots -->
+    <nav class="slide-nav" id="slide-nav">
+        <div class="slide-nav-dot active" data-slide="0" data-label="Home"></div>
+        <div class="slide-nav-dot" data-slide="1" data-label="About"></div>
+        <div class="slide-nav-dot" data-slide="2" data-label="Experience"></div>
+        <div class="slide-nav-dot" data-slide="3" data-label="Certifications"></div>
+        <div class="slide-nav-dot" data-slide="4" data-label="Projects"></div>
+        <div class="slide-nav-dot" data-slide="5" data-label="Contact"></div>
+    </nav>
+
+    <!-- Slide Counter -->
+    <div class="slide-counter" id="slide-counter">
+        <span class="current">01</span> / 06
+    </div>
+
+    <!-- Scroll Hint -->
+    <div class="scroll-hint" id="scroll-hint">
+        <i data-lucide="mouse" class="w-5 h-5 text-neutral-500"></i>
+        <span class="scroll-hint-text">Scroll to navigate</span>
     </div>
 
     <!-- Email Modal -->

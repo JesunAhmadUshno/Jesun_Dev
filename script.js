@@ -339,9 +339,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initEmailModal();
     initCertifications();
     renderTechStack();
-    initAutoScroll(); // Initialize auto-scroll feature
     
-    // Navbar Scroll Effect
+    // Initialize cinematic scroll for desktop, fallback for mobile
+    if (window.innerWidth > 1024) {
+        initCinematicScroll();
+    } else {
+        initAutoScroll(); // Mobile uses regular auto-scroll
+    }
+    
+    // Navbar Scroll Effect (only for mobile/fallback)
     window.addEventListener('scroll', () => {
         const nav = document.getElementById('navbar');
         if (window.scrollY > 50) {
@@ -482,6 +488,347 @@ function initAutoScroll() {
     setTimeout(() => {
         startAutoScroll();
     }, INITIAL_DELAY);
+}
+
+// --- CINEMATIC 3D SCROLL EXPERIENCE ---
+function initCinematicScroll() {
+    const slides = document.querySelectorAll('.cinematic-slide');
+    const navDots = document.querySelectorAll('.slide-nav-dot');
+    const navLinks = document.querySelectorAll('.slide-link');
+    const progressBar = document.getElementById('slide-progress');
+    const slideCounter = document.getElementById('slide-counter');
+    const scrollHint = document.getElementById('scroll-hint');
+    const chatWidget = document.getElementById('chat-widget-container');
+    const coffeeBtn = document.getElementById('coffee-button');
+    
+    let currentSlide = 0;
+    let isAnimating = false;
+    let touchStartY = 0;
+    let autoPlayTimeout = null;
+    const totalSlides = slides.length;
+    const ANIMATION_DURATION = 1000; // ms - increased for dramatic effect
+    const AUTO_PLAY_DELAY = 10000; // 10 seconds initial delay
+    const IDLE_AUTO_PLAY = 15000; // 15 seconds idle before auto-advance
+    
+    // Update slide classes based on position with zigzag effect
+    function updateSlideClasses() {
+        slides.forEach((slide, index) => {
+            slide.classList.remove('active', 'prev', 'next', 'far-prev', 'far-next', 'zigzag-reverse');
+            
+            const diff = index - currentSlide;
+            
+            // Apply zigzag-reverse to odd-indexed slides for alternating direction
+            if (index % 2 === 1) {
+                slide.classList.add('zigzag-reverse');
+            }
+            
+            if (diff === 0) {
+                slide.classList.add('active');
+            } else if (diff === -1) {
+                slide.classList.add('prev');
+            } else if (diff === 1) {
+                slide.classList.add('next');
+            } else if (diff < -1) {
+                slide.classList.add('far-prev');
+            } else {
+                slide.classList.add('far-next');
+            }
+        });
+    }
+    
+    // Update navigation dots
+    function updateNavDots() {
+        navDots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+    
+    // Update progress bar
+    function updateProgress() {
+        const progress = ((currentSlide + 1) / totalSlides) * 100;
+        progressBar.style.width = `${progress}%`;
+    }
+    
+    // Update slide counter
+    function updateCounter() {
+        const current = String(currentSlide + 1).padStart(2, '0');
+        slideCounter.innerHTML = `<span class="current">${current}</span> / ${String(totalSlides).padStart(2, '0')}`;
+    }
+    
+    // Show floating buttons
+    function showFloatingButtons() {
+        if (coffeeBtn) {
+            coffeeBtn.classList.remove('floating-hidden');
+            coffeeBtn.classList.add('floating-visible');
+        }
+        if (chatWidget) {
+            chatWidget.classList.remove('floating-hidden');
+            chatWidget.classList.add('floating-visible');
+        }
+    }
+    
+    // Navigate to a specific slide
+    function goToSlide(index, showButtons = true) {
+        if (isAnimating || index === currentSlide) return;
+        if (index < 0 || index >= totalSlides) return;
+        
+        isAnimating = true;
+        currentSlide = index;
+        
+        // Reset scroll position of new slide to top
+        slides[currentSlide].scrollTop = 0;
+        
+        updateSlideClasses();
+        updateNavDots();
+        updateProgress();
+        updateCounter();
+        
+        // Show buttons when navigating
+        if (showButtons && currentSlide > 0) {
+            showFloatingButtons();
+        }
+        
+        // Hide scroll hint after first navigation
+        if (scrollHint && currentSlide > 0) {
+            scrollHint.style.opacity = '0';
+            setTimeout(() => scrollHint.style.display = 'none', 300);
+        }
+        
+        // Reset animation lock
+        setTimeout(() => {
+            isAnimating = false;
+        }, ANIMATION_DURATION);
+        
+        // Reset auto-play timer
+        resetAutoPlay();
+    }
+    
+    // Navigate to next slide (loops to first)
+    function nextSlide() {
+        if (currentSlide < totalSlides - 1) {
+            goToSlide(currentSlide + 1);
+        } else {
+            // Loop back to first slide
+            goToSlide(0);
+        }
+    }
+    
+    // Navigate to previous slide (loops to last)
+    function prevSlide() {
+        if (currentSlide > 0) {
+            goToSlide(currentSlide - 1);
+        } else {
+            // Loop to last slide
+            goToSlide(totalSlides - 1);
+        }
+    }
+    
+    // Auto-scroll functionality - scrolls through content then transitions
+    let autoScrollInterval = null;
+    let autoScrollActive = false;
+    const AUTO_SCROLL_SPEED = 2; // pixels per frame
+    const AUTO_SCROLL_INTERVAL = 16; // ~60fps
+    
+    function startAutoScroll() {
+        if (autoScrollInterval) return;
+        autoScrollActive = true;
+        
+        // Show floating buttons when auto-scroll starts
+        showFloatingButtons();
+        
+        autoScrollInterval = setInterval(() => {
+            const currentSlideEl = slides[currentSlide];
+            const scrollTop = currentSlideEl.scrollTop;
+            const scrollHeight = currentSlideEl.scrollHeight;
+            const clientHeight = currentSlideEl.clientHeight;
+            const isAtBottom = scrollTop + clientHeight >= scrollHeight - 5;
+            const hasScrollableContent = scrollHeight > clientHeight + 10;
+            
+            // If slide has scrollable content and not at bottom, scroll within slide
+            if (hasScrollableContent && !isAtBottom) {
+                currentSlideEl.scrollBy(0, AUTO_SCROLL_SPEED);
+            } else {
+                // At bottom or no scrollable content - go to next slide (loops infinitely)
+                nextSlide();
+                // Scroll new slide to top
+                setTimeout(() => {
+                    slides[currentSlide].scrollTop = 0;
+                }, ANIMATION_DURATION);
+            }
+        }, AUTO_SCROLL_INTERVAL);
+    }
+    
+    function stopAutoScroll() {
+        if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+            autoScrollInterval = null;
+        }
+        autoScrollActive = false;
+    }
+    
+    // Auto-play - restarts auto-scroll after idle (infinite loop)
+    function startAutoPlay() {
+        autoPlayTimeout = setTimeout(() => {
+            startAutoScroll();
+        }, IDLE_AUTO_PLAY);
+    }
+    
+    function resetAutoPlay() {
+        // Stop any active auto-scroll
+        stopAutoScroll();
+        
+        if (autoPlayTimeout) {
+            clearTimeout(autoPlayTimeout);
+        }
+        startAutoPlay();
+    }
+    
+    // User interaction detection - stops auto-scroll
+    const interactionEvents = ['mousedown', 'keydown', 'touchstart'];
+    interactionEvents.forEach(event => {
+        window.addEventListener(event, () => {
+            resetAutoPlay();
+        }, { passive: true });
+    });
+    
+    // Wheel event for scroll navigation with internal scroll support
+    let wheelAccumulator = 0;
+    const WHEEL_THRESHOLD = 100; // Accumulated scroll needed to trigger slide change
+    let lastWheelTime = 0;
+    
+    window.addEventListener('wheel', (e) => {
+        // Prevent during animation
+        if (isAnimating) return;
+        
+        const currentSlideEl = slides[currentSlide];
+        const scrollTop = currentSlideEl.scrollTop;
+        const scrollHeight = currentSlideEl.scrollHeight;
+        const clientHeight = currentSlideEl.clientHeight;
+        const isAtTop = scrollTop <= 5;
+        const isAtBottom = scrollTop + clientHeight >= scrollHeight - 5;
+        const hasScrollableContent = scrollHeight > clientHeight + 10;
+        
+        // Stop auto-scroll on any wheel interaction
+        if (autoScrollActive) {
+            resetAutoPlay();
+        }
+        
+        // Reset accumulator if too much time passed
+        const now = Date.now();
+        if (now - lastWheelTime > 300) {
+            wheelAccumulator = 0;
+        }
+        lastWheelTime = now;
+        
+        // Scrolling DOWN
+        if (e.deltaY > 0) {
+            // If slide has scrollable content and not at bottom, allow internal scroll
+            if (hasScrollableContent && !isAtBottom) {
+                wheelAccumulator = 0; // Reset accumulator
+                return; // Allow default scroll
+            }
+            // At bottom or no scrollable content - accumulate for slide transition
+            wheelAccumulator += e.deltaY;
+            if (wheelAccumulator >= WHEEL_THRESHOLD) {
+                wheelAccumulator = 0;
+                nextSlide();
+            }
+        }
+        // Scrolling UP
+        else if (e.deltaY < 0) {
+            // If slide has scrollable content and not at top, allow internal scroll
+            if (hasScrollableContent && !isAtTop) {
+                wheelAccumulator = 0; // Reset accumulator
+                return; // Allow default scroll
+            }
+            // At top or no scrollable content - accumulate for slide transition
+            wheelAccumulator += e.deltaY;
+            if (wheelAccumulator <= -WHEEL_THRESHOLD) {
+                wheelAccumulator = 0;
+                prevSlide();
+            }
+        }
+    }, { passive: true });
+    
+    // Touch events for mobile-like swipe on desktop
+    window.addEventListener('touchstart', (e) => {
+        touchStartY = e.touches[0].clientY;
+    }, { passive: true });
+    
+    window.addEventListener('touchend', (e) => {
+        if (isAnimating) return;
+        
+        const touchEndY = e.changedTouches[0].clientY;
+        const diff = touchStartY - touchEndY;
+        
+        if (Math.abs(diff) > 50) {
+            if (diff > 0) {
+                nextSlide();
+            } else {
+                prevSlide();
+            }
+        }
+    }, { passive: true });
+    
+    // Keyboard navigation
+    window.addEventListener('keydown', (e) => {
+        if (isAnimating) return;
+        
+        switch (e.key) {
+            case 'ArrowDown':
+            case 'PageDown':
+            case ' ':
+                e.preventDefault();
+                nextSlide();
+                break;
+            case 'ArrowUp':
+            case 'PageUp':
+                e.preventDefault();
+                prevSlide();
+                break;
+            case 'Home':
+                e.preventDefault();
+                goToSlide(0);
+                break;
+            case 'End':
+                e.preventDefault();
+                goToSlide(totalSlides - 1);
+                break;
+        }
+    });
+    
+    // Navigation dot clicks
+    navDots.forEach((dot) => {
+        dot.addEventListener('click', () => {
+            const slideIndex = parseInt(dot.dataset.slide);
+            goToSlide(slideIndex);
+        });
+    });
+    
+    // Nav link clicks
+    navLinks.forEach((link) => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const slideIndex = parseInt(link.dataset.slide);
+            goToSlide(slideIndex);
+        });
+    });
+    
+    // Initial setup
+    updateSlideClasses();
+    updateNavDots();
+    updateProgress();
+    updateCounter();
+    
+    // Start auto-play after initial delay
+    setTimeout(() => {
+        startAutoPlay();
+    }, AUTO_PLAY_DELAY);
+    
+    // Navbar always visible in cinematic mode
+    const nav = document.getElementById('navbar');
+    nav.classList.add('bg-neutral-950/80', 'backdrop-blur-md', 'border-b', 'border-neutral-800', 'py-4');
+    nav.classList.remove('py-6');
 }
 
 // --- CERTIFICATIONS TOGGLE ---
