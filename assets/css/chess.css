@@ -1,0 +1,229 @@
+/* Chess widget. Obsidian + neon green + cyan, frosted glass, JetBrains Mono. */
+.chess-layout {
+  display: flex;
+  gap: 1.5rem;
+  padding: 1.5rem;
+  flex-wrap: wrap;
+}
+.chess-board-col {
+  flex: 1 1 340px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.chess-side-col {
+  flex: 0 1 260px;
+  min-width: 220px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.9rem;
+}
+.chess-status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.95rem;
+  color: #d7ffe9;
+  min-height: 1.6rem;
+}
+.turn-dot {
+  width: 0.9rem;
+  height: 0.9rem;
+  border-radius: 50%;
+  background: #8a9a93;
+  flex: none;
+}
+.turn-dot.w { background: #f2fff9; box-shadow: 0 0 8px rgba(242, 255, 249, 0.8); }
+.turn-dot.b { background: #04060a; border: 2px solid #00ff88; box-shadow: 0 0 8px rgba(0, 255, 136, 0.7); }
+.turn-dot.thinking { background: #22d3ee; box-shadow: 0 0 10px #22d3ee; animation: chess-pulse 0.8s ease-in-out infinite alternate; }
+@keyframes chess-pulse { from { opacity: 0.4; } to { opacity: 1; } }
+#chess-who { color: #22d3ee; font-size: 0.8rem; }
+.check-badge {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #04060a;
+  background: #ff5470;
+  border-radius: 4px;
+  padding: 0.1rem 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  box-shadow: 0 0 12px rgba(255, 84, 112, 0.8);
+}
+.chess-board-wrap { position: relative; }
+.chess-board {
+  display: grid;
+  grid-template-columns: repeat(8, 1fr);
+  grid-template-rows: repeat(8, 1fr);
+  width: 100%;
+  max-width: 520px;
+  aspect-ratio: 1;
+  border: 1px solid rgba(0, 255, 136, 0.35);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 24px rgba(0, 255, 136, 0.12), inset 0 0 40px rgba(0, 0, 0, 0.5);
+  user-select: none;
+}
+.chess-sq {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(1.4rem, 5.2vw, 2.6rem);
+  line-height: 1;
+  cursor: pointer;
+}
+.sq-light { background: #14342a; }
+.sq-dark { background: #08120e; }
+.chess-sq::after {
+  content: attr(data-label);
+  position: absolute;
+  right: 3px;
+  bottom: 2px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.55rem;
+  color: rgba(215, 255, 233, 0.45);
+  pointer-events: none;
+}
+.pc-w { color: #f2fff9; text-shadow: 0 0 6px rgba(242, 255, 249, 0.55), 0 2px 3px rgba(0, 0, 0, 0.7); }
+.pc-b { color: #00ff88; text-shadow: 0 0 8px rgba(0, 255, 136, 0.65), 0 2px 3px rgba(0, 0, 0, 0.7); }
+.sq-sel { outline: 3px solid #22d3ee; outline-offset: -3px; z-index: 1; }
+.sq-last { box-shadow: inset 0 0 0 3px rgba(34, 211, 238, 0.55); }
+.sq-check { box-shadow: inset 0 0 0 4px #ff5470, inset 0 0 18px rgba(255, 84, 112, 0.7); }
+.sq-move::before {
+  content: '';
+  width: 26%;
+  height: 26%;
+  border-radius: 50%;
+  background: rgba(0, 255, 136, 0.55);
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+  position: absolute;
+}
+.sq-cap::before {
+  content: '';
+  position: absolute;
+  inset: 6%;
+  border: 3px solid rgba(255, 84, 112, 0.85);
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(255, 84, 112, 0.6);
+}
+.chess-banner {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: rgba(4, 6, 10, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 10px;
+  z-index: 5;
+  text-align: center;
+  padding: 1rem;
+}
+.banner-big {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.4rem, 4vw, 2rem);
+  font-weight: 700;
+  color: #00ff88;
+  text-shadow: 0 0 18px rgba(0, 255, 136, 0.5);
+}
+.chess-promo {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  background: rgba(4, 6, 10, 0.82);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  border-radius: 10px;
+  z-index: 6;
+}
+.promo-label {
+  font-family: 'JetBrains Mono', monospace;
+  color: #d7ffe9;
+  margin-right: 0.4rem;
+}
+.promo-btn {
+  font-size: 2.4rem;
+  line-height: 1;
+  background: rgba(0, 255, 136, 0.1);
+  border: 1px solid rgba(0, 255, 136, 0.5);
+  border-radius: 8px;
+  padding: 0.5rem 0.7rem;
+  cursor: pointer;
+  color: #f2fff9;
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
+}
+.promo-btn:hover { transform: translateY(-2px); box-shadow: 0 0 14px rgba(0, 255, 136, 0.5); }
+.chess-controls {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.6rem;
+}
+.chess-controls .mono { font-size: 0.8rem; color: #8a9a93; }
+.chess-select {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85rem;
+  color: #d7ffe9;
+  background: rgba(0, 255, 136, 0.08);
+  border: 1px solid rgba(0, 255, 136, 0.35);
+  border-radius: 6px;
+  padding: 0.45rem 0.6rem;
+  cursor: pointer;
+}
+.chess-select option { background: #04060a; }
+.chess-tray {
+  background: rgba(4, 6, 10, 0.5);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  min-height: 3.2rem;
+}
+.tray-title {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.72rem;
+  color: #8a9a93;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.25rem;
+  display: flex;
+  justify-content: space-between;
+}
+.tray-lead { color: #00ff88; font-weight: 700; }
+.tray-pieces { font-size: 1.35rem; line-height: 1.4; letter-spacing: 0.1em; min-height: 1.8rem; }
+#chess-cap-w { color: #00ff88; text-shadow: 0 0 6px rgba(0, 255, 136, 0.5); }
+#chess-cap-b { color: #f2fff9; text-shadow: 0 0 6px rgba(242, 255, 249, 0.4); }
+.chess-moves-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  background: rgba(4, 6, 10, 0.5);
+  border: 1px solid rgba(0, 255, 136, 0.2);
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+}
+.chess-moves {
+  overflow-y: auto;
+  max-height: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding-right: 0.3rem;
+}
+.mv-row { display: grid; grid-template-columns: 2rem 1fr 1fr; gap: 0.4rem; align-items: baseline; }
+.mv-num { color: #8a9a93; font-size: 0.8rem; }
+.mv-san { color: #d7ffe9; font-size: 0.85rem; }
+.mv-row:nth-child(odd) { background: rgba(0, 255, 136, 0.05); border-radius: 4px; }
+.chess-hint-line { font-size: 0.78rem; color: #8a9a93; font-family: 'JetBrains Mono', monospace; }
+@media (max-width: 720px) {
+  .chess-layout { padding: 1rem; }
+  .chess-side-col { flex: 1 1 100%; }
+}
