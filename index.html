@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
+<link rel="stylesheet" href="assets/css/motion.css"/>
+<noscript><style>.reveal{opacity:1!important;transform:none!important;transition:none!important}</style></noscript>
 </head>
 <body>
 
@@ -27,20 +29,26 @@
 <nav id="nav">
   <a href="#home" class="logo">jesun<span>.dev</span></a>
   <div class="nav-links">
-    <a href="#about">about</a>
-    <a href="#experience">experience</a>
-    <a href="#team">team</a>
-    <a href="#projects">projects</a>
-    <a href="#contact" class="nav-cta">contact</a>
+    <a href="#about" data-i18n="nav-about">about</a>
+    <a href="#experience" data-i18n="nav-experience">experience</a>
+    <a href="#team" data-i18n="nav-team">team</a>
+    <a href="#projects" data-i18n="nav-projects">projects</a>
+    <a href="#playground" data-i18n="nav-playground">playground</a>
+    <a href="#writing" data-i18n="nav-writing">writing</a>
+    <a href="#contact" class="nav-cta" data-i18n="nav-contact">contact</a>
+    <button id="lang-btn" class="lang-btn" aria-label="Toggle language">BN</button>
   </div>
   <button id="menu-btn" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
 <div id="mobile-menu">
-  <a href="#about">about</a>
-  <a href="#experience">experience</a>
-  <a href="#team">team</a>
-  <a href="#projects">projects</a>
-  <a href="#contact">contact</a>
+  <a href="#about" data-i18n="nav-about">about</a>
+  <a href="#experience" data-i18n="nav-experience">experience</a>
+  <a href="#team" data-i18n="nav-team">team</a>
+  <a href="#projects" data-i18n="nav-projects">projects</a>
+  <a href="#playground" data-i18n="nav-playground">playground</a>
+  <a href="#writing" data-i18n="nav-writing">writing</a>
+  <a href="#contact" data-i18n="nav-contact">contact</a>
+  <button id="lang-btn-m" class="lang-btn" aria-label="Toggle language">BN</button>
 </div>
 
 <!-- HERO -->
@@ -62,7 +70,7 @@
     <div class="mono-line reveal">&gt; whoami <span class="cursor">_</span></div>
     <h1 class="hero-name reveal">JESUN AHMAD<br/><span class="grad">USHNO</span></h1>
     <div class="typed-wrap reveal"><span class="mono-prompt">&gt;</span> <span id="typed"></span><span class="caret"></span></div>
-    <p class="hero-sub reveal">I build minds like companies and companies like minds. Applied AI, data pipelines, and a 49-seat autonomous crew that ships while I sleep.</p>
+    <p class="hero-sub reveal" data-i18n="hero-sub">I build minds like companies and companies like minds. Applied AI, data pipelines, and a 49-seat autonomous crew that ships while I sleep.</p>
     <div class="stats reveal">
       <div class="stat"><div class="stat-num"><span data-count="3.9154" data-dec="4">0</span></div><div class="stat-label">MSc CGPA, graduated with distinction</div></div>
       <div class="stat"><div class="stat-num"><span data-count="20">0</span>+</div><div class="stat-label">Power BI dashboards shipped</div></div>
@@ -70,8 +78,8 @@
       <div class="stat"><div class="stat-num"><span data-count="49">0</span></div><div class="stat-label">seats in the Jesun.Ai crew</div></div>
     </div>
     <div class="hero-ctas reveal">
-      <a href="#team" class="btn btn-primary">Meet the crew</a>
-      <a href="#contact" class="btn btn-ghost">Get in touch</a>
+      <a href="#team" class="btn btn-primary" data-i18n="cta-crew">Meet the crew</a>
+      <a href="#contact" class="btn btn-ghost" data-i18n="cta-contact">Get in touch</a>
     </div>
   </div>
   <div class="scroll-cue" aria-hidden="true"><span></span></div>
@@ -81,9 +89,9 @@
 <!-- ABOUT -->
 <section id="about" class="section">
   <div class="wrap">
-    <div class="kicker reveal">// 01 . about</div>
-    <h2 class="h2 reveal">Engineer by craft,<br/>vibe coder by soul.</h2>
-    <div class="about-grid">
+    <div class="kicker reveal" data-i18n="k-about">// 01 . about</div>
+    <h2 class="h2 reveal" data-i18n="h2-about">Engineer by craft,<br/>vibe coder by soul.</h2>
+    <div class="about-grid" data-stagger>
       <div class="glass panel reveal">
         <p class="lede">I am Jesun Ahmad Ushno, a Toronto-based AI engineer and data specialist. I graduated with distinction from my MSc in Data Analytics at the University of Niagara Falls Canada (2026), consulted in IT Advisory at KPMG across banking and healthcare, and now build applied ML and RAG systems at Gallea Ai.</p>
         <p>On my own time I run Jesun.Ai, a 49-seat autonomous AI crew, and built Jesun.Code, a programming language that reads like plain English. Whether it is training a neural net to catch fabric defects or orchestrating agent swarms for business automation, I like making things that solve real problems and keep your bytes on your machine.</p>
@@ -110,12 +118,18 @@
   </div>
 </section>
 
+<!-- LIVE STATS BAND -->
+<div class="band"><div class="wrap">
+  <div class="kicker reveal" data-i18n="stats-kicker">// live signal</div>
+  <div class="stats reveal" id="gh-stats"><p class="mono muted">Loading live GitHub stats...</p></div>
+</div></div>
+
 <!-- EXPERIENCE -->
 <section id="experience" class="section">
   <div class="wrap">
-    <div class="kicker reveal">// 02 . experience</div>
-    <h2 class="h2 reveal">The journey so far.</h2>
-    <div class="timeline">
+    <div class="kicker reveal" data-i18n="k-experience">// 02 . experience</div>
+    <h2 class="h2 reveal" data-i18n="h2-experience">The journey so far.</h2>
+    <div class="timeline" data-stagger>
       <div class="tl-item reveal">
         <div class="tl-date mono">AUG 2026 / PRESENT</div>
         <div class="tl-card glass">
@@ -170,9 +184,9 @@
 
 <section id="team" class="section">
   <div class="wrap">
-    <div class="kicker reveal">// 03 . team</div>
-    <h2 class="h2 reveal">The crew behind<br/>the <span class="grad">machine.</span></h2>
-    <p class="section-sub reveal">Jesun.Ai runs on an autonomous AI crew across three entities. Click any member for their full portfolio.</p>
+    <div class="kicker reveal" data-i18n="k-team">// 03 . team</div>
+    <h2 class="h2 reveal" data-i18n="h2-team">The crew behind<br/>the <span class="grad">machine.</span></h2>
+    <p class="section-sub reveal" data-i18n="sub-team">Jesun.Ai runs on an autonomous AI crew across three entities. Click any member for their full portfolio.</p>
     <div class="team-filters reveal" id="team-filters">
       <button class="team-filter active" data-filter="all">All (49)</button>
       <button class="team-filter" data-filter="personal-brand">Personal Socials</button><button class="team-filter" data-filter="jesun-ai">Jesun.Ai</button><button class="team-filter" data-filter="jesun-code">Jesun.Code</button>
@@ -557,44 +571,45 @@
 <!-- PROJECTS -->
 <section id="projects" class="section">
   <div class="wrap">
-    <div class="kicker reveal">// 04 . projects</div>
-    <h2 class="h2 reveal">Selected work.</h2>
-    <p class="section-sub reveal">A mix of academic research, AI experiments, and real-world tools.</p>
-    <div class="proj-grid">
+    <div class="kicker reveal" data-i18n="k-projects">// 04 . projects</div>
+    <h2 class="h2 reveal" data-i18n="h2-projects">Selected work.</h2>
+    <p class="section-sub reveal" data-i18n="sub-projects">A mix of academic research, AI experiments, and real-world tools.</p>
+    <div class="proj-grid" data-stagger>
       <article class="glass proj reveal">
         <div class="proj-top"><h3>Jesun.Code</h3><span class="badge">v1.0 soon</span></div>
         <p>A programming language that reads like plain English. No semicolons, no braces, plain-English errors, the whole Python ecosystem, AI agents, tmux control. v0.6.0: 220/220 tests green.</p>
         <div class="chips"><span>Language design</span><span>Python</span><span>VS Code</span></div>
+        <div class="proj-links"><a href="projects/jesun-code.html">Case study</a><a href="#playground">Try it live</a></div>
       </article>
       <article class="glass proj reveal">
         <div class="proj-top"><h3>PRISM</h3></div>
         <p>Zero-trust data analytics platform. Excel, CSV and XML processed entirely in your browser with AI-driven insights. Complete data sovereignty: no bytes ever leave your machine.</p>
         <div class="chips"><span>Pyodide</span><span>React</span><span>TypeScript</span><span>WASM</span></div>
-        <div class="proj-links"><a href="https://github.com/JesunAhmadUshno/PRISM" target="_blank" rel="noopener">GitHub</a><a href="https://jesunahmadushno.github.io/PRISM/" target="_blank" rel="noopener">Live demo</a></div>
+        <div class="proj-links"><a href="https://github.com/JesunAhmadUshno/PRISM" target="_blank" rel="noopener">GitHub</a><a href="https://jesunahmadushno.github.io/PRISM/" target="_blank" rel="noopener">Live demo</a><a href="projects/prism.html">Case study</a>
       </article>
       <article class="glass proj reveal">
         <div class="proj-top"><h3>SonicClear</h3></div>
         <p>AI studio-grade audio enhancement. Deep learning removes background noise and restores vocal clarity in real time.</p>
         <div class="chips"><span>Audio DSP</span><span>PyTorch</span><span>FastAPI</span></div>
-        <div class="proj-links"><a href="https://github.com/JesunAhmadUshno/SonicClear-AI-Studio-Grade-Audio-Enhancer" target="_blank" rel="noopener">GitHub</a></div>
+        <div class="proj-links"><a href="https://github.com/JesunAhmadUshno/SonicClear-AI-Studio-Grade-Audio-Enhancer" target="_blank" rel="noopener">GitHub</a><a href="projects/sonicclear.html">Case study</a></div>
       </article>
       <article class="glass proj reveal">
         <div class="proj-top"><h3>NoPara</h3></div>
         <p>100% private media converter. Video, audio and image conversion with FFmpeg.wasm, all processing happens in your browser. Zero uploads, zero tracking.</p>
         <div class="chips"><span>FFmpeg</span><span>React</span><span>PWA</span></div>
-        <div class="proj-links"><a href="https://github.com/JesunAhmadUshno/NoPara" target="_blank" rel="noopener">GitHub</a><a href="https://jesunahmadushno.github.io/NoPara/" target="_blank" rel="noopener">Live demo</a></div>
+        <div class="proj-links"><a href="https://github.com/JesunAhmadUshno/NoPara" target="_blank" rel="noopener">GitHub</a><a href="https://jesunahmadushno.github.io/NoPara/" target="_blank" rel="noopener">Live demo</a><a href="projects/nopara.html">Case study</a>
       </article>
       <article class="glass proj reveal">
         <div class="proj-top"><h3>BigFish</h3></div>
         <p>A fully autonomous, premium sports betting predictive terminal.</p>
         <div class="chips"><span>Python</span><span>ML</span><span>Automation</span></div>
-        <div class="proj-links"><a href="https://github.com/JesunAhmadUshno/BigFish" target="_blank" rel="noopener">GitHub</a><a href="https://jesunahmadushno.github.io/BigFish/" target="_blank" rel="noopener">Live demo</a></div>
+        <div class="proj-links"><a href="https://github.com/JesunAhmadUshno/BigFish" target="_blank" rel="noopener">GitHub</a><a href="https://jesunahmadushno.github.io/BigFish/" target="_blank" rel="noopener">Live demo</a><a href="projects/bigfish.html">Case study</a>
       </article>
       <article class="glass proj reveal">
         <div class="proj-top"><h3>TriDrop</h3></div>
         <p>Effortless peer-to-peer file sharing between iPhone and Windows. Scan a QR code, connect, and share files directly in your browser. No installation required.</p>
         <div class="chips"><span>WebRTC</span><span>PWA</span></div>
-        <div class="proj-links"><a href="https://github.com/JesunAhmadUshno/TriDrop" target="_blank" rel="noopener">GitHub</a><a href="https://jesunahmadushno.github.io/TriDrop/" target="_blank" rel="noopener">Live demo</a></div>
+        <div class="proj-links"><a href="https://github.com/JesunAhmadUshno/TriDrop" target="_blank" rel="noopener">GitHub</a><a href="https://jesunahmadushno.github.io/TriDrop/" target="_blank" rel="noopener">Live demo</a><a href="projects/tridrop.html">Case study</a>
       </article>
     </div>
     <div class="glass research reveal">
@@ -611,13 +626,75 @@
   </div>
 </section>
 
+<!-- PLAYGROUND -->
+<section id="playground" class="section">
+  <div class="wrap">
+    <div class="kicker reveal" data-i18n="k-playground">// 05 . playground</div>
+    <h2 class="h2 reveal" data-i18n="h2-playground">Try the <span class="grad">language.</span></h2>
+    <p class="section-sub reveal" data-i18n="sub-playground">Jesun.Code executes for real in your browser via the actual v0.6.0 interpreter. Nothing is faked.</p>
+    <div class="glass panel reveal">
+      <div class="jc-bar">
+        <span class="mono jc-status" id="jc-status">Loading the runtime...</span>
+        <div class="jc-examples"><span class="mono muted" data-i18n="jc-examples">Examples:</span>
+          <button data-jc-example="hello" type="button">hello</button><button data-jc-example="loops" type="button">loops</button><button data-jc-example="decisions" type="button">decisions</button><button data-jc-example="functions" type="button">functions</button>
+        </div>
+      </div>
+      <label class="mono jc-label" for="jc-code" data-i18n="jc-code-label">Code</label>
+      <textarea id="jc-code" class="jc-code" spellcheck="false">note Jesun.Code reads like plain English. Press Run.
+
+name is "world"
+show "Hello, " + name
+
+for each n in [1, 2, 3]
+    show n * 10</textarea>
+      <label class="mono jc-label" for="jc-stdin" data-i18n="jc-stdin-label">Input (for ask statements)</label>
+      <input id="jc-stdin" class="jc-stdin" placeholder="one line per ask" autocomplete="off"/>
+      <div class="jc-actions">
+        <button id="jc-run" class="btn btn-primary" type="button" disabled><span data-i18n="jc-run">Run</span></button>
+        <button id="jc-stop" class="btn btn-ghost hidden" type="button"><span data-i18n="jc-stop">Stop</span></button>
+      </div>
+      <label class="mono jc-label">Output</label>
+      <pre id="jc-output" class="jc-output" aria-live="polite"></pre>
+      <p class="mono muted jc-note">Real Jesun.Code v0.6.0 (assets/jesun/jesun.py) running in a Pyodide web worker. Your code never leaves this browser.</p>
+    </div>
+    <div class="glass panel reveal term-panel">
+      <div class="mono muted" data-i18n="term-hint">Interactive terminal. Type "help".</div>
+      <div id="term" class="term">
+        <div id="term-out" class="term-out" aria-live="polite"></div>
+        <div class="term-row"><span class="mono-prompt">&gt;</span><input id="term-in" class="term-in" autocomplete="off" spellcheck="false" aria-label="terminal input"/></div>
+      </div>
+    </div>
+    <div class="glass shiplog reveal">
+      <div class="mono research-kicker"><span data-i18n="shiplog-title">Ship log</span></div>
+      <p class="section-sub" data-i18n="shiplog-sub">Latest public pushes, straight from GitHub.</p>
+      <div id="ship-log"><p class="mono muted">Loading the ship log...</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WRITING -->
+<section id="writing" class="section">
+  <div class="wrap">
+    <div class="kicker reveal" data-i18n="k-writing">// 06 . writing</div>
+    <h2 class="h2 reveal" data-i18n="h2-writing">Writing.</h2>
+    <p class="section-sub reveal" data-i18n="sub-writing">Essays and notes, fresh from Medium.</p>
+    <div class="post-grid" id="medium-posts"><p class="mono muted">Loading essays...</p></div>
+  </div>
+</section>
+
+<!-- NOW BAND -->
+<div class="band"><div class="wrap">
+  <div class="kicker reveal" data-i18n="now-kicker">// now</div>
+  <p class="now-text reveal" data-i18n="now-text">Running a 49-seat autonomous AI crew at Jesun.Ai, building Jesun.Code toward v1.0 self-hosting, and working as an AI Engineer &amp; Data Specialist at Gallea Ai in Toronto.</p>
+</div></div>
+
 <!-- CONTACT -->
 <section id="contact" class="section">
   <div class="wrap">
-    <div class="kicker reveal">// 05 . contact</div>
+    <div class="kicker reveal" data-i18n="k-contact">// 07 . contact</div>
     <div class="glass contact-panel reveal">
-      <h2 class="h2">Ready to create<br/>something <span class="grad">amazing?</span></h2>
-      <p class="section-sub">Based in Toronto. Open to full-time roles, freelance collaborations, and interesting problems.</p>
+      <h2 class="h2" data-i18n="h2-contact">Ready to create<br/>something <span class="grad">amazing?</span></h2>
+      <p class="section-sub" data-i18n="sub-contact">Based in Toronto. Open to full-time roles, freelance collaborations, and interesting problems.</p>
       <div class="contact-btns">
         <a href="mailto:jesunahmadushno@gmail.com" class="btn btn-primary">Send Email</a>
         <a href="https://linkedin.com/in/jesunahmadushno" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
@@ -688,5 +765,10 @@ document.querySelectorAll('#team-filters .team-filter').forEach(function(btn){
 });
 </script>
 <script src="script.js"></script>
+<script src="assets/js/motion.js" defer></script>
+<script src="assets/js/lang.js" defer></script>
+<script src="assets/js/live.js" defer></script>
+<script src="assets/js/terminal.js" defer></script>
+<script src="assets/js/playground.js" defer></script>
 </body>
 </html>

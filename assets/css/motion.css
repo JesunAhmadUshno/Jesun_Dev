@@ -1,0 +1,87 @@
+/* ============================================================
+ * JESUN.DEV motion layer styles (Vega, Motion Designer)
+ * Pairs with assets/js/motion.js. No em dash anywhere here.
+ * ============================================================ */
+
+/* ---- particle canvas: sits behind hero content, above bg ---- */
+.particle-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ---- custom neon cursor ----
+ * Hidden until JS adds html.vc-cursor (fine pointers only).
+ * No-JS keeps the native cursor, no override applied. */
+.vc-dot,
+.vc-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0;
+  will-change: transform;
+  display: none;
+}
+html.vc-cursor .vc-dot,
+html.vc-cursor .vc-ring {
+  display: block;
+}
+html.vc-cursor.vc-show .vc-dot,
+html.vc-cursor.vc-show .vc-ring {
+  opacity: 1;
+}
+.vc-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--green, #00ff88);
+  box-shadow: 0 0 10px rgba(0, 255, 136, 0.85);
+  transition: opacity 0.18s ease;
+}
+.vc-ring {
+  width: 30px;
+  height: 30px;
+  border: 1.5px solid rgba(34, 211, 238, 0.75);
+  transition: opacity 0.18s ease, width 0.25s ease, height 0.25s ease,
+    border-color 0.25s ease;
+}
+html.vc-cursor.vc-hover .vc-ring {
+  width: 46px;
+  height: 46px;
+  border-color: rgba(0, 255, 136, 0.9);
+}
+html.vc-cursor.vc-hover .vc-dot {
+  background: var(--cyan, #22d3ee);
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.9);
+}
+/* native cursor is hidden only when the custom cursor is live */
+html.vc-cursor,
+html.vc-cursor a,
+html.vc-cursor button {
+  cursor: none;
+}
+
+/* ---- reduced motion: all three effects disabled ----
+ * Particles never start (JS exits early, canvas never exists).
+ * Cursor never initializes, so html.vc-cursor is never added.
+ * Reveals show instantly, no fade or rise. */
+@media (prefers-reduced-motion: reduce) {
+  .vc-dot,
+  .vc-ring,
+  .particle-layer {
+    display: none !important;
+  }
+  html.vc-cursor,
+  html.vc-cursor a,
+  html.vc-cursor button {
+    cursor: auto;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
