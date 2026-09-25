@@ -23,12 +23,14 @@
   });
 
   /* ---- typed hero ---- */
-  var phrases = [
+  var phrasesEN = [
     'AI Engineer & Data Specialist',
     'Vibe Coder',
     'Founder of Jesun.Ai',
     'Builder of Jesun.Code'
   ];
+  var phrases = phrasesEN;
+  window.__setTypedPhrases = function(list){ phrases = list; pi = 0; ci = 0; deleting = false; };
   var typedEl = document.getElementById('typed');
   var pi = 0, ci = 0, deleting = false;
   function tick(){
@@ -78,7 +80,7 @@
   document.querySelectorAll('[data-count]').forEach(function(el){ cio.observe(el); });
 
   /* ---- active nav link ---- */
-  var sections = ['about','experience','team','projects','contact'].map(function(id){
+  var sections = ['about','experience','team','projects','playground','writing','contact'].map(function(id){
     return document.getElementById(id);
   });
   var links = Array.prototype.slice.call(document.querySelectorAll('.nav-links a'));
