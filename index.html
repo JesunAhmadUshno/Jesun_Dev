@@ -47,6 +47,7 @@
     <a href="#writing" data-i18n="nav-writing">writing</a>
     <a href="#testimonials" data-i18n="nav-testimonials">testimonials</a>
     <a href="#chess" data-i18n="nav-chess">chess</a>
+    <a href="#guestbook" data-i18n="nav-guestbook">guestbook</a>
     <a href="#contact" class="nav-cta" data-i18n="nav-contact">contact</a>
     <button id="lang-btn" class="lang-btn" aria-label="Toggle language">BN</button>
   </div>
@@ -61,6 +62,7 @@
   <a href="#writing" data-i18n="nav-writing">writing</a>
   <a href="#testimonials" data-i18n="nav-testimonials">testimonials</a>
   <a href="#chess" data-i18n="nav-chess">chess</a>
+  <a href="#guestbook" data-i18n="nav-guestbook">guestbook</a>
   <a href="#contact" data-i18n="nav-contact">contact</a>
   <button id="lang-btn-m" class="lang-btn" aria-label="Toggle language">BN</button>
 </div>
@@ -1054,6 +1056,24 @@ for each n in [1, 2, 3]
 </section>
 <script src="twin-data.js"></script>
 <script src="twin.js"></script>
+
+<section id="guestbook" class="section">
+  <div class="wrap">
+    <div class="kicker reveal" data-i18n="k-guestbook">// guestbook</div>
+    <h2 class="h2 reveal" data-i18n="h2-guestbook">Sign the <span class="grad">guestbook.</span></h2>
+    <p class="section-sub reveal" data-i18n="sub-guestbook">Leave a note for visitors after you. Runs on GitHub issues via utterances.</p>
+    <div class="glass reveal" id="guestbook-box">
+      <script src="https://utteranc.es/client.js"
+              repo="JesunAhmadUshno/Jesun_Dev"
+              issue-term="pathname"
+              label="guestbook"
+              theme="github-dark"
+              crossorigin="anonymous"
+              async>
+      </script>
+    </div>
+  </div>
+</section>
 
 <section id="contact" class="section">
   <div class="wrap">
