@@ -11,6 +11,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
 <link rel="stylesheet" href="style.css"/>
 <link rel="stylesheet" href="assets/css/motion.css"/>
+<link rel="stylesheet" href="assets/css/hero3d.css"/>
+<link rel="stylesheet" href="assets/css/chess.css"/>
+<link rel="stylesheet" href="assets/css/content.css"/>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/three@0.170.0/build/three.module.js"
+  }
+}
+</script>
 <noscript><style>.reveal{opacity:1!important;transform:none!important;transition:none!important}</style></noscript>
 </head>
 <body>
@@ -35,6 +45,8 @@
     <a href="#projects" data-i18n="nav-projects">projects</a>
     <a href="#playground" data-i18n="nav-playground">playground</a>
     <a href="#writing" data-i18n="nav-writing">writing</a>
+    <a href="#testimonials" data-i18n="nav-testimonials">testimonials</a>
+    <a href="#chess" data-i18n="nav-chess">chess</a>
     <a href="#contact" class="nav-cta" data-i18n="nav-contact">contact</a>
     <button id="lang-btn" class="lang-btn" aria-label="Toggle language">BN</button>
   </div>
@@ -47,12 +59,15 @@
   <a href="#projects" data-i18n="nav-projects">projects</a>
   <a href="#playground" data-i18n="nav-playground">playground</a>
   <a href="#writing" data-i18n="nav-writing">writing</a>
+  <a href="#testimonials" data-i18n="nav-testimonials">testimonials</a>
+  <a href="#chess" data-i18n="nav-chess">chess</a>
   <a href="#contact" data-i18n="nav-contact">contact</a>
   <button id="lang-btn-m" class="lang-btn" aria-label="Toggle language">BN</button>
 </div>
 
 <!-- HERO -->
 <header id="home" class="hero">
+  <div class="hero3d-layer" id="hero-3d" aria-hidden="true"></div>
   <svg class="circuit" viewBox="0 0 1200 600" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
     <g fill="none" stroke-width="1.5">
       <path class="trace t1" d="M-20,120 H320 L400,200 H700 L780,280 H1220"/>
@@ -689,6 +704,357 @@ for each n in [1, 2, 3]
 </div></div>
 
 <!-- CONTACT -->
+<!-- TESTIMONIALS wall. Drop inside <main> of index.html.
+     All 10 quotes are VERBATIM from Jesun's LinkedIn Received tab (verified by
+     Jesun; pulled from his signed-in LinkedIn). Card shows a trimmed excerpt
+     (cut at a word boundary, marked [...]); the full verbatim quote expands
+     via <details>. Names, headlines, dates, and quotes are identical in EN/BN;
+     only labels are translated (content-strings.json, "tm-*" keys).
+     Styles: content.css. -->
+<section id="testimonials" class="section">
+  <div class="wrap">
+    <div class="kicker reveal" data-i18n="tm-kicker">// recommendations</div>
+    <h2 class="h2 reveal" data-i18n="tm-h2">What colleagues <span class="grad">say.</span></h2>
+    <p class="section-sub reveal"><span data-i18n="tm-sub">Verbatim recommendations from Jesun's LinkedIn Received tab.</span> <a class="tm-all" href="https://www.linkedin.com/in/jesunahmadushno/details/recommendations/" target="_blank" rel="noopener" data-i18n="tm-read-all">Read all on LinkedIn</a></p>
+    <div class="tm-grid" data-stagger>
+
+      <article class="glass tm-card reveal">
+        <div class="tm-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          <p>I had the privilege of working closely with Jesun during our time in the IT Advisory team at KPMG Bangladesh. Coming from a technical background myself, I can confidently say that Jesun is a rare talent who seamlessly bridges the gap between software development and IT Audit. While many professionals focus solely on the 'what' of audit, Jesun mastered the 'how.' [...]</p>
+          <details class="tm-full"><summary data-i18n="tm-read-full">Read full quote</summary><p>I had the privilege of working closely with Jesun during our time in the IT Advisory team at KPMG Bangladesh. Coming from a technical background myself, I can confidently say that Jesun is a rare talent who seamlessly bridges the gap between software development and IT Audit. While many professionals focus solely on the 'what' of audit, Jesun mastered the 'how.' He proactively used his expertise in Power Platform (PowerApps and Power Automate) to revolutionize our internal processes. The tools he built, specifically for engagement tracking and resource management, didn't just save us hours of manual work; they strengthened our data integrity and operational controls, which is critical for any ISO 27001 or risk management framework. Jesun is not just a data analyst; he is a problem solver who understands the business impact of technology. I highly recommend him to any organization looking for a professional who brings both technical innovation and a strong sense of audit discipline.</p></details>
+        </blockquote>
+        <div class="tm-who">
+          <div class="tm-name">Mohammad Shahriar Reza</div>
+          <div class="tm-headline">ISMS 27001:2022 LA, Deputy Manager - BRAC, Ex-KPMG</div>
+          <div class="tm-meta"><span class="mono">Jan 30, 2026</span><span class="tm-rel" data-i18n="tm-rel-same-team">Same team, KPMG Bangladesh</span></div>
+        </div>
+      </article>
+
+      <article class="glass tm-card reveal">
+        <div class="tm-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          <p>I supervised Jesun during his time as a Senior Officer/Consultant at KPMG Bangladesh. Jesun is a technically gifted professional who understands the intersection of IT Audit and Data Analytics. He proactively developed automation solutions that not only improved our operational efficiency but also strengthened our internal control frameworks. [...]</p>
+          <details class="tm-full"><summary data-i18n="tm-read-full">Read full quote</summary><p>I supervised Jesun during his time as a Senior Officer/Consultant at KPMG Bangladesh. Jesun is a technically gifted professional who understands the intersection of IT Audit and Data Analytics. He proactively developed automation solutions that not only improved our operational efficiency but also strengthened our internal control frameworks. Jesun has a keen eye for identifying process improvements and is a reliable asset for any risk or data-focused team.</p></details>
+        </blockquote>
+        <div class="tm-who">
+          <div class="tm-name">Arafat Rahman</div>
+          <div class="tm-headline">Associate Manager II @ KPMG Bangladesh</div>
+          <div class="tm-meta"><span class="mono">Jan 24, 2026</span><span class="tm-rel" data-i18n="tm-rel-supervisor">His supervisor, KPMG Bangladesh</span></div>
+        </div>
+      </article>
+
+      <article class="glass tm-card reveal">
+        <div class="tm-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          <p>I worked alongside Jesun in the IT Advisory team at KPMG Bangladesh. Jesun has a rare ability to translate complex audit requirements into efficient technical solutions. His work on process automation (using Power Automate and PowerApps) significantly improved our operational efficiency and helped the team meet tight deadlines. [...]</p>
+          <details class="tm-full"><summary data-i18n="tm-read-full">Read full quote</summary><p>I worked alongside Jesun in the IT Advisory team at KPMG Bangladesh. Jesun has a rare ability to translate complex audit requirements into efficient technical solutions. His work on process automation (using Power Automate and PowerApps) significantly improved our operational efficiency and helped the team meet tight deadlines. Jesun is a forward-thinking professional who understands both the data and the governance behind it. I wish him success in his future endeavours.</p></details>
+        </blockquote>
+        <div class="tm-who">
+          <div class="tm-name">Md Shahriar Wahid</div>
+          <div class="tm-headline">IT Auditor, IS Audit &amp; IT Risk</div>
+          <div class="tm-meta"><span class="mono">Jan 22, 2026</span><span class="tm-rel" data-i18n="tm-rel-same-team">Same team, KPMG Bangladesh</span></div>
+        </div>
+      </article>
+
+      <article class="glass tm-card reveal">
+        <div class="tm-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          <p>I worked alongside Jesun at KPMG Bangladesh. As a fellow PowerApps enthusiast, I was impressed by Jesun's ability to build robust and secure automation solutions. He has a strong grasp of data logic and process optimization. His tools were not only efficient but also adhered to the strict compliance and security standards we maintain. [...]</p>
+          <details class="tm-full"><summary data-i18n="tm-read-full">Read full quote</summary><p>I worked alongside Jesun at KPMG Bangladesh. As a fellow PowerApps enthusiast, I was impressed by Jesun's ability to build robust and secure automation solutions. He has a strong grasp of data logic and process optimization. His tools were not only efficient but also adhered to the strict compliance and security standards we maintain. Jesun is a skilled data professional who builds with integrity.</p></details>
+        </blockquote>
+        <div class="tm-who">
+          <div class="tm-name">Hafiz-Al- Wasif</div>
+          <div class="tm-headline">Assistant Manager II - Investigation and Forensic Technology</div>
+          <div class="tm-meta"><span class="mono">Jan 21, 2026</span><span class="tm-rel" data-i18n="tm-rel-senior">Senior colleague, KPMG Bangladesh</span></div>
+        </div>
+      </article>
+
+      <article class="glass tm-card reveal">
+        <div class="tm-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          <p>I worked with Jesun during my time as an Associate at KPMG Bangladesh. Jesun was a key asset to our IT Advisory team, particularly in using technology to improve our audit processes. His expertise in PowerApps and automation helped us streamline workflows and ensure better compliance with control standards. [...]</p>
+          <details class="tm-full"><summary data-i18n="tm-read-full">Read full quote</summary><p>I worked with Jesun during my time as an Associate at KPMG Bangladesh. Jesun was a key asset to our IT Advisory team, particularly in using technology to improve our audit processes. His expertise in PowerApps and automation helped us streamline workflows and ensure better compliance with control standards. Jesun is a proactive team player who bridges the gap between technical development and audit requirements.</p></details>
+        </blockquote>
+        <div class="tm-who">
+          <div class="tm-name">Shaira Anjum</div>
+          <div class="tm-headline">Information Security Analyst at WSD, Former IS Auditor at KPMG Bangladesh</div>
+          <div class="tm-meta"><span class="mono">Jan 20, 2026</span><span class="tm-rel" data-i18n="tm-rel-same-team">Same team, KPMG Bangladesh</span></div>
+        </div>
+      </article>
+
+      <article class="glass tm-card reveal">
+        <div class="tm-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          <p>I had the pleasure of working with Jesun in the IT Advisory team at KPMG. He is a highly skilled professional who consistently introduced innovative solutions to our projects. His expertise in automating manual tasks with Power Automate and PowerApps significantly streamlined our processes and saved us a considerable amount of time on documentation and reporting. [...]</p>
+          <details class="tm-full"><summary data-i18n="tm-read-full">Read full quote</summary><p>I had the pleasure of working with Jesun in the IT Advisory team at KPMG. He is a highly skilled professional who consistently introduced innovative solutions to our projects. His expertise in automating manual tasks with Power Automate and PowerApps significantly streamlined our processes and saved us a considerable amount of time on documentation and reporting. Jesun is a supportive colleague and a valuable technical asset to any team.</p></details>
+        </blockquote>
+        <div class="tm-who">
+          <div class="tm-name">Mahmudul Hasan</div>
+          <div class="tm-headline">Senior Officer, IT Advisory, KPMG Bangladesh</div>
+          <div class="tm-meta"><span class="mono">Jan 20, 2026</span><span class="tm-rel" data-i18n="tm-rel-same-team">Same team, KPMG Bangladesh</span></div>
+        </div>
+      </article>
+
+      <article class="glass tm-card reveal">
+        <div class="tm-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          <p>I worked alongside Jesun at KPMG Bangladesh. While I focused on Information Systems Audit and Security, Jesun was the go-to person for process automation and data analytics. He developed robust PowerApps solutions that didn't just improve efficiency but also maintained strong data integrity and control standards. [...]</p>
+          <details class="tm-full"><summary data-i18n="tm-read-full">Read full quote</summary><p>I worked alongside Jesun at KPMG Bangladesh. While I focused on Information Systems Audit and Security, Jesun was the go-to person for process automation and data analytics. He developed robust PowerApps solutions that didn't just improve efficiency but also maintained strong data integrity and control standards. Jesun understands the balance between innovation and compliance, which makes him a valuable asset to any technical team.</p></details>
+        </blockquote>
+        <div class="tm-who">
+          <div class="tm-name">Imamul Huda</div>
+          <div class="tm-headline">CISA, Ex-KPMG, IBM Cybersecurity Analyst</div>
+          <div class="tm-meta"><span class="mono">Jan 19, 2026</span><span class="tm-rel" data-i18n="tm-rel-same-team">Same team, KPMG Bangladesh</span></div>
+        </div>
+      </article>
+
+      <article class="glass tm-card reveal">
+        <div class="tm-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          <p>I had the pleasure of supervising Jesun during our time in the IT Advisory team at KPMG Bangladesh. In a field where accuracy and efficiency are everything, Jesun was a standout asset. He possesses a rare ability to identify operational inefficiencies and immediately build technical solutions to fix them. I was particularly impressed by his initiative to design and deploy our internal Leave Management System and multiple Power Automate workflows. [...]</p>
+          <details class="tm-full"><summary data-i18n="tm-read-full">Read full quote</summary><p>I had the pleasure of supervising Jesun during our time in the IT Advisory team at KPMG Bangladesh. In a field where accuracy and efficiency are everything, Jesun was a standout asset. He possesses a rare ability to identify operational inefficiencies and immediately build technical solutions to fix them. I was particularly impressed by his initiative to design and deploy our internal Leave Management System and multiple Power Automate workflows. These tools didn't just digitize our manual processes; they significantly reduced administrative overhead and eliminated human error, allowing our audit team to focus on higher-value tasks. Jesun combines strong technical expertise in the Power Platform with a clear understanding of business requirements. I highly recommend him to any organization looking for a data professional who drives real, measurable change.</p></details>
+        </blockquote>
+        <div class="tm-who">
+          <div class="tm-name">Sifat E Rasul</div>
+          <div class="tm-headline">AVP Audit, Risk &amp; Compliance at Guardian Life Insurance, Ex KPMG, CISA</div>
+          <div class="tm-meta"><span class="mono">Jan 19, 2026</span><span class="tm-rel" data-i18n="tm-rel-manager">His manager, KPMG Bangladesh</span></div>
+        </div>
+      </article>
+
+      <article class="glass tm-card reveal">
+        <div class="tm-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          <p>I worked with Jesun in the IT Advisory team at KPMG. Jesun is a talented professional who bridges the gap between technical execution and business requirements. His ability to automate workflows using Power Platform significantly improved our audit efficiency and reduced manual errors. [...]</p>
+          <details class="tm-full"><summary data-i18n="tm-read-full">Read full quote</summary><p>I worked with Jesun in the IT Advisory team at KPMG. Jesun is a talented professional who bridges the gap between technical execution and business requirements. His ability to automate workflows using Power Platform significantly improved our audit efficiency and reduced manual errors. He understands the importance of building tools that are not just fast, but also compliant with security standards. I highly recommend him for any data or technical analyst role.</p></details>
+        </blockquote>
+        <div class="tm-who">
+          <div class="tm-name">Faria Shahjahan Anika</div>
+          <div class="tm-headline">GSA President, MISSM, Concordia University of Edmonton, Ex-KPMG</div>
+          <div class="tm-meta"><span class="mono">Jan 19, 2026</span><span class="tm-rel" data-i18n="tm-rel-same-team">Same team, KPMG Bangladesh</span></div>
+        </div>
+      </article>
+
+      <article class="glass tm-card reveal">
+        <div class="tm-mark" aria-hidden="true">&ldquo;</div>
+        <blockquote class="tm-quote">
+          <p>Jesun holds strong knowledge in Technology. He's specialized in Microsoft Power Platform; Specially Power Apps and Power Automate. He also holds a strong background in Oracle Apex. Wishing him all the best wishes for his future career.</p>
+        </blockquote>
+        <div class="tm-who">
+          <div class="tm-name">Kazi Rakib Hasan</div>
+          <div class="tm-headline">Executive at KPMG Rahman Rahman Huq</div>
+          <div class="tm-meta"><span class="mono">Dec 8, 2024</span><span class="tm-rel" data-i18n="tm-rel-senior-krrh">Senior colleague, KPMG Rahman Rahman Huq</span></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!--
+  CHESS WIDGET FRAGMENT (wave3 build). Nova integration:
+  1. Paste this <section> into index.html after the playground section, before writing.
+  2. In <head>: <link rel="stylesheet" href="assets/css/chess.css"/>
+  3. Before 
+<script type="module">
+  import { Chess } from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0/dist/esm/chess.js';
+  window.Chess = Chess;
+  window.dispatchEvent(new Event('jesun:chess-lib-ready'));
+</script>
+<script src="assets/js/chess.js"></script>
+<script src="assets/js/easter.js" defer></script>
+<script src="assets/js/twin-data.js" defer></script>
+<script src="assets/js/twin.js" defer></script>
+<script type="module" src="assets/js/hero3d.js"></script>
+</body>, ahead of chess.js (chess.js v1.x ships no UMD build, so ESM is the pinned route;
+     jsdelivr sends CORS headers, so this works from file:// too):
+       <script type="module">
+         import { Chess } from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0/dist/esm/chess.js';
+         window.Chess = Chess;
+         window.dispatchEvent(new Event('jesun:chess-lib-ready'));
+       </script>
+       <script src="assets/js/chess.js"></script>
+  4. Merge chess-strings.json into the STRINGS tables in assets/js/lang.js.
+  5. Optional nav link: <a href="#chess" data-i18n="nav-chess">chess</a> (add nav-chess to strings: en "chess", bn "দাবা").
+  Place assets: chess.js -> assets/js/chess.js, chess.css -> assets/css/chess.css.
+-->
+<section id="chess" class="section">
+  <div class="wrap">
+    <div class="kicker reveal" data-i18n="k-chess">// 08 . chess</div>
+    <h2 class="h2 reveal" data-i18n="h2-chess">Challenge the <span class="grad">machine.</span></h2>
+    <p class="section-sub reveal" data-i18n="sub-chess">A real chess engine running in your browser. Play the minimax AI, or play both sides. Checkmate it if you can.</p>
+    <div class="glass panel reveal chess-layout">
+      <div class="chess-board-col">
+        <div class="chess-status">
+          <span id="chess-turn-dot" class="turn-dot w" aria-hidden="true"></span>
+          <span id="chess-turn-text" data-i18n="chess-turn-white">White to move</span>
+          <span id="chess-who"></span>
+          <span id="chess-check-badge" class="check-badge hidden" data-i18n="chess-check">check!</span>
+        </div>
+        <div class="chess-board-wrap">
+          <div id="chess-board" class="chess-board" role="grid" aria-label="chess board"></div>
+          <div id="chess-promo" class="chess-promo hidden" role="dialog" aria-label="promotion choice"></div>
+          <div id="chess-banner" class="chess-banner hidden" aria-live="polite"></div>
+        </div>
+        <div class="chess-controls">
+          <button id="chess-new" class="btn btn-primary" type="button"><span data-i18n="chess-new">New game</span></button>
+          <button id="chess-undo" class="btn btn-ghost" type="button"><span data-i18n="chess-undo">Undo</span></button>
+          <button id="chess-flip" class="btn btn-ghost" type="button"><span data-i18n="chess-flip">Flip board</span></button>
+          <label class="mono" for="chess-difficulty"><span data-i18n="chess-difficulty">Difficulty</span></label>
+          <select id="chess-difficulty" class="chess-select">
+            <option value="2" data-i18n="chess-depth2">Casual (depth 2)</option>
+            <option value="3" data-i18n="chess-depth3">Sharp (depth 3)</option>
+          </select>
+          <label class="mono" for="chess-color"><span data-i18n="chess-playas">Play as</span></label>
+          <select id="chess-color" class="chess-select">
+            <option value="w" data-i18n="chess-white">White</option>
+            <option value="b" data-i18n="chess-black">Black</option>
+            <option value="both" data-i18n="chess-both">Both sides</option>
+          </select>
+        </div>
+        <p class="chess-hint-line" data-i18n="chess-hint">Click a piece, then a highlighted square. Dots are quiet moves, rings are captures.</p>
+      </div>
+      <div class="chess-side-col">
+        <div class="chess-tray">
+          <div class="tray-title"><span data-i18n="chess-captured-w">Captured by White</span><span class="tray-lead" id="chess-lead-w"></span></div>
+          <div class="tray-pieces" id="chess-cap-w" aria-live="polite">-</div>
+        </div>
+        <div class="chess-tray">
+          <div class="tray-title"><span data-i18n="chess-captured-b">Captured by Black</span><span class="tray-lead" id="chess-lead-b"></span></div>
+          <div class="tray-pieces" id="chess-cap-b" aria-live="polite">-</div>
+        </div>
+        <div class="chess-moves-panel">
+          <div class="tray-title"><span data-i18n="chess-moves">Moves</span></div>
+          <div id="chess-moves" class="chess-moves" aria-live="polite"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- READING LIST section. Drop inside <main> of index.html.
+     Verified items only: one Medium essay + the two AIP Conference Proceedings
+     papers. DOI links copied from the site's own research block. The book is
+     deliberately omitted (title not publicly verified; see research.md).
+     Styles: reuses the site's .post-grid / .post card pattern + content.css.
+     Strings: content-strings.json ("reading-*" keys). -->
+<section id="reading" class="section">
+  <div class="wrap">
+    <div class="kicker reveal" data-i18n="reading-kicker">// reading list</div>
+    <h2 class="h2 reveal" data-i18n="reading-h2">Published <span class="grad">words.</span></h2>
+    <p class="section-sub reveal" data-i18n="reading-sub">Only verified items: two papers and one essay.</p>
+    <div class="post-grid" data-stagger>
+      <a class="glass post reveal" href="https://medium.com/@jesunahmadushno" target="_blank" rel="noopener">
+        <div class="mono post-date">2025-11-12</div>
+        <h3>Beyond the Firewall: How Data-Driven Six Sigma is Quietly Solving the Multi-Billion Dollar Problem</h3>
+        <p data-i18n="reading-item1-desc">Essay on data-driven Six Sigma security, published on Medium.</p>
+        <span class="read-more" data-i18n="reading-item1-link">Read on Medium</span>
+      </a>
+      <a class="glass post reveal" href="https://doi.org/10.13140/RG.2.2.10516.99203" target="_blank" rel="noopener">
+        <div class="mono post-date">2023</div>
+        <h3 data-i18n="reading-item2-title">Fabric defect detection</h3>
+        <p data-i18n="reading-item2-desc">Wavelet transform plus neural networks for industrial quality control and defect classification. AIP Conference Proceedings.</p>
+        <span class="read-more">DOI</span>
+      </a>
+      <a class="glass post reveal" href="https://doi.org/10.1063/5.0148658" target="_blank" rel="noopener">
+        <div class="mono post-date">2023</div>
+        <h3 data-i18n="reading-item3-title">Elitist PSO with mutation</h3>
+        <p data-i18n="reading-item3-desc">Elitist particle swarm optimization with mutation and adaptive inertia. AIP Conference Proceedings.</p>
+        <span class="read-more">DOI</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS wall. Drop inside <main> of index.html.
+     Verifiable facts only; self-reported figures are his own claims, which is
+     fine on his own site. Styles: content.css. Strings: content-strings.json ("ach-*" keys). -->
+<section id="achievements" class="section">
+  <div class="wrap">
+    <div class="kicker reveal" data-i18n="ach-kicker">// achievements</div>
+    <h2 class="h2 reveal" data-i18n="ach-h2">Receipts, <span class="grad">not claims.</span></h2>
+    <p class="section-sub reveal" data-i18n="ach-sub">Verifiable facts only.</p>
+    <div class="ach-grid" data-stagger>
+      <div class="glass ach-card reveal">
+        <div class="mono ach-num">01</div>
+        <h3 data-i18n="ach-1-title">MSc Data Analytics, with Distinction</h3>
+        <p data-i18n="ach-1-desc">University of Niagara Falls Canada, conferred June 2026. CGPA 3.9154.</p>
+      </div>
+      <div class="glass ach-card reveal">
+        <div class="mono ach-num">02</div>
+        <h3 data-i18n="ach-2-title">Two published ML papers</h3>
+        <p data-i18n="ach-2-desc">AIP Conference Proceedings, 2023: fabric defect detection with wavelets and neural networks; elitist PSO with mutation and adaptive inertia.</p>
+      </div>
+      <div class="glass ach-card reveal">
+        <div class="mono ach-num">03</div>
+        <h3 data-i18n="ach-3-title">MIAS Foundation co-founder</h3>
+        <p data-i18n="ach-3-desc">50,000+ families reached, 10+ lac BDT in flood relief, education for 5,000 children.</p>
+      </div>
+      <div class="glass ach-card reveal">
+        <div class="mono ach-num">04</div>
+        <h3 data-i18n="ach-4-title">Jesun.Code v0.6.0</h3>
+        <p data-i18n="ach-4-desc">A programming language that reads like plain English. 220/220 tests green.</p>
+      </div>
+      <div class="glass ach-card reveal">
+        <div class="mono ach-num">05</div>
+        <h3 data-i18n="ach-5-title">KPMG IT Advisory</h3>
+        <p data-i18n="ach-5-desc">20+ Power Automate workflows, 20+ Power BI dashboards, 5+ ISO 27001 audits across banking and healthcare.</p>
+      </div>
+      <div class="glass ach-card reveal">
+        <div class="mono ach-num">06</div>
+        <h3 data-i18n="ach-6-title">Gallea Ai pipelines</h3>
+        <p data-i18n="ach-6-desc">4,200+ records crawled, cleaned and sealed. 500+ buyer-query simulations. Pass rate restored from 72.7% to 95%+.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNITY strip. Drop inside <main> of index.html. One verified item only:
+     GDG on Campus UNF, Social Media Coordinator, Sep 2025 to present.
+     Styles: content.css. Strings: content-strings.json ("community-*" keys). -->
+<section id="community" class="section">
+  <div class="wrap">
+    <div class="kicker reveal" data-i18n="community-kicker">// community</div>
+    <h2 class="h2 reveal" data-i18n="community-h2">Showing <span class="grad">up.</span></h2>
+    <div class="glass community-strip reveal">
+      <div class="community-badge mono">GDG</div>
+      <div class="community-body">
+        <div class="mono community-date" data-i18n="community-date">Sep 2025 to present</div>
+        <h3 data-i18n="community-role">Social Media Coordinator</h3>
+        <div class="community-org" data-i18n="community-org">GDG on Campus, University of Niagara Falls</div>
+        <p data-i18n="community-desc">Running the social media presence of the Google Developer Group on Campus chapter at the University of Niagara Falls.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AI TWIN section. Drop inside <main> of index.html (after the contact section works well).
+     Loads twin-data.js + twin.js. Styles come from content.css.
+     Visible strings carry data-i18n="twin-*" keys; EN/BN tables live in content-strings.json. -->
+<section id="twin" class="section">
+  <div class="wrap">
+    <div class="kicker reveal" data-i18n="twin-kicker">// ai twin</div>
+    <h2 class="h2 reveal" data-i18n="twin-h2">Ask the <span class="grad">twin.</span></h2>
+    <p class="section-sub reveal" data-i18n="twin-sub">Guided Q&amp;A. Answers come from this site's data, not a live language model.</p>
+    <div class="glass twin-panel reveal">
+      <div class="twin-head mono">
+        <span class="dot g"></span>
+        <span data-i18n="twin-title">jesun.twin</span>
+        <span class="twin-mode" data-i18n="twin-mode">guided q&amp;a, local only</span>
+      </div>
+      <div id="twin-log" class="twin-log" aria-live="polite"></div>
+      <div id="twin-chips" class="twin-chips"></div>
+      <form id="twin-form" class="twin-form" autocomplete="off">
+        <span class="mono-prompt">&gt;</span>
+        <input id="twin-in" class="twin-in" data-i18n="twin-placeholder" placeholder="Ask about Jesun, his work, or his stack..." aria-label="Ask the twin" spellcheck="false"/>
+        <button class="btn btn-primary twin-send" type="submit" data-i18n="twin-send">Send</button>
+      </form>
+    </div>
+  </div>
+</section>
+<script src="twin-data.js"></script>
+<script src="twin.js"></script>
+
 <section id="contact" class="section">
   <div class="wrap">
     <div class="kicker reveal" data-i18n="k-contact">// 07 . contact</div>
@@ -710,7 +1076,8 @@ for each n in [1, 2, 3]
         <a href="https://github.com/JesunAhmadUshno" target="_blank" rel="noopener">GitHub</a>
         <a href="https://linkedin.com/in/jesunahmadushno" target="_blank" rel="noopener">LinkedIn</a>
       </div>
-    </footer>
+      <div class="foot-uses"><a href="uses.html">uses</a></div>
+</footer>
   </div>
 </section>
 </main>
