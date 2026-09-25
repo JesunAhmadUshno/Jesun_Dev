@@ -1909,3 +1909,13 @@ body {
 #more-certs > div::-webkit-scrollbar-thumb:hover {
     background: #10b981;
 }
+/* ---- Team tab ---- */
+.team-card{background:rgba(23,23,23,.6);border:1px solid #262626;border-radius:1.25rem;padding:1rem;transition:all .25s ease;cursor:pointer;width:100%}
+.team-card:hover{border-color:rgba(16,185,129,.5);transform:translateY(-3px);background:rgba(30,30,30,.8)}
+.team-photo{width:72px;height:72px;border-radius:9999px;object-fit:cover;margin:0 auto;border:2px solid #333;transition:border-color .25s}
+.team-card:hover .team-photo{border-color:#10b981}
+.team-dept{margin-bottom:2.5rem}
+.team-entity{margin-bottom:3rem}
+.team-filter{background:#171717;border:1px solid #2a2a2a;color:#a3a3a3;font-size:.8rem;font-weight:600;padding:.55rem 1.25rem;border-radius:9999px;transition:all .2s;cursor:pointer}
+.team-filter:hover{border-color:#10b981;color:#fff}
+.team-filter.active{background:#10b981;border-color:#10b981;color:#052e22}
