@@ -46,10 +46,10 @@
       shipEl.innerHTML = pushes.map(function (p) {
         var repo = String(p.repo.name).split('/')[1];
         var ref = String(p.payload.ref || '').split('/').pop();
-        var n = p.payload.size || (p.payload.commits || []).length;
+        var sha = String(p.payload.head || '').slice(0, 7);
         return '<div class="ship-row">' +
           '<span class="mono ship-repo">' + repo + '</span>' +
-          '<span class="ship-meta">' + n + ' commit' + (n === 1 ? '' : 's') + ' to ' + ref + '</span>' +
+          '<span class="ship-meta">' + sha + ' to ' + ref + '</span>' +
           '<span class="mono ship-date">' + relDate(p.created_at) + '</span></div>';
       }).join('');
     }).catch(function () {
