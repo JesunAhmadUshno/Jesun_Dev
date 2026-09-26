@@ -267,3 +267,32 @@ footer .mono{font-size:12px;color:var(--faint)}
 .case{padding:140px 0 80px;min-height:100vh}
 .case-lede{font-size:clamp(17px,2.4vw,22px);line-height:1.7;color:#c6d0da;max-width:760px;margin:18px 0 22px}
 .case-links{display:flex;gap:12px;margin:24px 0;flex-wrap:wrap}
+
+/* ---- contact form ---- */
+.contact-form{max-width:640px;margin:36px auto 0;text-align:left}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cf-field{margin-bottom:14px}
+.cf-field label{display:block;font-family:var(--font-m);font-size:12px;letter-spacing:1px;color:var(--muted);margin-bottom:6px;text-transform:lowercase}
+.cf-field label::before{content:'~/';color:var(--faint);font-size:10px}
+.contact-form input[type=text],.contact-form input[type=email],.contact-form textarea{width:100%;background:rgba(4,6,10,.6);border:1px solid var(--line-soft);border-radius:12px;padding:12px 14px;color:var(--text);font-family:var(--font-d);font-size:15px;transition:border-color .2s,box-shadow .2s}
+.contact-form input:focus,.contact-form textarea:focus{outline:none;border-color:var(--green);box-shadow:0 0 0 3px rgba(0,255,136,.12)}
+.contact-form textarea{resize:vertical;min-height:110px}
+.contact-form button[disabled]{opacity:.6;cursor:wait}
+.cf-honey{position:absolute;left:-9999px;opacity:0;height:0;width:0}
+.cf-status{margin-top:14px;font-size:13px;min-height:20px}
+.cf-status.ok{color:var(--green)}
+.cf-status.err{color:#ff6b6b}
+@media(max-width:640px){.cf-row{grid-template-columns:1fr}}
+
+/* ---- countdown strip ---- */
+.cd-strip{border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);background:rgba(4,6,10,.55);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.cd-inner{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap;padding:18px 24px}
+.cd-pre{font-family:var(--font-d);font-weight:600;font-size:17px}
+.cd-timer{display:flex;align-items:baseline;gap:8px}
+.cd-cell{display:flex;flex-direction:column;align-items:center;min-width:58px;background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:8px 10px}
+.cd-cell b{font-size:26px;color:var(--green);line-height:1.1}
+.cd-cell i{font-style:normal;font-size:10px;letter-spacing:2px;color:var(--muted);text-transform:uppercase}
+.cd-sep{color:var(--faint);font-size:22px}
+.cd-live{display:flex;align-items:center;gap:16px;flex-wrap:wrap;justify-content:center;font-weight:600;font-size:17px}
+.btn-sm{padding:8px 18px;font-size:13px}
+.hidden{display:none!important}

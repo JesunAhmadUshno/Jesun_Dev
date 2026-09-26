@@ -120,7 +120,19 @@
       "uses-sub": "The software I reach for daily. Hardware changes too often to list, so the honest line is: desk setup changes often; ask me directly.",
       "uses-tools": "Tools",
       "nav-testimonials": "testimonials",
-      "k-contact": "// 13 . contact"
+      "k-contact": "// 13 . contact",
+      "cf-resume": "Download resume",
+      "cf-name": "Name", "cf-email": "Email", "cf-msg": "Message",
+      "cf-send": "Send message",
+      "cf-sending": "Sending...",
+      "cf-ok": "Message sent. I will get back to you soon.",
+      "cf-err": "Something went wrong. Please email me directly instead.",
+      "cf-req": "Please add your name, a valid email, and a message.",
+      "cd-kicker": "// jesun.code v1.0",
+      "cd-pre": "Jesun.Code v1.0 drops in",
+      "cd-live": "Jesun.Code v1.0 is live",
+      "cd-gh": "Jesun.Code on GitHub",
+      "cd-days": "days", "cd-hours": "hrs", "cd-mins": "min", "cd-secs": "sec"
     },
     bn: {
       'nav-about': 'পরিচিতি', 'nav-experience': 'অভিজ্ঞতা', 'nav-team': 'টিম',
@@ -245,7 +257,19 @@
       "uses-sub": "\u09aa\u09cd\u09b0\u09a4\u09bf\u09a6\u09bf\u09a8 \u09af\u09c7\u09b8\u09ac \u09b8\u09ab\u099f\u0993\u09af\u09bc\u09cd\u09af\u09be\u09b0 \u09ac\u09cd\u09af\u09ac\u09b9\u09be\u09b0 \u0995\u09b0\u09bf\u0964 \u09b9\u09be\u09b0\u09cd\u09a1\u0993\u09af\u09bc\u09cd\u09af\u09be\u09b0 \u098f\u09a4 \u09ac\u09a6\u09b2\u09be\u09af\u09bc \u09af\u09c7 \u09a4\u09be\u09b2\u09bf\u0995\u09be \u0995\u09b0\u09be \u09ac\u09c3\u09a5\u09be, \u09a4\u09be\u0987 \u09b8\u09ce \u0995\u09a5\u09be\u099f\u09be \u09b9\u09b2\u09cb: \u09a1\u09c7\u09b8\u09cd\u0995 \u09b8\u09c7\u099f\u0986\u09aa \u09aa\u09cd\u09b0\u09be\u09af\u09bc\u0987 \u09ac\u09a6\u09b2\u09be\u09af\u09bc; \u09b8\u09b0\u09be\u09b8\u09b0\u09bf \u099c\u09bf\u099c\u09cd\u099e\u09c7\u09b8 \u0995\u09b0\u09cb\u0964",
       "uses-tools": "\u099f\u09c1\u09b2\u09b8",
       "nav-testimonials": "\u09aa\u09cd\u09b0\u09b6\u0982\u09b8\u09be",
-      "k-contact": "// \u09e7\u09e9 . \u09af\u09cb\u0997\u09be\u09af\u09cb\u0997"
+      "k-contact": "// \u09e7\u09e9 . \u09af\u09cb\u0997\u09be\u09af\u09cb\u0997",
+      'cf-resume': '\u09b0\u09c7\u099c\u09bf\u0989\u09ae\u09c7 \u09a1\u09be\u0989\u09a8\u09b2\u09cb\u09a1',
+      'cf-name': '\u09a8\u09be\u09ae', 'cf-email': '\u0987\u09ae\u09c7\u0987\u09b2', 'cf-msg': '\u09ac\u09be\u09b0\u09cd\u09a4\u09be',
+      'cf-send': '\u09ac\u09be\u09b0\u09cd\u09a4\u09be \u09aa\u09be\u09a0\u09be\u0993',
+      'cf-sending': '\u09aa\u09be\u09a0\u09be\u09a8\u09cb \u09b9\u099a\u09cd\u099b\u09c7...',
+      'cf-ok': '\u09ac\u09be\u09b0\u09cd\u09a4\u09be \u09aa\u09be\u09a0\u09be\u09a8\u09cb \u09b9\u09af\u09bc\u09c7\u099b\u09c7\u0964 \u09b6\u09c0\u0998\u09cd\u09b0\u0987 \u0989\u09a4\u09cd\u09a4\u09b0 \u09a6\u09c7\u09ac\u0964',
+      'cf-err': '\u0995\u09bf\u099b\u09c1 \u098f\u0995\u099f\u09be \u09b8\u09ae\u09b8\u09cd\u09af\u09be \u09b9\u09af\u09bc\u09c7\u099b\u09c7\u0964 \u09b8\u09b0\u09be\u09b8\u09b0\u09bf \u0987\u09ae\u09c7\u0987\u09b2 \u0995\u09b0\u09cb\u0964',
+      'cf-req': '\u09a8\u09be\u09ae, \u09b8\u09a0\u09bf\u0995 \u0987\u09ae\u09c7\u0987\u09b2 \u0986\u09b0 \u09ac\u09be\u09b0\u09cd\u09a4\u09be \u09a6\u09be\u0993\u0964',
+      'cd-kicker': '// \u099c\u09c7\u09b8\u09c1\u09a8.\u0995\u09cb\u09a1 v1.0',
+      'cd-pre': 'Jesun.Code v1.0 \u0986\u09b8\u099b\u09c7',
+      'cd-live': 'Jesun.Code v1.0 \u09b2\u09be\u0987\u09ad',
+      'cd-gh': '\u0997\u09bf\u099f\u09b9\u09be\u09ac\u09c7 Jesun.Code',
+      'cd-days': '\u09a6\u09bf\u09a8', 'cd-hours': '\u0998\u09a3\u09cd\u099f\u09be', 'cd-mins': '\u09ae\u09bf\u09a8\u09bf\u099f', 'cd-secs': '\u09b8\u09c7\u0995\u09c7\u09a8\u09cd\u09a1'
     }
   };
 
@@ -283,5 +307,6 @@
     });
   });
 
+  window.__STRINGS = STRINGS;
   window.__applyLang = apply;
 })();
