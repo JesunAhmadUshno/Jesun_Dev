@@ -36,8 +36,8 @@
         id: "who",
         keys: ["who is jesun", "who are you", "জেসুন", "about", "yourself", "bio", "introduction", "who is he", "jesun ahmad ushno", "twin"],
         a: {
-          en: "Jesun Ahmad Ushno is a Toronto-based AI engineer and data specialist. He works at Gallea Ai on applied ML and RAG pipelines, runs the 49-seat autonomous AI crew Jesun.Ai, and built Jesun.Code, a programming language that reads like plain English. MSc Data Analytics, University of Niagara Falls Canada (2026), graduated with distinction, CGPA 3.9154.",
-          bn: "জেসুন আহমদ উষ্ণো টরন্টোভিত্তিক একজন AI ইঞ্জিনিয়ার ও ডেটা স্পেশালিস্ট। তিনি Gallea Ai-তে অ্যাপ্লাইড ML ও RAG পাইপলাইন নিয়ে কাজ করেন, ৪৯ সিটের স্বয়ংক্রিয় AI ক্রু Jesun.Ai চালান, আর বানিয়েছেন Jesun.Code, প্লেইন ইংরেজির মতো পড়া যায় এমন প্রোগ্রামিং ভাষা। MSc Data Analytics, University of Niagara Falls Canada (২০২৬), ডিসটিংকশনসহ স্নাতক, CGPA 3.9154।"
+          en: "Jesun Ahmad Ushno is a Toronto-based AI engineer and data specialist. He works at Gallea Ai on applied ML and RAG pipelines, runs the 49-seat autonomous AI crew Jesun.Ai, and built Jesun.Code, a programming language that reads like plain English. MSc Data Analytics, University of Niagara Falls Canada (2026), graduated with distinction.",
+          bn: "জেসুন আহমদ উষ্ণো টরন্টোভিত্তিক একজন AI ইঞ্জিনিয়ার ও ডেটা স্পেশালিস্ট। তিনি Gallea Ai-তে অ্যাপ্লাইড ML ও RAG পাইপলাইন নিয়ে কাজ করেন, ৪৯ সিটের স্বয়ংক্রিয় AI ক্রু Jesun.Ai চালান, আর বানিয়েছেন Jesun.Code, প্লেইন ইংরেজির মতো পড়া যায় এমন প্রোগ্রামিং ভাষা। MSc Data Analytics, University of Niagara Falls Canada (২০২৬), ডিসটিংকশনসহ স্নাতক।"
         }
       },
       {
@@ -76,8 +76,8 @@
         id: "education",
         keys: ["education", "degree", "msc", "masters", "university", "study", "studied", "cgpa", "distinction", "college", "graduate", "niagara"],
         a: {
-          en: "MSc in Data Analytics, University of Niagara Falls Canada, conferred June 2026, graduated with distinction, CGPA 3.9154. Earlier: BSc in Computer Engineering, AIUB (2018 to 2023).",
-          bn: "MSc in Data Analytics, University of Niagara Falls Canada, জুন ২০২৬-এ কনফার্ড, ডিসটিংকশনসহ স্নাতক, CGPA 3.9154। আগে: BSc in Computer Engineering, AIUB (২০১৮ থেকে ২০২৩)।"
+          en: "MSc in Data Analytics, University of Niagara Falls Canada, conferred June 2026, graduated with distinction. Earlier: BSc in Computer Engineering, AIUB (2018 to 2023).",
+          bn: "MSc in Data Analytics, University of Niagara Falls Canada, জুন ২০২৬-এ কনফার্ড, ডিসটিংকশনসহ স্নাতক। আগে: BSc in Computer Engineering, AIUB (২০১৮ থেকে ২০২৩)।"
         }
       },
       {
