@@ -854,10 +854,13 @@ for each n in [1, 2, 3]
 </section>
 
 <!--
-  CHESS WIDGET FRAGMENT (wave3 build). Nova integration:
-  1. Paste this <section> into index.html after the playground section, before writing.
+  CHESS WIDGET FRAGMENT (wave3 build). Nova integration notes:
+  1. <section id="chess"> is pasted after the playground section, before writing.
   2. In <head>: <link rel="stylesheet" href="assets/css/chess.css"/>
-  3. Before 
+  3. chess.js v1.x ships no UMD build, so the ESM import below is the pinned route
+     (jsdelivr sends CORS headers, so this works from file:// too).
+  4. chess-strings.json merged into the STRINGS tables in assets/js/lang.js.
+-->
 <script type="module">
   import { Chess } from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0/dist/esm/chess.js';
   window.Chess = Chess;
@@ -868,18 +871,6 @@ for each n in [1, 2, 3]
 <script src="assets/js/twin-data.js" defer></script>
 <script src="assets/js/twin.js" defer></script>
 <script type="module" src="assets/js/hero3d.js"></script>
-</body>, ahead of chess.js (chess.js v1.x ships no UMD build, so ESM is the pinned route;
-     jsdelivr sends CORS headers, so this works from file:// too):
-       <script type="module">
-         import { Chess } from 'https://cdn.jsdelivr.net/npm/chess.js@1.0.0/dist/esm/chess.js';
-         window.Chess = Chess;
-         window.dispatchEvent(new Event('jesun:chess-lib-ready'));
-       </script>
-       <script src="assets/js/chess.js"></script>
-  4. Merge chess-strings.json into the STRINGS tables in assets/js/lang.js.
-  5. Optional nav link: <a href="#chess" data-i18n="nav-chess">chess</a> (add nav-chess to strings: en "chess", bn "দাবা").
-  Place assets: chess.js -> assets/js/chess.js, chess.css -> assets/css/chess.css.
--->
 <section id="chess" class="section">
   <div class="wrap">
     <div class="kicker reveal" data-i18n="k-chess">// 08 . chess</div>
@@ -1054,8 +1045,6 @@ for each n in [1, 2, 3]
     </div>
   </div>
 </section>
-<script src="twin-data.js"></script>
-<script src="twin.js"></script>
 
 <section id="guestbook" class="section">
   <div class="wrap">
