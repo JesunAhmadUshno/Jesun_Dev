@@ -20,7 +20,7 @@
     },
     whoami: function () { line('jesun: ai engineer, data specialist, vibe coder. toronto.'); },
     about: function () {
-      line('MSc Data Analytics, University of Niagara Falls Canada (2026, with distinction, CGPA 3.9154).');
+      line('MSc Data Analytics, University of Niagara Falls Canada (2026, with distinction).');
       line('AI Engineer & Data Specialist at Gallea Ai. Ex-KPMG IT Advisory. Published ML researcher. MIAS Foundation co-founder.');
     },
     now: function () {
