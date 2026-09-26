@@ -46,7 +46,7 @@
       shipEl.innerHTML = pushes.map(function (p) {
         var repo = String(p.repo.name).split('/')[1];
         var ref = String(p.payload.ref || '').split('/').pop();
-        var n = (p.payload.commits || []).length;
+        var n = p.payload.size || (p.payload.commits || []).length;
         return '<div class="ship-row">' +
           '<span class="mono ship-repo">' + repo + '</span>' +
           '<span class="ship-meta">' + n + ' commit' + (n === 1 ? '' : 's') + ' to ' + ref + '</span>' +
