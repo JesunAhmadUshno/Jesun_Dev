@@ -18,7 +18,62 @@
 <meta name="twitter:description" content="AI Engineer and Data Specialist in Toronto. Builder of Jesun.Ai and Jesun.Code."/>
 <meta name="twitter:image" content="https://jesunahmadushno.com/assets/og-card.jpg"/>
 <script type="application/ld+json">
-{"@context":"https://schema.org","@type":"Person","name":"Jesun Ahmad Ushno","jobTitle":"AI Engineer & Data Specialist","url":"https://jesunahmadushno.com/","address":{"@type":"PostalAddress","addressLocality":"Toronto","addressRegion":"ON","addressCountry":"CA"},"alumniOf":{"@type":"EducationalOrganization","name":"University of Niagara Falls Canada"},"sameAs":["https://github.com/JesunAhmadUshno","https://www.linkedin.com/in/jesunahmadushno/","https://medium.com/@jesunahmadushno"]}
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://jesunahmadushno.com/#person",
+      "name": "Jesun Ahmad Ushno",
+      "alternateName": ["Jesun Ushno", "Jesun Ahmed Ushno"],
+      "jobTitle": "AI Engineer & Data Specialist",
+      "description": "AI Engineer & Data Specialist at Gallea Ai, Toronto. Founder and CEO of Jesun.Ai. MSc Data Analytics, University of Niagara Falls Canada (with distinction). Published machine-learning researcher.",
+      "url": "https://jesunahmadushno.com",
+      "image": "https://jesunahmadushno.com/images/headshot.jpg",
+      "worksFor": [
+        { "@id": "https://galleaai.com/#org" },
+        { "@id": "https://jesunahmadushno.com/#jesun-ai" }
+      ],
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "University of Niagara Falls Canada"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "American International University-Bangladesh"
+        }
+      ],
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "ORCID",
+        "value": "0000-0002-6070-9025",
+        "url": "https://orcid.org/0000-0002-6070-9025"
+      },
+      "knowsAbout": ["Artificial Intelligence", "Machine Learning", "Data Analytics", "Retrieval-Augmented Generation"],
+      "sameAs": [
+        "https://www.wikidata.org/wiki/Q141660473",
+        "https://orcid.org/0000-0002-6070-9025",
+        "https://www.linkedin.com/in/jesunahmadushno",
+        "https://github.com/JesunAhmadUshno",
+        "https://medium.com/@jesunahmadushno",
+        "https://about.me/JesunAhmadUshno"
+      ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://galleaai.com/#org",
+      "name": "Gallea Ai",
+      "url": "https://galleaai.com"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://jesunahmadushno.com/#jesun-ai",
+      "name": "Jesun.Ai",
+      "founder": { "@id": "https://jesunahmadushno.com/#person" }
+    }
+  ]
+}
 </script>
 <link rel="icon" type="image/png" href="favicon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
