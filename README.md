@@ -2,7 +2,7 @@
 
 # JESUN<span style="color: #10b981">.DEV</span>
 
-**Data Analytics & Vibe Coding Portfolio**
+**AI Engineering & Data Analytics Portfolio**
 
 [![Live Demo](https://img.shields.io/badge/🌐_Live-jesunahmadushno.com-10b981?style=for-the-badge)](http://jesunahmadushno.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
@@ -10,7 +10,7 @@
 
 [Live Demo](http://jesunahmadushno.com/) • [Features](#-features) • [Tech Stack](#-tech-stack) • [Setup](#-running-locally) • [Support](#-support)
 
-*A premium, AI-driven interactive portfolio merging Data Analytics with **"Vibe Coding"** — transforming static resumes into immersive digital experiences.*
+*A premium, AI-driven interactive portfolio merging AI Engineering with Data Analytics — transforming static resumes into immersive digital experiences.*
 
 ---
 
@@ -169,7 +169,7 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 
 **[🌐 Launch Portfolio](http://jesunahmadushno.com/)**
 
-*Designed & Vibe Coded with ❤️ by Jesun Ahmad Ushno*
+*Designed & engineered by Jesun Ahmad Ushno*
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white)](https://linkedin.com/in/jesunahmadushno)
 [![GitHub](https://img.shields.io/badge/GitHub-100000?style=flat-square&logo=github&logoColor=white)](https://github.com/JesunAhmadUshno)
