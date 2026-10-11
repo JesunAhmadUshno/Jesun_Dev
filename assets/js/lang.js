@@ -12,7 +12,7 @@
       'k-about': '// 01 . about', 'k-experience': '// 02 . experience', 'k-team': '// 03 . team',
       'k-projects': '// 04 . projects', 'k-playground': '// 05 . playground',
       'k-writing': '// 06 . writing', 'k-contact': '// 07 . contact',
-      'h2-about': 'Engineer by craft,<br/>vibe coder by soul.',
+      'h2-about': 'Engineer by craft,<br/>first-generation AI by record.',
       'h2-experience': 'The journey so far.',
       'h2-team': 'The crew behind<br/>the <span class="grad">machine.</span>',
       'h2-projects': 'Selected work.',
@@ -271,7 +271,7 @@
   };
 
   var PHRASES = {
-    en: ['AI Engineer & Data Specialist', 'Vibe Coder', 'Founder of Jesun.Ai', 'Builder of Jesun.Code'],
+    en: ['AI Engineer & Data Specialist', 'First-Gen AI Engineer', 'Founder of Jesun.Ai', 'Builder of Jesun.Code'],
     bn: ['এআই ইঞ্জিনিয়ার ও ডেটা স্পেশালিস্ট', 'ভাইব কোডার', 'Jesun.Ai-এর প্রতিষ্ঠাতা', 'Jesun.Code-এর নির্মাতা']
   };
 

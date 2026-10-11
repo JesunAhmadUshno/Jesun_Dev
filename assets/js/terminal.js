@@ -18,7 +18,7 @@
     help: function () {
       line('commands: help, whoami, about, now, team, projects, playground, writing, contact, socials, clear');
     },
-    whoami: function () { line('jesun: ai engineer, data specialist, vibe coder. toronto.'); },
+    whoami: function () { line('jesun: ai engineer, data specialist, founder. toronto.'); },
     about: function () {
       line('MSc Data Analytics, University of Niagara Falls Canada (2026, with distinction).');
       line('AI Engineer & Data Specialist at Gallea Ai. Ex-KPMG IT Advisory. Published ML researcher. MIAS Foundation co-founder.');

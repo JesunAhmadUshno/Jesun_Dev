@@ -25,7 +25,7 @@
   /* ---- typed hero ---- */
   var phrasesEN = [
     'AI Engineer & Data Specialist',
-    'Vibe Coder',
+    'First-Gen AI Engineer',
     'Founder of Jesun.Ai',
     'Builder of Jesun.Code'
   ];
