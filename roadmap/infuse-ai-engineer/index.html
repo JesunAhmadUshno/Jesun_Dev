@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>The INFUSE Roadmap: 8 Weeks, 8 Proof Projects | Jesun Ahmad Ushno</title>
+<meta name="description" content="One real job post (Senior AI Engineer, INFUSE) read as a test list: eight weeks, eight proof projects, ninety minutes a day. The exact prompt, every project brief, and a free course for each week."/>
+<link rel="icon" type="image/png" href="../../favicon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+:root{
+  --ink:#0B0B0C; --paper:#F5F3EE; --ash:#9A978E; --red:#FF3D2E;
+  --rule:#2A2A2C; --panel:#141416;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--paper);font-family:"Space Grotesk",system-ui,sans-serif;line-height:1.6}
+.wrap{max-width:860px;margin:0 auto;padding:0 20px}
+header{border-bottom:1px solid var(--rule);padding:18px 0}
+header .wrap{display:flex;justify-content:space-between;align-items:center}
+.logo{color:var(--paper);text-decoration:none;font-weight:700;letter-spacing:.02em}
+.logo span{color:var(--red)}
+header nav a{color:var(--ash);text-decoration:none;font-family:"JetBrains Mono",monospace;font-size:13px;text-transform:uppercase;letter-spacing:.08em}
+header nav a:hover{color:var(--paper)}
+main{padding:56px 0 72px}
+.kicker{font-family:"JetBrains Mono",monospace;color:var(--red);text-transform:uppercase;letter-spacing:.14em;font-size:13px;margin-bottom:18px}
+h1{font-size:clamp(34px,6vw,58px);line-height:1.05;text-transform:uppercase;font-weight:700;margin-bottom:20px}
+h1 .red{color:var(--red)}
+.lede{font-size:19px;color:var(--paper);max-width:68ch;margin-bottom:14px}
+.meta{font-family:"JetBrains Mono",monospace;color:var(--ash);font-size:13px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:40px}
+.meta a{color:var(--paper)}
+h2{font-size:26px;text-transform:uppercase;margin:48px 0 16px;padding-top:28px;border-top:1px solid var(--rule)}
+h2 .no{color:var(--red);font-family:"JetBrains Mono",monospace;font-size:20px;margin-right:10px}
+p{margin-bottom:14px;max-width:72ch}
+ol.steps{margin:0 0 8px 22px}
+ol.steps li{margin-bottom:10px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:20px 0}
+.panel .label{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--red);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px}
+pre{white-space:pre-wrap;font-family:"JetBrains Mono",monospace;font-size:14.5px;line-height:1.65;color:var(--paper)}
+button.copy{margin-top:16px;background:var(--red);color:var(--ink);border:0;border-radius:6px;padding:10px 18px;font-family:"JetBrains Mono",monospace;font-weight:700;font-size:13px;text-transform:uppercase;letter-spacing:.08em;cursor:pointer}
+button.copy:hover{opacity:.88}
+.week{border:1px solid var(--rule);border-radius:8px;padding:24px;margin:18px 0;background:var(--panel)}
+.week h3{font-size:21px;text-transform:uppercase;margin-bottom:12px}
+.week h3 .no{color:var(--red);font-family:"JetBrains Mono",monospace;font-size:17px;margin-right:8px}
+.week .row{margin-bottom:10px}
+.week .tag{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--red);text-transform:uppercase;letter-spacing:.12em;display:block;margin-bottom:3px}
+.week .done{border-left:3px solid var(--red);padding-left:12px}
+.week a{color:var(--paper);text-decoration-color:var(--red);text-underline-offset:3px}
+a{color:var(--paper)}
+.disclosure{border:1px solid var(--rule);border-radius:8px;padding:20px 22px;margin-top:48px;color:var(--ash);font-size:15px}
+.disclosure strong{color:var(--paper)}
+footer{border-top:1px solid var(--rule);padding:26px 0 40px;color:var(--ash);font-family:"JetBrains Mono",monospace;font-size:13px}
+footer a{color:var(--ash)}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="../../index.html">jesun<span>.</span>ahmadushno</a>
+    <nav><a href="../../index.html">Home</a></nav>
+  </div>
+</header>
+<main>
+  <div class="wrap">
+    <div class="kicker">Pattern 19, Episode 1: the full roadmap</div>
+    <h1>The INFUSE Roadmap: <span class="red">8 weeks, 8 proof projects</span></h1>
+    <p class="lede">One real job post, read as a test list. One project per requirement line. Ninety minutes a day, five days a week, sixty hours total. Every project ships in public, so every line of the final application has a link behind it.</p>
+    <p class="meta">Target post: <a href="https://job-boards.greenhouse.io/infuse/jobs/4734597005" target="_blank" rel="noopener">Senior AI Engineer, INFUSE (Greenhouse)</a>, checked 2026-10-18</p>
+
+    <h2>How to run this plan</h2>
+    <ol class="steps">
+      <li>Open the target post. Save it as a PDF. Posts close; your copy does not.</li>
+      <li>Run the exact prompt below on the post. Check every project against the real post lines. Cut anything the post does not ask for.</li>
+      <li>Build in order. Each week ends with a public repo, a short README, and one demo clip or screenshot set.</li>
+      <li>Apply wide from week 6. Save the dream post for last, when the proof is done.</li>
+    </ol>
+
+    <h2>The exact prompt</h2>
+    <p>Paste a job post after this prompt:</p>
+    <div class="panel">
+      <div class="label">Copy the prompt</div>
+      <pre id="prompt-text">Read this job post as a test list. For each requirement line that names a skill, a duty, or a tool, write one small project that proves it. Rules: one project per line, eight projects at most, each project must fit in one week at ninety minutes a day, each project must end in a public artifact (a repo, a live demo, or a written report), and each project brief must name the post line it answers. End with a calendar: week, project, post line, artifact. No project may repeat a skill another project already proves.</pre>
+      <button class="copy" id="copy-btn" type="button">Copy prompt</button>
+    </div>
+
+    <h2>Week by week</h2>
+
+    <div class="week">
+      <h3><span class="no">W1</span>An MCP server with governed access</h3>
+      <div class="row"><span class="tag">Post line it answers</span>Build and maintain MCP servers and tool layers for governed agent access.</div>
+      <div class="row"><span class="tag">Build</span>One MCP server that exposes three tools over a small dataset (search, read one record, write one log line), with a permission check on each tool.</div>
+      <div class="row done"><span class="tag">Done when</span>A client connects, calls all three tools, and a denied call is logged.</div>
+      <div class="row"><span class="tag">Free course</span><a href="https://modelcontextprotocol.io/quickstart/server" target="_blank" rel="noopener">Model Context Protocol quickstart</a></div>
+    </div>
+
+    <div class="week">
+      <h3><span class="no">W2</span>Retrieval over messy data</h3>
+      <div class="row"><span class="tag">Post line it answers</span>Retrieval pipelines over real, messy data.</div>
+      <div class="row"><span class="tag">Build</span>A RAG pipeline over a folder of mixed PDFs, scans, and CSVs. Chunk, embed, retrieve, answer with citations. Log the ten worst failures and fix two of them.</div>
+      <div class="row done"><span class="tag">Done when</span>20 test questions return cited answers, and the failure log is in the repo.</div>
+      <div class="row"><span class="tag">Free course</span><a href="https://python.langchain.com/docs/tutorials/rag" target="_blank" rel="noopener">LangChain RAG tutorial</a></div>
+    </div>
+
+    <div class="week">
+      <h3><span class="no">W3</span>An agent with a human review step</h3>
+      <div class="row"><span class="tag">Post line it answers</span>Multi-step orchestration, structured outputs, human review steps.</div>
+      <div class="row"><span class="tag">Build</span>A LangGraph workflow with three steps and one human approval gate before any write action. Structured output at each step.</div>
+      <div class="row done"><span class="tag">Done when</span>A full run pauses for approval, resumes, and the trace is saved.</div>
+      <div class="row"><span class="tag">Free course</span><a href="https://academy.langchain.com" target="_blank" rel="noopener">Introduction to LangGraph, LangChain Academy (free)</a></div>
+    </div>
+
+    <div class="week">
+      <h3><span class="no">W4</span>A golden set that grades every change</h3>
+      <div class="row"><span class="tag">Post line it answers</span>Evals and golden sets, prompt and model versioning.</div>
+      <div class="row"><span class="tag">Build</span>A golden set of 50 cases for the Week 3 agent, an eval runner, and a score report that compares two prompt versions.</div>
+      <div class="row done"><span class="tag">Done when</span>One command runs the set and prints a pass rate per version.</div>
+      <div class="row"><span class="tag">Free course</span><a href="https://platform.openai.com/docs/guides/evals" target="_blank" rel="noopener">OpenAI evals guide</a></div>
+    </div>
+
+    <div class="week">
+      <h3><span class="no">W5</span>Telemetry for cost and accuracy</h3>
+      <div class="row"><span class="tag">Post line it answers</span>Per-agent telemetry: tokens, cost, latency, accuracy.</div>
+      <div class="row"><span class="tag">Build</span>Tracing on the Week 3 agent (Langfuse or plain logs), one dashboard page: cost per run, latency, eval score per version.</div>
+      <div class="row done"><span class="tag">Done when</span>The dashboard shows real runs from the golden set, not sample data.</div>
+      <div class="row"><span class="tag">Free course</span><a href="https://langfuse.com/docs" target="_blank" rel="noopener">Langfuse docs and quickstart</a></div>
+    </div>
+
+    <div class="week">
+      <h3><span class="no">W6</span>A gateway that routes and fails over</h3>
+      <div class="row"><span class="tag">Post line it answers</span>Multiple providers, model selection, routing, fallbacks, cost and rate limits.</div>
+      <div class="row"><span class="tag">Build</span>A small LLM gateway (LiteLLM or your own proxy) with two providers, one routing rule, one failover test, and a per-day cost cap.</div>
+      <div class="row done"><span class="tag">Done when</span>Killing provider one mid-run still completes the task, and the cap blocks a run on camera.</div>
+      <div class="row"><span class="tag">Free course</span><a href="https://docs.litellm.ai/docs/proxy/quick_start" target="_blank" rel="noopener">LiteLLM proxy quick start</a></div>
+    </div>
+
+    <div class="week">
+      <h3><span class="no">W7</span>Deploys with evals in the pipeline</h3>
+      <div class="row"><span class="tag">Post line it answers</span>CI/CD like a production service: tests and evals in the pipeline, container deploys, rollbacks.</div>
+      <div class="row"><span class="tag">Build</span>Docker image for the gateway plus agent, a GitHub Actions pipeline that runs unit tests and the Week 4 golden set, and a one-command rollback to the last good image.</div>
+      <div class="row done"><span class="tag">Done when</span>A bad prompt version fails the pipeline in public, and rollback restores the good one.</div>
+      <div class="row"><span class="tag">Free course</span><a href="https://docs.github.com/en/actions" target="_blank" rel="noopener">GitHub Actions docs</a></div>
+    </div>
+
+    <div class="week">
+      <h3><span class="no">W8</span>A public demo anyone can run</h3>
+      <div class="row"><span class="tag">Post line it answers</span>Work with stakeholders to scope and validate use cases; shared agent template.</div>
+      <div class="row"><span class="tag">Build</span>A Gradio or web demo of the full stack, a two-page scope note (problem, success metric, cost per run), and a template repo a second person can clone and run.</div>
+      <div class="row done"><span class="tag">Done when</span>Someone who is not you runs it from the README alone.</div>
+      <div class="row"><span class="tag">Free course</span><a href="https://gradio.app/guides/quickstart" target="_blank" rel="noopener">Gradio quickstart</a></div>
+    </div>
+
+    <h2>After week 8</h2>
+    <ol class="steps">
+      <li>Rewrite the application profile: one line per project, each line with its repo link.</li>
+      <li>Send the scope note style write-up with applications. It reads as product thinking, which the post asks for by name.</li>
+      <li>Keep the golden set running. It is now your regression suite for every new model release.</li>
+    </ol>
+
+    <div class="disclosure">
+      <strong>Disclosure:</strong> A story, a real method. The Episode 1 story is fiction performed by characters; Mapleline Labs, the company named in that story, is fictional. INFUSE and its job post are real, and this roadmap is real. This roadmap is free. Use it, ship the projects, and send us the repo links.
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="wrap">By Jesun Ahmad Ushno, Toronto. <a href="../../index.html">jesunahmadushno.com</a></div>
+</footer>
+<script>
+document.getElementById('copy-btn').addEventListener('click', function(){
+  var text = document.getElementById('prompt-text').innerText;
+  var btn = document.getElementById('copy-btn');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(function(){ btn.textContent = 'Copied'; setTimeout(function(){ btn.textContent = 'Copy prompt'; }, 2000); });
+  }
+});
+</script>
+</body>
+</html>
