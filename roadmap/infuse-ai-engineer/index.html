@@ -4,7 +4,7 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>The INFUSE Roadmap: 8 Weeks, 8 Proof Projects | Jesun Ahmad Ushno</title>
-<meta name="description" content="One real job post (Senior AI Engineer, INFUSE) read as a test list: eight weeks, eight proof projects, ninety minutes a day. The exact prompt, every project brief, and a free course for each week."/>
+<meta name="description" content="One real job post (Senior AI Engineer, INFUSE) read as a test list: eight weeks, eight proof projects, ninety minutes a day. The exact prompt, every project brief, a free course and a backup source for each week, failure fixes, and a worked Week 1 build."/>
 <link rel="icon" type="image/png" href="../../favicon.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
@@ -35,6 +35,8 @@ h2 .no{color:var(--red);font-family:"JetBrains Mono",monospace;font-size:20px;ma
 p{margin-bottom:14px;max-width:72ch}
 ol.steps{margin:0 0 8px 22px}
 ol.steps li{margin-bottom:10px}
+.check{margin:0 0 8px 22px}
+.check li{margin-bottom:12px}
 .panel{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:22px;margin:20px 0}
 .panel .label{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--red);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px}
 pre{white-space:pre-wrap;font-family:"JetBrains Mono",monospace;font-size:14.5px;line-height:1.65;color:var(--paper)}
@@ -46,7 +48,14 @@ button.copy:hover{opacity:.88}
 .week .row{margin-bottom:10px}
 .week .tag{font-family:"JetBrains Mono",monospace;font-size:11.5px;color:var(--red);text-transform:uppercase;letter-spacing:.12em;display:block;margin-bottom:3px}
 .week .done{border-left:3px solid var(--red);padding-left:12px}
+.week ul.fixes{margin:4px 0 4px 18px}
+.week ul.fixes li{margin-bottom:7px}
 .week a{color:var(--paper);text-decoration-color:var(--red);text-underline-offset:3px}
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:18px 0}
+.paths .card{border:1px solid var(--rule);border-radius:8px;padding:20px;background:var(--panel)}
+.paths .card h3{font-size:17px;text-transform:uppercase;margin-bottom:10px}
+.paths .card p{font-size:15px;margin-bottom:0}
+@media(max-width:640px){.paths{grid-template-columns:1fr}}
 a{color:var(--paper)}
 .disclosure{border:1px solid var(--rule);border-radius:8px;padding:20px 22px;margin-top:48px;color:var(--ash);font-size:15px}
 .disclosure strong{color:var(--paper)}
@@ -76,6 +85,45 @@ footer a{color:var(--ash)}
       <li>Apply wide from week 6. Save the dream post for last, when the proof is done.</li>
     </ol>
 
+    <h2>Before Week 1: check your starting skill</h2>
+    <p>The 8 builds assume six base skills. Test yourself in ten minutes. For each no, take the short path first. Pre-week work sits outside the 60 hours. Budget 1 to 13 hours, by how many gaps you have.</p>
+    <ol class="check">
+      <li>Can you write a Python function, read a JSON file, and use a list and a dict? If not: the official <a href="https://docs.python.org/3/tutorial/" target="_blank" rel="noopener">Python tutorial</a>, parts 3, 4, 5, and 9, about 4 hours.</li>
+      <li>Can you run commands in a terminal, make a virtual environment, and install a package with pip? If not: <a href="https://missing.csail.mit.edu/" target="_blank" rel="noopener">The Missing Semester</a>, lessons 1 and 2, about 2 hours.</li>
+      <li>Can you init a git repo, commit, and push it to GitHub? If not: <a href="https://docs.github.com/en/get-started" target="_blank" rel="noopener">GitHub get started docs</a>, about 2 hours.</li>
+      <li>Can you open a CSV file and filter rows with pandas? If not: <a href="https://pandas.pydata.org/docs/getting_started/intro_tutorials/" target="_blank" rel="noopener">pandas intro tutorials</a> 1 to 3, about 2 hours.</li>
+      <li>Can you say what an API call is: a request, a key, a JSON response? If not: the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview" target="_blank" rel="noopener">MDN HTTP overview</a>, about 1 hour.</li>
+      <li>Can you say what a prompt, a token, and an embedding are? If not: <a href="https://huggingface.co/learn/llm-course" target="_blank" rel="noopener">Hugging Face LLM course</a>, chapter 1, about 2 hours.</li>
+    </ol>
+    <p>Rule: do not start Week 1 with more than one open gap. The builds stack. A gap in Week 1 becomes a wall in Week 3.</p>
+
+    <h2>Setup: one time, about 2 hours, all free</h2>
+    <p>Do these steps in order. The plan needs no paid tier. Free tiers have rate limits; the builds are sized to fit inside them.</p>
+    <ol class="steps">
+      <li>Install Python 3.11 or newer (python.org). Check it: run python3 --version.</li>
+      <li>Install VS Code (free) and its Python extension.</li>
+      <li>Install git. Make a free GitHub account. You will make one repo per week.</li>
+      <li>Install Docker Desktop (free). You need it in Week 7 only, but install it now so a slow download never eats a build day.</li>
+      <li>Get one free model API key: Google AI Studio free tier, Groq free tier, or OpenRouter free models. One key covers Weeks 1 to 5. Week 6 needs two providers, so take keys from two of the three.</li>
+      <li>Make a free Langfuse cloud account for Week 5, or plan to use plain log files. Both paths are in the Week 5 brief.</li>
+      <li>Make a free Hugging Face account for the Week 8 hosted demo.</li>
+      <li>For Week 2 embeddings, use sentence-transformers on your own machine. It is free, local, and needs no key.</li>
+    </ol>
+    <p>Store every key in an environment variable or a secrets file that git ignores. Never commit a key.</p>
+
+    <h2>If your time or privacy is limited</h2>
+    <p>The 60 hours are 60 hours. The daily dose is your choice.</p>
+    <div class="paths">
+      <div class="card">
+        <h3>30 minutes a day</h3>
+        <p>Each project takes three weeks: learn, build, finish and test. The full plan takes 24 weeks. Same projects, same done tests. For a 16-week path, the dose is about 45 minutes a day, five days a week.</p>
+      </div>
+      <div class="card">
+        <h3>Build in private</h3>
+        <p>Work with fake data or public data only. Never use employer data, employer code, or screens from work. Check your contract first; some contracts claim side work. Keep each repo private while you build and publish the write-up instead: the method, the failure log, and the results table. A done test log shows the skill without the data.</p>
+      </div>
+    </div>
+
     <h2>The exact prompt</h2>
     <p>Paste a job post after this prompt:</p>
     <div class="panel">
@@ -91,7 +139,17 @@ footer a{color:var(--ash)}
       <div class="row"><span class="tag">Post line it answers</span>Build and maintain MCP servers and tool layers for governed agent access.</div>
       <div class="row"><span class="tag">Build</span>One MCP server that exposes three tools over a small dataset (search, read one record, write one log line), with a permission check on each tool.</div>
       <div class="row done"><span class="tag">Done when</span>A client connects, calls all three tools, and a denied call is logged.</div>
+      <div class="row"><span class="tag">Time split (7.5 hours)</span>2 hours course and quickstart, 4 hours build, 1.5 hours test client and README.</div>
+      <div class="row"><span class="tag">Worked example</span><a href="https://github.com/JesunAhmadUshno/pattern19-wk1-mcp-server" target="_blank" rel="noopener">A real build of this week</a>, with the run output in the README. Clone it, run the client test, then rebuild it your way.</div>
       <div class="row"><span class="tag">Free course</span><a href="https://modelcontextprotocol.io/quickstart/server" target="_blank" rel="noopener">Model Context Protocol quickstart</a></div>
+      <div class="row"><span class="tag">Backup source</span><a href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener">The official MCP Python SDK repo</a>, with server and client examples.</div>
+      <div class="row"><span class="tag">Common failures and fixes</span>
+        <ul class="fixes">
+          <li>The client connects but sees no tools, or the server dies at start: a print call corrupts the stdio stream. Fix: never print in server code. Log to a file or to stderr.</li>
+          <li>Import or class errors after install: the SDK v2 line moved FastMCP. Fix: pin the v1 line (mcp 1.2 or newer, below 2), or follow the v2 migration guide. Do not mix the two.</li>
+          <li>A denied call returns empty output: the check failed in silence. Fix: write the audit line first, then raise an error with the reason, so the client sees DENIED and the log keeps why.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="week">
@@ -99,7 +157,16 @@ footer a{color:var(--ash)}
       <div class="row"><span class="tag">Post line it answers</span>Retrieval pipelines over real, messy data.</div>
       <div class="row"><span class="tag">Build</span>A RAG pipeline over a folder of mixed PDFs, scans, and CSVs. Chunk, embed, retrieve, answer with citations. Log the ten worst failures and fix two of them.</div>
       <div class="row done"><span class="tag">Done when</span>20 test questions return cited answers, and the failure log is in the repo.</div>
+      <div class="row"><span class="tag">Time split (7.5 hours)</span>1.5 hours tutorial, 4.5 hours pipeline and scan handling, 1.5 hours failure log and two fixes.</div>
       <div class="row"><span class="tag">Free course</span><a href="https://python.langchain.com/docs/tutorials/rag" target="_blank" rel="noopener">LangChain RAG tutorial</a></div>
+      <div class="row"><span class="tag">Backup source</span><a href="https://platform.openai.com/docs/guides/retrieval" target="_blank" rel="noopener">OpenAI retrieval guide</a></div>
+      <div class="row"><span class="tag">Common failures and fixes</span>
+        <ul class="fixes">
+          <li>Answers cite the wrong chunk or no chunk: chunks are too big or too small, and metadata is lost. Fix: cut 300 to 600 token chunks with a small overlap, keep the page number on each chunk, and print the top chunks for five test questions before you trust any score.</li>
+          <li>Scans give empty text: the PDF holds an image, not text, and no OCR step ran. Fix: run OCR (Tesseract is free) on image-only pages and store the text next to the file.</li>
+          <li>The test score looks high but the answers are weak: the test set is too soft. Fix: add questions that need two files to answer, and questions with no answer in the data. The right output for the last kind is: not in the data.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="week">
@@ -107,7 +174,16 @@ footer a{color:var(--ash)}
       <div class="row"><span class="tag">Post line it answers</span>Multi-step orchestration, structured outputs, human review steps.</div>
       <div class="row"><span class="tag">Build</span>A LangGraph workflow with three steps and one human approval gate before any write action. Structured output at each step.</div>
       <div class="row done"><span class="tag">Done when</span>A full run pauses for approval, resumes, and the trace is saved.</div>
+      <div class="row"><span class="tag">Time split (7.5 hours)</span>2 hours LangGraph course, 4 hours graph and gate build, 1.5 hours trace check and README.</div>
       <div class="row"><span class="tag">Free course</span><a href="https://academy.langchain.com" target="_blank" rel="noopener">Introduction to LangGraph, LangChain Academy (free)</a></div>
+      <div class="row"><span class="tag">Backup source</span><a href="https://docs.langchain.com/langgraph" target="_blank" rel="noopener">LangGraph docs and tutorials</a></div>
+      <div class="row"><span class="tag">Common failures and fixes</span>
+        <ul class="fixes">
+          <li>The approval gate never fires, or the run cannot resume: state is not saved between steps. Fix: use a checkpointer (MemorySaver for the first pass) and one thread id per run.</li>
+          <li>Structured output fails to parse: the model wraps JSON in prose. Fix: use the framework structured output mode, or a parser with one retry, and log the raw output on each fail.</li>
+          <li>The agent loops and never ends: no stop rule. Fix: set a max step count and a clear end test for each step before you run it.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="week">
@@ -115,7 +191,16 @@ footer a{color:var(--ash)}
       <div class="row"><span class="tag">Post line it answers</span>Evals and golden sets, prompt and model versioning.</div>
       <div class="row"><span class="tag">Build</span>A golden set of 50 cases for the Week 3 agent, an eval runner, and a score report that compares two prompt versions.</div>
       <div class="row done"><span class="tag">Done when</span>One command runs the set and prints a pass rate per version.</div>
+      <div class="row"><span class="tag">Time split (7.5 hours)</span>1.5 hours evals guide, 4 hours cases and runner, 1.5 hours two-version report.</div>
       <div class="row"><span class="tag">Free course</span><a href="https://platform.openai.com/docs/guides/evals" target="_blank" rel="noopener">OpenAI evals guide</a></div>
+      <div class="row"><span class="tag">Backup source</span><a href="https://github.com/openai/evals" target="_blank" rel="noopener">The OpenAI Evals repo</a>, with sample evals you can copy.</div>
+      <div class="row"><span class="tag">Common failures and fixes</span>
+        <ul class="fixes">
+          <li>The pass rate moves but the prompt did not change: the judge or the set is noisy. Fix: grade with plain rules where you can. Use model judging only for open traits. Hand-check 10 cases to audit the judge.</li>
+          <li>Scores jump after you tune prompts: the golden set leaked into the prompt as few-shot examples. Fix: split dev cases (used in prompts) from test cases (used for scores). Never mix the two sets.</li>
+          <li>The same command gives new results on a new machine: the model version floats. Fix: pin the exact model name and version, and print both in the report header.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="week">
@@ -123,7 +208,16 @@ footer a{color:var(--ash)}
       <div class="row"><span class="tag">Post line it answers</span>Per-agent telemetry: tokens, cost, latency, accuracy.</div>
       <div class="row"><span class="tag">Build</span>Tracing on the Week 3 agent (Langfuse or plain logs), one dashboard page: cost per run, latency, eval score per version.</div>
       <div class="row done"><span class="tag">Done when</span>The dashboard shows real runs from the golden set, not sample data.</div>
+      <div class="row"><span class="tag">Time split (7.5 hours)</span>1.5 hours Langfuse setup, 4 hours tracing and dashboard, 1.5 hours real-run check.</div>
       <div class="row"><span class="tag">Free course</span><a href="https://langfuse.com/docs" target="_blank" rel="noopener">Langfuse docs and quickstart</a></div>
+      <div class="row"><span class="tag">Backup source</span><a href="https://docs.smith.langchain.com" target="_blank" rel="noopener">LangSmith observability docs</a></div>
+      <div class="row"><span class="tag">Common failures and fixes</span>
+        <ul class="fixes">
+          <li>The dashboard shows sample data, not your runs: traces are not wired to the real agent. Fix: run the golden set through the traced agent, then follow one trace id from the first call to the last.</li>
+          <li>Cost per run reads zero: token counts are not captured. Fix: read usage from each API response and store it with the run record.</li>
+          <li>Latency looks flat and hides the slow step: you log the full run only. Fix: log per step, not per run.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="week">
@@ -131,7 +225,16 @@ footer a{color:var(--ash)}
       <div class="row"><span class="tag">Post line it answers</span>Multiple providers, model selection, routing, fallbacks, cost and rate limits.</div>
       <div class="row"><span class="tag">Build</span>A small LLM gateway (LiteLLM or your own proxy) with two providers, one routing rule, one failover test, and a per-day cost cap.</div>
       <div class="row done"><span class="tag">Done when</span>Killing provider one mid-run still completes the task, and the cap blocks a run on camera.</div>
+      <div class="row"><span class="tag">Time split (7.5 hours)</span>1.5 hours quick start, 4.5 hours gateway, failover, and cap, 1.5 hours filmed tests.</div>
       <div class="row"><span class="tag">Free course</span><a href="https://docs.litellm.ai/docs/proxy/quick_start" target="_blank" rel="noopener">LiteLLM proxy quick start</a></div>
+      <div class="row"><span class="tag">Backup source</span><a href="https://openrouter.ai/docs" target="_blank" rel="noopener">OpenRouter docs</a>, a second routing path with free models.</div>
+      <div class="row"><span class="tag">Common failures and fixes</span>
+        <ul class="fixes">
+          <li>The failover test passes but the cost doubles: both providers get called on each request. Fix: call provider two only on an error or a timeout, and log which provider served each call.</li>
+          <li>The cost cap never fires: the code checks the day total after the call. Fix: check the total before the call, and block at the cap.</li>
+          <li>A rate limit error kills the run: no retry logic. Fix: retry 429 and 5xx replies with a short backoff, then fail over.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="week">
@@ -139,7 +242,16 @@ footer a{color:var(--ash)}
       <div class="row"><span class="tag">Post line it answers</span>CI/CD like a production service: tests and evals in the pipeline, container deploys, rollbacks.</div>
       <div class="row"><span class="tag">Build</span>Docker image for the gateway plus agent, a GitHub Actions pipeline that runs unit tests and the Week 4 golden set, and a one-command rollback to the last good image.</div>
       <div class="row done"><span class="tag">Done when</span>A bad prompt version fails the pipeline in public, and rollback restores the good one.</div>
+      <div class="row"><span class="tag">Time split (7.5 hours)</span>1.5 hours Actions docs, 4.5 hours image and pipeline, 1.5 hours rollback drill.</div>
       <div class="row"><span class="tag">Free course</span><a href="https://docs.github.com/en/actions" target="_blank" rel="noopener">GitHub Actions docs</a></div>
+      <div class="row"><span class="tag">Backup source</span><a href="https://docs.docker.com/get-started/" target="_blank" rel="noopener">Docker get started guide</a></div>
+      <div class="row"><span class="tag">Common failures and fixes</span>
+        <ul class="fixes">
+          <li>The pipeline is green but the live image is old: a cache or a reused tag served the past build. Fix: tag each image with the commit SHA and deploy by tag, never by latest.</li>
+          <li>Rollback restores the code but not the prompt: prompts live outside the image. Fix: keep prompt versions in the repo, tag them with the release, and roll back both.</li>
+          <li>Evals in the pipeline get skipped: the full set is slow on each push. Fix: run a 10-case smoke set on each push and the full 50 cases on merge.</li>
+        </ul>
+      </div>
     </div>
 
     <div class="week">
@@ -147,7 +259,16 @@ footer a{color:var(--ash)}
       <div class="row"><span class="tag">Post line it answers</span>Work with stakeholders to scope and validate use cases; shared agent template.</div>
       <div class="row"><span class="tag">Build</span>A Gradio or web demo of the full stack, a two-page scope note (problem, success metric, cost per run), and a template repo a second person can clone and run.</div>
       <div class="row done"><span class="tag">Done when</span>Someone who is not you runs it from the README alone.</div>
+      <div class="row"><span class="tag">Time split (7.5 hours)</span>1.5 hours demo build, 3 hours scope note and template repo, 3 hours second-person test and fixes.</div>
       <div class="row"><span class="tag">Free course</span><a href="https://gradio.app/guides/quickstart" target="_blank" rel="noopener">Gradio quickstart</a></div>
+      <div class="row"><span class="tag">Backup source</span><a href="https://huggingface.co/docs/hub/spaces" target="_blank" rel="noopener">Hugging Face Spaces docs</a>, for free hosted demos.</div>
+      <div class="row"><span class="tag">Common failures and fixes</span>
+        <ul class="fixes">
+          <li>It runs on your machine and fails for the tester: the code assumes your paths or your keys. Fix: read keys from environment variables, use relative paths, and test a clean clone in a fresh folder before you share the link.</li>
+          <li>The demo sleeps when your laptop sleeps: it runs on a local tunnel. Fix: host it on a free space (Hugging Face Spaces) and store the provider key in the space secrets.</li>
+          <li>The tester cannot tell good output from bad: the page has no samples. Fix: put three sample questions with expected outputs on the demo page.</li>
+        </ul>
+      </div>
     </div>
 
     <h2>After week 8</h2>
