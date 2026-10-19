@@ -77,6 +77,7 @@ footer a{color:var(--ash)}
     <p class="lede">One real job post, read as a test list. One project per requirement line. Ninety minutes a day, five days a week, sixty hours total. Every project ships in public, and every project ends in evidence a risk team can read: a log, a repo, a report.</p>
     <p class="meta">Target post: <a href="https://jobs.scotiabank.com/Tangerine/job/Toronto-Senior-AI-Engineer-Tangerine-ON/604652317/" target="_blank" rel="noopener">Senior AI Engineer, Tangerine, Toronto (requisition 268884)</a>, checked 2026-10-19. The official page prints no salary band, so this plan makes no pay claim.</p>
     <p>The theme of this post is different from a demo post. The duties name governance, risk culture, and root cause analysis next to the model work. So the roadmap builds the evidence habit, not just the models: gates, logs, postmortems, and a risk pack.</p>
+    <p>What is inside: a starting-skill check, a free setup guide, the exact prompt, eight week-by-week builds with done tests, failure fixes and a backup source for every week, a worked Week 1 build you can clone, and slower and private paths for readers with less time or a privacy need.</p>
 
     <h2>How to run this plan</h2>
     <ol class="steps">
@@ -94,20 +95,20 @@ footer a{color:var(--ash)}
       <li>Can you init a git repo, push to GitHub, and read a GitHub Actions run log? If not: <a href="https://docs.github.com/en/get-started" target="_blank" rel="noopener">GitHub get started docs</a>, about 2 hours.</li>
       <li>Can you say what a train and test split is, and why testing on training data lies? If not: <a href="https://www.kaggle.com/learn/intro-to-machine-learning" target="_blank" rel="noopener">Kaggle Learn, Intro to Machine Learning</a>, about 3 hours.</li>
       <li>Can you call an HTTP API from Python and read the JSON that comes back? If not: the <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/Overview" target="_blank" rel="noopener">MDN HTTP overview</a>, about 1 hour, then one practice call.</li>
-      <li>Can you define, in one sentence each: an eval, a model card, and data drift? If not: <a href="https://huggingface.co/learn/llm-course" target="_blank" rel="noopener">Hugging Face LLM course</a>, chapter 1, about 2 hours, plus the Week 1 brief's glossary work.</li>
+      <li>Can you define, in one sentence each: an eval, a model card, and data drift? If not: <a href="https://huggingface.co/learn/llm-course" target="_blank" rel="noopener">Hugging Face LLM course</a>, chapter 1, about 2 hours, plus the Week 1 brief's glossary box.</li>
     </ol>
     <p>Rule: do not start Week 1 with more than one open gap. The builds stack. A gap in Week 1 becomes a wall in Week 5.</p>
 
     <h2>Setup: one time, about 2 hours, all free</h2>
     <p>Do these steps in order. The plan needs no paid tier. Free tiers have rate limits; the builds are sized to fit inside them.</p>
     <ol class="steps">
-      <li>Install Python 3.11 or newer (python.org). Check it: run python3 --version.</li>
+      <li>Install Python 3.11 or newer (<a href="https://www.python.org/" target="_blank" rel="noopener">python.org</a>). Check it: run python3 --version.</li>
       <li>Install VS Code (free) and its Python extension.</li>
       <li>Install git. Make a free GitHub account. You will make one repo per week. GitHub Actions free minutes cover every pipeline in this plan.</li>
       <li>Install Docker Desktop (free). You need it in Week 4 and Week 5, but install it now so a slow download never eats a build day.</li>
-      <li>Get the public datasets: the UCI Default of Credit Card Clients dataset and the UCI German Credit dataset (archive.ics.uci.edu, free). Both are public, old, and safe. Never train these builds on real client data, yours or an employer's.</li>
-      <li>Get one free model API key (Google AI Studio free tier, Groq free tier, or OpenRouter free models) for the weeks that call a model. Weeks 1 and 3 need no key at all.</li>
-      <li>Make a free Kaggle account for dataset copies and notebooks if you want a second run of any week.</li>
+      <li>Get the public datasets: the UCI Default of Credit Card Clients dataset and the UCI German Credit dataset (<a href="https://archive.ics.uci.edu/" target="_blank" rel="noopener">archive.ics.uci.edu</a>, free). Both are public, old, and safe. Never train these builds on real client data, yours or an employer's.</li>
+      <li>Get one free model API key (<a href="https://aistudio.google.com/" target="_blank" rel="noopener">Google AI Studio</a> free tier, <a href="https://console.groq.com/" target="_blank" rel="noopener">Groq</a> free tier, or <a href="https://openrouter.ai/" target="_blank" rel="noopener">OpenRouter</a> free models) for the weeks that call a model. Weeks 1 and 3 need no key at all.</li>
+      <li>Make a free <a href="https://www.kaggle.com/" target="_blank" rel="noopener">Kaggle</a> account for dataset copies and notebooks if you want a second run of any week.</li>
       <li>Plan your observability: local MLflow (pip install, runs on your machine, free) for Weeks 1 and 6, or plain log files. Both paths are in the briefs.</li>
     </ol>
     <p>Store every key in an environment variable or a secrets file that git ignores. Never commit a key.</p>
@@ -138,10 +139,11 @@ footer a{color:var(--ash)}
     <div class="week">
       <h3><span class="no">W1</span>A training pipeline with a gate that can block a bad model</h3>
       <div class="row"><span class="tag">Post line it answers</span>Engineering delivery of the AI platform: MLOps/LLMOps pipelines, model training, deployment, monitoring, governance.</div>
-      <div class="row"><span class="tag">Build</span>One small pipeline that trains a credit-risk scorer on the public UCI credit dataset, scores it on a frozen test split, writes a model card and an eval record, and then faces a promotion gate: a script that promotes the model only if the eval record exists, beats a floor score you set before training, and an approval line with your name and date sits in the approvals log.</div>
+      <div class="row"><span class="tag">Build</span>One small pipeline that trains a credit-risk scorer on the public UCI credit dataset, scores it on a frozen test split, writes a model card and an eval record, and then faces a promotion gate: a script that promotes the model only if the eval record exists, beats a floor score you set before training, a data card exists, and an approval line with your name and date sits in the approvals log.</div>
       <div class="row done"><span class="tag">Done when</span>You run the demo twice. With the eval record removed, the gate prints BLOCKED with the reason. With the records complete, the gate prints PASS and the model version. Both runs are saved in the repo.</div>
       <div class="row"><span class="tag">Time split (7.5 hours)</span>2 hours course, 4 hours pipeline and gate, 1.5 hours demo runs and README.</div>
       <div class="row"><span class="tag">Worked example</span><a href="https://github.com/JesunAhmadUshno/pattern19-wk1-model-gate" target="_blank" rel="noopener">A real build of this week</a>, with both gate runs in the README: the first run BLOCKED on missing records, the second PASS (AUC 0.724 on 6,000 frozen rows, hash verified). Clone it, watch the gate block a model, then rebuild it your way.</div>
+      <div class="row"><span class="tag">Glossary box</span>Eval: a scored run of a model on data it did not train on, saved as a record with the score, the data hash, and the date. Model card: a short file that states what a model is, what data trained it, its score, and its limits. Data drift: the slow change of real input data away from the data a model trained on, which makes old scores stop holding. Promotion gate: a script that blocks a model from shipping until its evidence records check out.</div>
       <div class="row"><span class="tag">Free course</span><a href="https://github.com/DataTalksClub/mlops-zoomcamp" target="_blank" rel="noopener">MLOps Zoomcamp, DataTalksClub</a> (free, self-paced)</div>
       <div class="row"><span class="tag">Backup source</span><a href="https://madewithml.com" target="_blank" rel="noopener">Made With ML</a>, the open production ML course</div>
       <div class="row"><span class="tag">Common failures and fixes</span>
@@ -226,7 +228,7 @@ footer a{color:var(--ash)}
       <div class="row"><span class="tag">Post line it answers</span>Platform resilience: extensive monitoring, proactive issue detection, detailed root cause analysis for incidents.</div>
       <div class="row"><span class="tag">Build</span>Tracing on the Week 4 services (MLflow or plain structured logs), one dashboard page with cost per run, latency, and accuracy per model version, two alerts (input drift, error budget burn), and a weekly risk report page generated from the logs.</div>
       <div class="row done"><span class="tag">Done when</span>An injected drift spike fires the drift alert, the spike and the alert both appear in the generated risk report, and the dashboard shows real runs, not sample data.</div>
-      <div class="row"><span class="tag">Time split (7.5 hours)</span>1.5 hours docs, 4 hours tracing, dashboard, and alerts, 1.5 hours drift drill and the report.</div>
+      <div class="row"><span class="tag">Time split (7.5 hours)</span>1.5 hours docs, 4.5 hours tracing, dashboard, and alerts, 1.5 hours drift drill and the report.</div>
       <div class="row"><span class="tag">Free course</span><a href="https://docs.evidentlyai.com" target="_blank" rel="noopener">Evidently AI documentation</a> (open-source data and model monitoring)</div>
       <div class="row"><span class="tag">Backup source</span><a href="https://langfuse.com/docs" target="_blank" rel="noopener">Langfuse docs and quickstart</a></div>
       <div class="row"><span class="tag">Common failures and fixes</span>
