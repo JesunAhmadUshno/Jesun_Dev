@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>শুধু চ্যাটবট না: পকেটে একটা পুরো ক্লাউড কম্পিউটার</title>
+<meta name="description" content="এক রাতে, ফোনের এক লাইন অর্ডারে, নিজের মেশিনে বসানো n8n জুড়ল 5টা Google সার্ভিসে, বাসার PC দিয়ে সেতু পেরিয়ে পেল পাবলিক ঠিকানা, দরজায় এক ইমেইলের তালা। পুরো টিউটোরিয়াল, ব্যর্থতা আর সমাধানসহ। মোট খরচ: $0।"/>
+<link rel="canonical" href="https://jesunahmadushno.com/bangla/muse-n8n-extraction-101/"/>
+<link rel="alternate" hreflang="en" href="https://jesunahmadushno.com/muse-n8n-extraction-101/"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="শুধু চ্যাটবট না: পকেটে একটা পুরো ক্লাউড কম্পিউটার"/>
+<meta property="og:url" content="https://jesunahmadushno.com/bangla/muse-n8n-extraction-101/"/>
+<link rel="icon" href="/favicon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--ink:#0B0B0C;--paper:#F5F3EE;--ash:#9A978E;--red:#FF3D2E;--rule:#2A2A2C;--panel:#141416}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--paper);font-family:"Noto Sans Bengali","Space Grotesk",system-ui,sans-serif;line-height:1.75}
+main{max-width:820px;margin:0 auto;padding:48px 22px 80px}
+.kicker{font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.18em;color:var(--red);font-size:13px}
+h1{font-size:clamp(30px,5.4vw,48px);line-height:1.25;margin:14px 0 10px}
+h2{font-size:24px;margin:44px 0 12px;border-top:1px solid var(--rule);padding-top:28px}
+p,li{font-size:17px}
+.sub{color:var(--ash);font-size:18px}
+a{color:var(--red)}
+ul,ol{margin:10px 0 10px 22px}
+li{margin:5px 0}
+figure{margin:26px 0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--rule);border-radius:8px;background:var(--ink)}
+figcaption{color:var(--ash);font-size:14px;margin-top:8px}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:26px;margin:36px 0}
+.btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:6px;margin:10px 10px 4px 0}
+.btn.alt{background:transparent;border:1px solid var(--rule);color:var(--paper)}
+.langlink{font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--ash)}
+footer{border-top:1px solid var(--rule);margin-top:56px;padding-top:20px;color:var(--ash);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+<p class="langlink"><a href="https://jesunahmadushno.com/">jesunahmadushno.com</a> &nbsp;|&nbsp; English edition: <a href="https://jesunahmadushno.com/muse-n8n-extraction-101/">Muse Potential Extraction 101</a></p>
+<p class="kicker" style="margin-top:26px">টিউটোরিয়াল / বিল্ড লগ</p>
+<h1>শুধু চ্যাটবট না: পকেটে একটা পুরো ক্লাউড কম্পিউটার</h1>
+
+<h2>অংশ ১: পরিচিত দৃশ্য</h2>
+<p>বাংলাদেশে বেশির ভাগ মানুষ AI কে চেনে একটা চ্যাট বাক্স হিসেবে। প্রশ্ন লেখা হয়, উত্তর আসে, তারপর আসল কাজটা নিজেকেই করতে হয়। এই পৃষ্ঠার গল্পটা সেই অভিজ্ঞতার বাইরের। এখানে AI শুধু উত্তর দেয়নি। সে একটা পুরো ক্লাউড কম্পিউটারে বসে কাজ করেছে: নিজের মেশিন, Terminal, Browser, ফাইল, স্মৃতি, আর ঘড়ি ধরে চলা কাজ নিয়ে। মানুষটা তখন টরন্টোতে, হাতে শুধু একটা ফোন।</p>
+
+<h2>অংশ ২: আগে খরচের হিসাব</h2>
+<p>এই পাঠকের প্রথম প্রশ্ন খরচ, তাই উত্তরটা এখানেই: পুরো বিল্ড $0। Cloudflare Free, Zero Trust Free, বিলিং ছাড়া Google Cloud, নিজের মেশিনে open source n8n। স্থায়ী নিয়মটাও এখানে লেখা থাক: ফ্রি প্ল্যান দিয়েই সব করতে হবে। টাকা লাগলে আগে জানানো হবে, ফ্রি রাস্তা খোঁজা হবে, না পেলে কাজটা সিদ্ধান্তের জন্য থামিয়ে রাখা হবে।</p>
+
+<h2>অংশ ৩: এক রাতের গল্প, সংক্ষেপে</h2>
+<p>ফোন থেকে অর্ডার: automation সার্ভারটাকে সবকিছুর সঙ্গে জুড়ে দাও। প্রথমে Google: একটা প্রকল্প, 5টা API, একটা সাইন-ইনে 5টা সার্ভিস (Gmail, Calendar, Drive, Sheets, YouTube), প্রতিটা লাইভ পরীক্ষায় আসল তথ্যসহ পাস। তারপর ধাক্কা: সার্ভারকে বাইরে আনার Tunnel ক্লাউড মেশিনে তিনভাবে ব্যর্থ (403, UDP বন্ধ, certificate এর নামের অমিল)। রাতের বড় সিদ্ধান্ত: Tunnel এর প্রোগ্রামটা বাসার PC তে (BlackBox) সরানো, কারণ বাসার ইন্টারনেটে রাস্তা খোলা। PC Toronto প্রান্তে 4টা সংযোগ ধরল। PC থেকে মেশিনে ফেরার পথ: Tailscale গোপন লাইনে SSH reverse forward, port 15678 থেকে 5678। ডোমেইন গেল Cloudflare এ, 11টা রেকর্ডের একটাও না ভেঙে, ওয়েবসাইট আর ইমেইল অক্ষত। দরজায় বসল Zero Trust এর প্রহরা: তালিকায় একটাই ইমেইল। শেষ ধাপে মালিকের অ্যাকাউন্ট বানালাম নিজে, পাবলিক ঠিকানা দিয়ে ঢুকে।</p>
+<figure>
+<img src="architecture-diagram.png" alt="সিস্টেমের নকশা"/>
+<figcaption>চূড়ান্ত ব্যবস্থা: ফোন, ক্লাউড মেশিন, বাসার PC এর সেতু, Cloudflare, Google।</figcaption>
+</figure>
+
+<h2>অংশ ৪: তিনটা সত্যি গল্পের সার</h2>
+<p>মেশিনটা সেই রাতে 6 বার restart হয়েছিল। নিজের বানানো পাহারাদার (প্রতি 60 সেকেন্ডে boot ID পরীক্ষা) প্রতিবার 47 থেকে 78 সেকেন্ডে ধরে ফেলেছে, কাজ হারিয়েছে শূন্য, যেন বিদ্যুৎ গেলেও পাহারাদার নিজে জেগে থাকে। একবার Error 1033 এল, কারণ PC এর প্রোগ্রামটা একটা SSH অধিবেশনের সঙ্গে বাঁধা ছিল; সমাধান: detach করে চালানো আর logon এ নিজে ওঠার scheduled task। আর দুর্বল জায়গাটা সোজা করে: বাসার PC ঘুমালে পাবলিক ঠিকানাও ঘুমিয়ে থাকে।</p>
+
+<div class="panel">
+<p class="kicker">অংশ ৫: প্যাক পাওয়ার ব্লক</p>
+<p>পুরো প্যাক: পূর্ণ টিউটোরিয়াল (বাংলা ও ইংরেজি সংস্করণ, PDF আর markdown), সহায়ক প্যাক (checklist, এক পৃষ্ঠার নকশা, সমস্যা-সমাধানের ছক, শব্দকোষ), আর সব ছবি পূর্ণ আকারে।</p>
+<p>পাওয়ার দুই পথ:</p>
+<a class="btn" href="https://github.com/JesunAhmadUshno/muse-n8n-extraction-101/releases/download/v1.0.0/muse-n8n-extraction-101-pack.zip">টিউটোরিয়াল প্যাক Download করুন</a>
+<a class="btn alt" href="https://github.com/JesunAhmadUshno/muse-n8n-extraction-101">খোলা repo</a>
+<p style="margin-top:12px">অথবা লঞ্চ পোস্টগুলোতে <strong>TUNNEL</strong> লিখে comment করলে DM এ পৌঁছে যাবে।</p>
+</div>
+
+<h2>অংশ ৬: পাঠকের লাভ</h2>
+<p>ফ্রি স্তরকে হালকা ভাববেন না; পরিকল্পনা ঠিক হলে সত্যিকারের অবকাঠামো দাঁড়ায় $0 তে। AI কে শুধু প্রশ্ন করবেন না, যাচাইসহ কাজ দিন। আর যা ভাঙে, লিখে রাখুন: এই পুরো কাজে সবচেয়ে বেশি কাজে এসেছে ব্যর্থতার তালিকাটাই।</p>
+<p>সামনে Phase 2: Meta সংযোগ শুরু হয়েছে (নিজের নামে developer app, Instagram আর Facebook Login for Business যোগ, redirect নিবন্ধিত), যুক্ত করা এখনো বাকি। পরীক্ষা যেখানে থামে, দাবি সেখানেই থামে।</p>
+
+<footer>
+<p>Muse Potential Extraction 101, জেসুন আহমদ উশনো। বিল্ড: n8n 2.43.5 নিজের মেশিনে, Cloudflare Tunnel আর Zero Trust (Free), Google Cloud (বিলিং ছাড়া), Tailscale। মোট খরচ: $0।</p>
+</footer>
+</main>
+</body>
+</html>

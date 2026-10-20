@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Muse Potential Extraction 101: A Self-Hosted n8n, Connected to Everything, for $0</title>
+<meta name="description" content="One night, one phone order, one self-hosted n8n connected to 5 Google services, a Cloudflare tunnel through a home PC, and a login wall for one email. Full tutorial with the failures and the fixes. Total spend: $0."/>
+<link rel="canonical" href="https://jesunahmadushno.com/muse-n8n-extraction-101/"/>
+<link rel="alternate" hreflang="bn" href="https://jesunahmadushno.com/bangla/muse-n8n-extraction-101/"/>
+<meta property="og:type" content="article"/>
+<meta property="og:title" content="Muse Potential Extraction 101"/>
+<meta property="og:description" content="A self-hosted n8n, connected to everything, for $0. The full tutorial, with the failures and the fixes."/>
+<meta property="og:url" content="https://jesunahmadushno.com/muse-n8n-extraction-101/"/>
+<link rel="icon" href="/favicon.png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+:root{--ink:#0B0B0C;--paper:#F5F3EE;--ash:#9A978E;--red:#FF3D2E;--rule:#2A2A2C;--panel:#141416}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--ink);color:var(--paper);font-family:"Space Grotesk",system-ui,sans-serif;line-height:1.65}
+main{max-width:820px;margin:0 auto;padding:48px 22px 80px}
+.kicker{font-family:"JetBrains Mono",monospace;text-transform:uppercase;letter-spacing:.18em;color:var(--red);font-size:13px}
+h1{font-size:clamp(34px,6vw,56px);line-height:1.08;text-transform:uppercase;margin:14px 0 10px}
+h2{font-size:26px;text-transform:uppercase;margin:44px 0 12px;border-top:1px solid var(--rule);padding-top:28px}
+p,li{font-size:17px;color:var(--paper)}
+.sub{color:var(--ash);font-size:18px}
+a{color:var(--red)}
+ul,ol{margin:10px 0 10px 22px}
+li{margin:5px 0}
+figure{margin:26px 0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--rule);border-radius:8px;background:var(--ink)}
+figcaption{color:var(--ash);font-size:14px;margin-top:8px;font-family:"JetBrains Mono",monospace}
+.panel{background:var(--panel);border:1px solid var(--rule);border-radius:8px;padding:26px;margin:36px 0}
+.btn{display:inline-block;background:var(--red);color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:6px;margin:10px 10px 4px 0;text-transform:uppercase;letter-spacing:.04em}
+.btn.alt{background:transparent;border:1px solid var(--rule);color:var(--paper)}
+.langlink{font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--ash)}
+footer{border-top:1px solid var(--rule);margin-top:56px;padding-top:20px;color:var(--ash);font-size:14px}
+</style>
+</head>
+<body>
+<main>
+<p class="langlink"><a href="https://jesunahmadushno.com/">jesunahmadushno.com</a> &nbsp;|&nbsp; Bangla edition: <a href="https://jesunahmadushno.com/bangla/muse-n8n-extraction-101/">বাংলা সংস্করণ</a></p>
+<p class="kicker" style="margin-top:26px">Tutorial / Build log / Receipts</p>
+<h1>This is not a chatbot.</h1>
+<p class="sub">Most people use an AI chat app like a smart search box. They ask a question. They get text back. Then they do all the real work themselves.</p>
+<p>Muse is a different shape of tool. It is a full sandbox: a cloud computer with its own terminal, browser, files, memory, and scheduled jobs. On the night of 18 to 19 October 2026, I used that computer, from my phone, to do a full infrastructure job:</p>
+<ul>
+<li>A self-hosted automation server (n8n) running on the cloud machine.</li>
+<li>Five Google services connected with one OAuth sign-in.</li>
+<li>A public address on my own domain.</li>
+<li>A login wall in front of it that lets exactly one person in.</li>
+<li>All of it on free plans. Total spend: $0.</li>
+</ul>
+<p>This page is the short version. The full tutorial, with every step and every failure, is in the pack at the bottom of the page.</p>
+<figure>
+<img src="architecture-diagram.png" alt="System architecture diagram"/>
+<figcaption>The final setup: phone, cloud machine, home PC bridge, Cloudflare, Google.</figcaption>
+</figure>
+
+<h2>What was built, and why</h2>
+<p>The hub is n8n, open source workflow automation: a control panel where services connect into workflows that run on their own. I self-host it on the same cloud machine my agent works on. The machine exists already. Self-hosting costs nothing. The credential store stays on my own disk. And I can watch every step from my phone.</p>
+<p>At the start of the night the machine ran n8n 2.43.5, a local install with a SQLite database and 8 starter workflows. It had one big limit: no public address. Nothing outside could reach it. Fixing that, safely, is the heart of this build.</p>
+
+<h2>Phase 1: Google in one sign-in</h2>
+<p>One Google Cloud project (jesun-n8n, no billing account). Five APIs on: Gmail, Calendar, Drive, Sheets, YouTube Data API v3. One OAuth consent, with the consent screen set to "In production" so the tokens do not die after 7 days. One sign-in connected all five services. Five typed credential copies came from the one base credential, one per service node type, so the store holds 6 Google credentials.</p>
+<p>Then the tests, because a stored credential is not a connection. All five services passed live API tests with real data: real inbox subjects, real events, real files, real spreadsheet rows, and my real YouTube channel, at 69 subscribers at the time of the test. Three services passed a second test inside n8n workflows. One honest gap: YouTube channel read is verified; upload is not tested yet.</p>
+
+<h2>The door problem, and the three walls</h2>
+<p>A loopback-only server cannot take visitors, webhooks, or public OAuth callbacks. The standard door is a Cloudflare Tunnel. The connector was meant to run on the cloud machine. Three routes failed, each verified, none assumed:</p>
+<ol>
+<li>Quick Tunnel: provisioning refused, HTTP 403.</li>
+<li>QUIC: the machine blocks UDP egress; the tunnel died with "operation not permitted".</li>
+<li>HTTP2: the machine's DNS is intercepted, so the edge certificate name did not match what the client expected, and the secure connection never formed.</li>
+</ol>
+<p>Lesson: when someone else runs the network, some roads are closed. Do not push on a closed road. Move the part that needs the open road.</p>
+
+<h2>The bridge (the move that worked)</h2>
+<p>The connector does not care where it runs. It needs Cloudflare's edge and the n8n server. My home PC has normal internet, so the connector moved there:</p>
+<ul>
+<li>cloudflared 2026.10.0 on the home PC (BlackBox) holds the named tunnel, jesun-n8n, with 4 QUIC connections to Cloudflare's Toronto edge.</li>
+<li>The PC and the cloud machine share a private Tailscale network. SSH runs over it. No public SSH port exists.</li>
+<li>An SSH reverse forward binds the PC's own port 15678 and lands traffic on the cloud machine's port 5678, where n8n listens.</li>
+<li>A respawn loop on the cloud machine keeps that forward alive, because quiet SSH sessions on this link die after about a minute.</li>
+</ul>
+<p>Path of one visit: visitor, Cloudflare edge, tunnel, home PC, private forward, cloud machine, n8n. No inbound port open anywhere.</p>
+<figure>
+<img src="build-timeline.png" alt="Build timeline chart"/>
+<figcaption>One night: order, Google phase, three walls, the bridge, the domain move, the wall, the owner account, and six restarts in between.</figcaption>
+</figure>
+
+<h2>The domain move and the wall</h2>
+<p>The domain moved to Cloudflare DNS on the Free plan without breaking anything: zone created first, the automatic scan checked against the live records (11 records: the GitHub Pages site, 5 email-forwarding MX records, the SPF record), the tunnel route added, and only then the nameservers changed at the registrar. After the switch: site up, mail records answering, zone active.</p>
+<p>In front of the editor sits Cloudflare Zero Trust Access (Free plan). One application, "n8n Editor". One policy, "Jesun only". One email on the allow list. Anyone else stops at the Access sign-in and never reaches n8n. I set the owner account myself through that public editor, with my own password.</p>
+<figure>
+<img src="phase-matrix.png" alt="Phase matrix chart"/>
+<figcaption>What is connected, what is started, what is next. Phase 2 (Meta) has started; it is not connected yet.</figcaption>
+</figure>
+
+<h2>What broke (the short honesty section)</h2>
+<p>The cloud machine restarted 6 times that night. Every restart killed n8n and the bridge loop. A self-built reset guardian, which checks the machine boot ID every 60 seconds, caught each restart in 47 to 78 seconds, and the work came back from checkpoints each time. Work lost across all 6 restarts: zero.</p>
+<p>The public address once showed error 1033, because the connector had been started inside an SSH session and died with it. The fix: run it detached, and let a logon scheduled task bring it back after a PC reboot.</p>
+<p>Still weak, stated plain: if the home PC sleeps or is off, the public address sleeps with it. This is a personal automation stack, not hosting for other people.</p>
+
+<div class="panel">
+<p class="kicker">The full pack</p>
+<ul>
+<li>The full tutorial (EN and BN editions, PDF and markdown)</li>
+<li>The supporting pack: step checklist, architecture one-pager, troubleshooting table, glossary</li>
+<li>The charts on this page, at full size</li>
+</ul>
+<p>Get it two ways:</p>
+<a class="btn" href="https://github.com/JesunAhmadUshno/muse-n8n-extraction-101/releases/download/v1.0.0/muse-n8n-extraction-101-pack.zip">Download the tutorial pack</a>
+<a class="btn alt" href="https://github.com/JesunAhmadUshno/muse-n8n-extraction-101">Open the repo</a>
+<p style="margin-top:12px">Or by DM: comment <strong>TUNNEL</strong> on the launch posts (Facebook, Instagram, TikTok, YouTube) and the pack arrives by DM.</p>
+</div>
+
+<h2>What comes next</h2>
+<p>Phase 2 has started: a Meta developer app in my name ("Jesun n8n Automation"), with Instagram and Facebook Login for Business added and the n8n OAuth redirect registered. Wiring and live tests are pending, and the build will be documented the same way: receipts first, claims after tests.</p>
+
+<footer>
+<p>Muse Potential Extraction 101, by Jesun Ahmad Ushno. Build: n8n 2.43.5 self-hosted, Cloudflare Tunnel and Zero Trust (Free), Google Cloud (no billing), Tailscale. Total spend: $0.</p>
+</footer>
+</main>
+</body>
+</html>
