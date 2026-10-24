@@ -53,7 +53,7 @@
           '<span class="mono ship-date">' + relDate(p.created_at) + '</span></div>';
       }).join('');
     }).catch(function () {
-      shipEl.innerHTML = '<p class="mono muted">Ship log is offline right now. Recent work: Jesun_Dev redesign, Jesun.Code v0.6.0.</p>';
+      shipEl.innerHTML = '<p class="mono muted">Ship log is offline right now. Recent work: Jesun_Dev redesign, Jesun.Code v2.0.0.</p>';
     });
   }
 
