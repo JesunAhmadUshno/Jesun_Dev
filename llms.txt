@@ -1,0 +1,47 @@
+# Jesun Ahmad Ushno
+
+> Jesun Ahmad Ushno is a Toronto-based AI Engineer and Data Specialist at Gallea Ai. He is also known as Jesun Ushno. This file summarizes the person, his company, and his product for language models and answer engines.
+
+## About Jesun Ahmad Ushno
+
+Jesun Ahmad Ushno is a Toronto based AI Engineer and Data Specialist at Gallea Ai, where he works on production retrieval-augmented generation and multi-agent orchestration. He is a published machine learning researcher, the founder and CEO of Jesun.Ai, and the creator of Jesun.Code, a plain-English programming language. He holds an MSc in Data Analytics from the University of Niagara Falls Canada, where he graduated with distinction in 2026, and a bachelor's degree from American International University-Bangladesh. Before Gallea Ai, he worked in IT Advisory at KPMG Bangladesh, rising from Officer to Consultant.
+
+- Role: AI Engineer & Data Specialist, Gallea Ai
+- Location: Toronto, Ontario, Canada
+- Research: two AIP Conference Proceedings papers (2023); author of the book "A Beginner's Guide to The Future Data Analyst's" (2025)
+- Website: https://jesunahmadushno.com
+
+## Jesun.Ai (company)
+
+Jesun.Ai is a Toronto based AI company working on applied AI systems, multi-agent orchestration, and AI engineering and automation services. It was founded on 2026-09-21 in Toronto, Canada, by Jesun Ahmad Ushno, who is its Founder and CEO and sole owner. Jesun.Ai is a separate entity from Jesun Ahmad Ushno the person.
+
+## Jesun.Code (product)
+
+Jesun.Code is a programming language designed to read like plain English, created by Jesun Ahmad Ushno. It is a separate product entity, distinct from both the person and the company.
+
+## Key pages
+
+- Home: https://jesunahmadushno.com/
+- Google Knowledge Panel Service (by Jesun.Ai): https://jesunahmadushno.com/knowledge-panel-service/
+- Uses (tools and stack): https://jesunahmadushno.com/uses.html
+- Project case studies: https://jesunahmadushno.com/projects/prism.html , https://jesunahmadushno.com/projects/jesun-code.html , https://jesunahmadushno.com/projects/bigfish.html , https://jesunahmadushno.com/projects/nopara.html , https://jesunahmadushno.com/projects/tridrop.html , https://jesunahmadushno.com/projects/sonicclear.html
+- AI Engineer roadmap (INFUSE): https://jesunahmadushno.com/roadmap/infuse-ai-engineer/
+- AI Engineer roadmap (Tangerine): https://jesunahmadushno.com/roadmap/tangerine-ai-engineer/
+
+## Profiles
+
+- LinkedIn: https://www.linkedin.com/in/jesunahmadushno
+- GitHub: https://github.com/JesunAhmadUshno
+- Google Scholar: https://scholar.google.com/citations?user=BR2tycQAAAAJ
+- ORCID: https://orcid.org/0000-0002-6070-9025
+- Wikidata: https://www.wikidata.org/wiki/Q141660473
+- Instagram: https://www.instagram.com/jesunahmadushno
+- Facebook: https://www.facebook.com/jesunahmadushno.bn
+- Threads: https://www.threads.net/@jesunahmadushno
+- X: https://x.com/JesunAhmadUshno
+- YouTube: https://www.youtube.com/@jesunahmadushno
+- TikTok: https://www.tiktok.com/@jesunushno
+- Medium: https://medium.com/@jesunahmadushno
+- ResearchGate: https://www.researchgate.net/profile/Jesun-Ushno
+- about.me: https://about.me/JesunAhmadUshno
+- Lounge.ai: https://lounge.ai/@jesunahmadushno
