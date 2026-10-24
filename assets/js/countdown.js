@@ -1,6 +1,7 @@
-/* Jesun.Code v1.0 countdown strip.
+/* Jesun.Code v2.0.0 live strip.
  * Target: 2026-09-27T19:00:00-04:00 (America/Toronto).
- * After the drop, flips to the "live" state with a GitHub link.
+ * The v1.0 target date has passed and v2.0.0 is live, so the strip
+ * shows the "live" state with a GitHub link.
  * No em dash used anywhere in this file, per house rule.
  */
 (function () {
