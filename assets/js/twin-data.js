@@ -44,8 +44,8 @@
         id: "jesun-code",
         keys: ["jesun.code", "jesun code", "programming language", "language", "plain english", "playground", "jpm", "v0.6", "self-hosting", "self hosting", "interpreter", "catchphrase"],
         a: {
-          en: "Jesun.Code is a programming language that reads like plain English: no semicolons, no braces, plain-English errors with line numbers. It ships as a single binary, runs the whole Python ecosystem via import, and includes a package manager (jpm), AI agent fleets, and tmux control. v2.0.0 runs 711/711 tests green; self-hosting is the next milestone. You can run it live in the playground section of this site.",
-          bn: "Jesun.Code একটি প্রোগ্রামিং ভাষা যা প্লেইন ইংরেজির মতো পড়া যায়: সেমিকোলন নেই, ব্রেস নেই, লাইন নম্বরসহ প্লেইন-ইংরেজি এরর। এটি সিঙ্গেল বাইনারি হিসেবে শিপ হয়, import দিয়ে পুরো Python ইকোসিস্টেম চালায়, আর আছে প্যাকেজ ম্যানেজার (jpm), AI এজেন্ট ফ্লিট ও tmux কন্ট্রোল। v2.0.0-তে ৭১১/৭১১ টেস্ট সবুজ; সেলফ-হোস্টিং হলো পরবর্তী মাইলস্টোন। এই সাইটের প্লেগ্রাউন্ড সেকশনে এটি লাইভ চালাতে পারো।"
+          en: "Jesun.Code: a programming language that reads like plain English: no semicolons, no braces, plain-English errors with line numbers. It ships as a single binary and includes a package manager (jpm), AI agent fleets, and tmux control. Latest release v2.0.0, shipped Sep 30, 2026. 711 tests, run in the open. v3.0 is implemented, under test, and not released. Self-hosting is the next milestone. You can run it live in the playground section of this site.",
+          bn: "Jesun.Code একটি প্রোগ্রামিং ভাষা যা প্লেইন ইংরেজির মতো পড়া যায়: সেমিকোলন নেই, ব্রেস নেই, লাইন নম্বরসহ প্লেইন-ইংরেজি এরর। এটি সিঙ্গেল বাইনারি হিসেবে শিপ হয়, আর আছে প্যাকেজ ম্যানেজার (jpm), AI এজেন্ট ফ্লিট ও tmux কন্ট্রোল। সর্বশেষ রিলিজ v2.0.0, প্রকাশিত ৩০ সেপ্টেম্বর ২০২৬। ৭১১টি টেস্ট, উন্মুক্তভাবে চালানো হয়। v3.0 ইমপ্লিমেন্ট করা হয়েছে, টেস্ট চলছে, এখনো রিলিজ হয়নি। সেলফ-হোস্টিং হলো পরবর্তী মাইলস্টোন। এই সাইটের প্লেগ্রাউন্ড সেকশনে এটি লাইভ চালাতে পারো।"
         }
       },
       {
@@ -68,8 +68,8 @@
         id: "papers",
         keys: ["paper", "papers", "research", "published", "publication", "defect", "pso", "wavelet", "aip", "fabric", "particle swarm"],
         a: {
-          en: "Two published ML papers, both in AIP Conference Proceedings (2023): wavelet transform plus neural networks for fabric defect detection (https://doi.org/10.13140/RG.2.2.10516.99203), and elitist particle swarm optimization with mutation and adaptive inertia (https://doi.org/10.1063/5.0148658).",
-          bn: "দুটি প্রকাশিত ML পেপার, দুটোই AIP Conference Proceedings (২০২৩): ফ্যাব্রিক ডিফেক্ট ডিটেকশনে ওয়েভলেট ট্রান্সফর্ম ও নিউরাল নেটওয়ার্ক (https://doi.org/10.13140/RG.2.2.10516.99203), আর মিউটেশন ও অ্যাডাপ্টিভ ইনারশিয়াসহ এলিটিস্ট পার্টিকল সোয়ার্ম অপটিমাইজেশন (https://doi.org/10.1063/5.0148658)।"
+          en: "Two published ML papers, both in AIP Conference Proceedings (2023): wavelet transform plus neural networks for fabric defect detection (https://doi.org/10.1063/5.0148618), and elitist particle swarm optimization with mutation and adaptive inertia (https://doi.org/10.1063/5.0148658).",
+          bn: "দুটি প্রকাশিত ML পেপার, দুটোই AIP Conference Proceedings (২০২৩): ফ্যাব্রিক ডিফেক্ট ডিটেকশনে ওয়েভলেট ট্রান্সফর্ম ও নিউরাল নেটওয়ার্ক (https://doi.org/10.1063/5.0148618), আর মিউটেশন ও অ্যাডাপ্টিভ ইনারশিয়াসহ এলিটিস্ট পার্টিকল সোয়ার্ম অপটিমাইজেশন (https://doi.org/10.1063/5.0148658)।"
         }
       },
       {
