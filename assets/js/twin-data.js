@@ -44,8 +44,8 @@
         id: "jesun-code",
         keys: ["jesun.code", "jesun code", "programming language", "language", "plain english", "playground", "jpm", "v0.6", "self-hosting", "self hosting", "interpreter", "catchphrase"],
         a: {
-          en: "Jesun.Code is a programming language that reads like plain English: no semicolons, no braces, plain-English errors with line numbers. It ships as a single binary, runs the whole Python ecosystem via import, and includes a package manager (jpm), AI agent fleets, and tmux control. v0.6.0 runs 220/220 tests green; self-hosting is the v1.0 milestone. You can run it live in the playground section of this site.",
-          bn: "Jesun.Code একটি প্রোগ্রামিং ভাষা যা প্লেইন ইংরেজির মতো পড়া যায়: সেমিকোলন নেই, ব্রেস নেই, লাইন নম্বরসহ প্লেইন-ইংরেজি এরর। এটি সিঙ্গেল বাইনারি হিসেবে শিপ হয়, import দিয়ে পুরো Python ইকোসিস্টেম চালায়, আর আছে প্যাকেজ ম্যানেজার (jpm), AI এজেন্ট ফ্লিট ও tmux কন্ট্রোল। v0.6.0-তে ২২০/২২০ টেস্ট সবুজ; সেলফ-হোস্টিং হলো v1.0 মাইলস্টোন। এই সাইটের প্লেগ্রাউন্ড সেকশনে এটি লাইভ চালাতে পারো।"
+          en: "Jesun.Code is a programming language that reads like plain English: no semicolons, no braces, plain-English errors with line numbers. It ships as a single binary, runs the whole Python ecosystem via import, and includes a package manager (jpm), AI agent fleets, and tmux control. v2.0.0 runs 711/711 tests green; self-hosting is the next milestone. You can run it live in the playground section of this site.",
+          bn: "Jesun.Code একটি প্রোগ্রামিং ভাষা যা প্লেইন ইংরেজির মতো পড়া যায়: সেমিকোলন নেই, ব্রেস নেই, লাইন নম্বরসহ প্লেইন-ইংরেজি এরর। এটি সিঙ্গেল বাইনারি হিসেবে শিপ হয়, import দিয়ে পুরো Python ইকোসিস্টেম চালায়, আর আছে প্যাকেজ ম্যানেজার (jpm), AI এজেন্ট ফ্লিট ও tmux কন্ট্রোল। v2.0.0-তে ৭১১/৭১১ টেস্ট সবুজ; সেলফ-হোস্টিং হলো পরবর্তী মাইলস্টোন। এই সাইটের প্লেগ্রাউন্ড সেকশনে এটি লাইভ চালাতে পারো।"
         }
       },
       {
