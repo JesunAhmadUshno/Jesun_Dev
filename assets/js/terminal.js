@@ -24,7 +24,7 @@
       line('AI Engineer & Data Specialist at Gallea Ai. Ex-KPMG IT Advisory. Published ML researcher. MIAS Foundation co-founder.');
     },
     now: function () {
-      line('now: running a 49-seat autonomous AI crew (Jesun.Ai), building Jesun.Code toward v1.0 self-hosting, and shipping daily AI content.');
+      line('now: running a 49-seat autonomous AI crew (Jesun.Ai), building Jesun.Code toward self-hosting (v2.0.0 is live), and shipping daily AI content.');
     },
     team: function () {
       line('49 AI seats across Personal Socials (10), Jesun.Ai (31), Jesun.Code (8).');
