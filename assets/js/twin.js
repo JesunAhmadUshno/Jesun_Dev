@@ -69,24 +69,28 @@
     return 0;
   }
 
-  /* Per entry, each unique keyword token contributes its best match against
-     an unused query token (greedy). This rewards multi-token coverage
-     (e.g. "jesun code") while a token repeated across keys counts once. */
+  /* Per entry, each unique keyword token is paired with at most one query token
+     and vice versa, strongest pairs first (so an exact key beats an earlier
+     fuzzy one). This rewards multi-token coverage (e.g. "jesun code") while a
+     token repeated across keys counts once. */
   function entryScore(qtokens, entry) {
-    var seen = {}, total = 0, used = {};
+    var seen = {}, kts = [], pairs = [], usedK = {}, usedQ = {}, total = 0;
     entry.keys.forEach(function (raw) {
       contentTokens(raw).forEach(function (kt) {
-        if (seen[kt]) return;
-        seen[kt] = 1;
-        var best = 0, bestJ = -1, j;
-        for (j = 0; j < qtokens.length; j++) {
-          if (used[j]) continue;
-          var s = tokenScore(qtokens[j], kt);
-          if (s > best) { best = s; bestJ = j; }
-        }
-        if (bestJ >= 0) used[bestJ] = 1;
-        total += best;
+        if (!seen[kt]) { seen[kt] = 1; kts.push(kt); }
       });
+    });
+    kts.forEach(function (kt, i) {
+      for (var j = 0; j < qtokens.length; j++) {
+        var s = tokenScore(qtokens[j], kt);
+        if (s > 0) pairs.push([s, i, j]);
+      }
+    });
+    pairs.sort(function (a, b) { return b[0] - a[0] || a[1] - b[1] || a[2] - b[2]; });
+    pairs.forEach(function (p) {
+      if (usedK[p[1]] || usedQ[p[2]]) return;
+      usedK[p[1]] = usedQ[p[2]] = 1;
+      total += p[0];
     });
     return total;
   }

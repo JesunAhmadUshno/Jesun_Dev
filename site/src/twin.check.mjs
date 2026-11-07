@@ -25,6 +25,11 @@ for (const k of ['greeting', 'fallback']) for (const L of ['en', 'bn']) assert.o
 for (const q of ['weather in tokyo tomorrow', 'quantum chromodynamics', 'zzzz'])
   assert.equal(t.twinAnswer(q, 'en'), t.data.fallback.en, `"${q}" should fall back`);
 
+// 3b. A keyword that is exactly one of an entry's keys routes to that entry, even when a
+// weaker sibling key (e.g. "paper" inside "papers") would match the same query token first.
+for (const [q, id] of [['papers', 'papers'], ['project', 'projects'], ['private', 'privacy']])
+  assert.equal(t.twinAnswer(q, 'en'), t.data.entries.find((e) => e.id === id).a.en, `"${q}" should route to ${id}`);
+
 // 4. Each topic is reachable by its own keywords; the explainability ranking agrees with twinAnswer.
 const misses = [];
 let total = 0;
