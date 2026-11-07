@@ -22,6 +22,9 @@ for (const L of ['en', 'bn']) {
 const lp = parity(lang);
 const gaps = lp.groups.flatMap((g) => [...g.missingEn.map((k) => `en:${k}`), ...g.missingBn.map((k) => `bn:${k}`)]);
 const drift = Object.keys(strings.en).flatMap((k) => ['en', 'bn'].filter((L) => k in lang[L] && lang[L][k] !== strings[L][k]).map((L) => `${L}:${k}`));
-// Reported, not fatal: these are content decisions for the owner (see docs/research-review.md).
+// apply() skips keys with no string, so a key in one language only leaves the other language's
+// text on screen after toggling back. That is a bug, not a content choice.
+assert.deepEqual(gaps, [], `lang.js keys missing a translation: ${gaps.join(', ')}`);
+// Drift is reported, not fatal: these are content decisions for the owner (see docs/research-review.md).
 console.log(`i18n note: lang.js ${lp.enCount} EN / ${lp.bnCount} BN keys; missing: ${gaps.join(', ') || 'none'}; drift vs content-strings.json: ${drift.join(', ') || 'none'}`);
 console.log(`i18n ok: ${p.enCount} EN / ${p.bnCount} BN keys, ${p.groups.length} prefix groups, 0 missing, 0 empty`);
