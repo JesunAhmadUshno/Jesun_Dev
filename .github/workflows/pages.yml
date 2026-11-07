@@ -1,0 +1,62 @@
+name: Pages
+
+# The portfolio itself is plain static files at the repo root, served today by the legacy
+# "deploy from branch" Pages build, with the dashboard committed at dashboard/ (npm run publish).
+#
+# check: on every push to main, builds the dashboard in site/ and runs its known-answer checks
+#        (twin routing, EN/BN parity, interpreter examples, sitemap tags). Deploys nothing.
+# deploy: manual only. Assembles the product at / and the freshly built dashboard at /dashboard/
+#        into one artifact. Use it only after Settings > Pages > Source is switched to
+#        "GitHub Actions"; until then GitHub rejects the deploy step.
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: site/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+        working-directory: site
+      - run: npm run build
+        working-directory: site
+      - name: Assemble product + dashboard
+        run: |
+          mkdir _site
+          rsync -a --exclude .git --exclude .github --exclude site --exclude dashboard --exclude _site ./ _site/
+          cp -r site/dist _site/dashboard
+          touch _site/.nojekyll
+      - uses: actions/upload-pages-artifact@v3
+        if: github.event_name == 'workflow_dispatch'
+        with:
+          path: _site
+  deploy:
+    if: github.event_name == 'workflow_dispatch'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
