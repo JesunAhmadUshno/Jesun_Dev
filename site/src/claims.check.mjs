@@ -41,6 +41,16 @@ assert.deepEqual(gaps, [], `sitemap pages missing file, canonical or description
 const bad = audit.pages.filter((p) => p.ldErrors).map((p) => p.file);
 assert.deepEqual(bad, [], `invalid JSON-LD on: ${bad.join(', ')}`);
 
+// Local stylesheets and scripts each sitemap page loads must exist next to it (a 404 drops the styling).
+const missingAssets = audit.pages.filter((p) => p.exists).flatMap((p) => {
+  const html = fs.readFileSync(new URL(`../../${p.file}`, import.meta.url), 'utf8');
+  const refs = [...html.matchAll(/<link\b[^>]*rel="stylesheet"[^>]*href="([^"]+)"|<script\b[^>]*src="([^"]+)"/gi)].map((m) => m[1] || m[2]);
+  return refs.filter((u) => !/^(https?:)?\/\//.test(u))
+    .map((u) => new URL(u.split(/[?#]/)[0], `file:///${p.file}`).pathname.slice(1))
+    .filter((f) => !fs.existsSync(new URL(`../../${f}`, import.meta.url))).map((f) => `${p.file} -> ${f}`);
+});
+assert.deepEqual(missingAssets, [], `pages load missing local assets: ${missingAssets.join(', ')}`);
+
 const app = fs.readFileSync(new URL('./App.jsx', import.meta.url), 'utf8');
 assert.ok(!/\b(v?2\.0\.0|711)\b/.test(app), 'App.jsx hard-codes a Jesun.Code version or test count');
 console.log(`claims ok: interpreter v${r.version}, 4 examples match known answers, ${audit.pages.length}/${audit.pages.length} sitemap pages have canonical + description`);
