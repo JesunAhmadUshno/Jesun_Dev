@@ -1,0 +1,27 @@
+/* Dashboard-specific additions on top of the Lab OS base (styles.css, copied verbatim from the reference build). */
+textarea.code, pre.code { width: 100%; min-height: 320px; margin: 0; padding: 14px 16px; border-radius: 10px; border: 1px solid var(--border);
+  font: 500 12.5px/1.6 'JetBrains Mono', ui-monospace, monospace; background: #1b1915; color: #e9e4da; resize: vertical; tab-size: 4; }
+pre.code.out { white-space: pre-wrap; overflow: auto; max-height: 420px; }
+.jc { margin-top: 14px; }
+.wrapseg { flex-wrap: wrap; max-width: 100%; }
+.field.stdin { flex: 1 1 220px; }
+input[type=text] { width: 100%; padding: 9px 12px; border-radius: 10px; border: 1px solid var(--border); background: var(--surface-strong); color: var(--text); font: inherit; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.chip { border: 1px solid var(--border); background: var(--surface-strong); color: var(--text); border-radius: 999px; padding: 5px 12px; font: 500 12.5px Inter, sans-serif; cursor: pointer; text-decoration: none; }
+.chip:hover { border-color: var(--primary); color: var(--primary); }
+.chip small { margin-left: 6px; color: var(--muted); }
+.answer { background: var(--surface-strong); border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin: 8px 0 0; }
+h3 { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin: 0; font-size: 14px; }
+.parity { grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 10px 16px; }
+button.bar-row.pick { all: unset; cursor: pointer; display: block; padding: 6px 8px; border-radius: 10px; }
+button.bar-row.pick:hover, button.bar-row.pick.sel { background: var(--primary-pale); }
+button.bar-row.pick:focus-visible { outline: 3px solid color-mix(in srgb, var(--primary) 45%, transparent); }
+.scroll-x { overflow-x: auto; }
+.tablebox { max-height: 360px; overflow-y: auto; border: 1px solid var(--border); border-radius: 12px; }
+.tablebox th { position: sticky; top: 0; background: var(--surface-strong); }
+td.types { font-size: 12px; color: var(--muted); min-width: 180px; }
+.pickable { cursor: pointer; }
+.score { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+.limits { margin: 8px 0 0; padding-left: 18px; color: var(--muted); font-size: 13px; }
+.limits li { margin-bottom: 4px; }
+@media (max-width: 760px) { svg.chart text { font-size: 15px; } .score { grid-template-columns: 1fr; } textarea.code, pre.code { min-height: 220px; } }
