@@ -8,132 +8,63 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](LICENSE)
 [![GitHub Stars](https://img.shields.io/github/stars/JesunAhmadUshno/Jesun_Dev?style=for-the-badge&color=purple)](https://github.com/JesunAhmadUshno/Jesun_Dev)
 
-[Live Demo](http://jesunahmadushno.com/) • [Features](#-features) • [Tech Stack](#-tech-stack) • [Setup](#-running-locally) • [Support](#-support)
+[Live Demo](http://jesunahmadushno.com/) • [Live dashboard](https://jesunahmadushno.com/dashboard/) • [Features](#features) • [Setup](#running-locally) • [Support](#-support)
 
-*A premium, AI-driven interactive portfolio merging AI Engineering with Data Analytics — transforming static resumes into immersive digital experiences.*
+*A static personal portfolio that runs its own programming language and its own Q&A twin entirely in the browser, in English and Bangla.*
+
+Live dashboard: https://jesunahmadushno.com/dashboard/
 
 ---
 
 </div>
 
-## 💎 Overview
+## Overview
 
-This portfolio is a serverless **Single Page Application (SPA)** showcasing the intersection of Data Engineering and Creative Development. Beyond a traditional landing page, it features an intelligent AI assistant, interactive tools, and a modern glassmorphism design.
+jesunahmadushno.com is plain static HTML, CSS and JavaScript served by GitHub Pages from this repository, with no build step and no server. The **live dashboard** at [/dashboard/](https://jesunahmadushno.com/dashboard/) runs the same files and shows what they do: a Jesun.Code playground, the twin with its per-topic scores, EN/BN string parity, a sitemap audit, and an engineering scorecard ([docs/research-review.md](docs/research-review.md)).
 
-Built with a focus on performance and aesthetics, the application uses a **smart offline AI system** to provide an interactive narrative of my professional journey at KPMG and academic pursuits in Canada — no API keys required!
+## Features
 
-## ✨ Features
+- **Jesun.Code playground**: the vendored interpreter (`assets/jesun/jesun.py`, its own `VERSION` is 0.6.0) runs in Pyodide 0.26.4 inside a Web Worker (`assets/js/playground.js`, `assets/js/py-worker.js`). Output comes from `jesun.execute()`, not a mock.
+- **Guided twin**: rule-based keyword Q&A over `assets/js/twin-data.js` (`assets/js/twin.js`). It is not a language model and sends nothing anywhere.
+- **English and Bangla**: `content-strings.json` holds matched EN/BN strings, applied by `assets/js/lang.js`; a Bangla mirror lives under `bangla/`.
+- **Interactive extras**: a chess board with a minimax engine (`assets/js/chess.js`, rules from chess.js@1.0.0), a three.js hero (`assets/js/hero3d.js`), a terminal (`assets/js/terminal.js`) and live GitHub activity (`assets/js/live.js`).
+- **Search metadata**: canonical links, descriptions, Open Graph, Twitter cards and JSON-LD on every page in `sitemap.xml`, plus `llms.txt`.
 
-### 🎬 GODLIKE Cinematic Bootloader
-- **Matrix rain effect** — Japanese characters cascading down the screen
-- **3-Phase boot sequence** — Logo → Diagnostics → Epic Reveal
-- **Lightning storms** — Random procedural lightning bolts
-- **Particle vortex** — 150 particles spiraling into the center
-- **Mouse trail** — Neon glow trail following your cursor
-- **Text scramble** — Characters shuffle before revealing final text
-- **Power surge flash** — Dramatic white flash on transitions
-- **Glitch slice effect** — Horizontal screen tears with hue rotation
-- **System sound effects** — Web Audio API sci-fi boot sounds
-- **CRT overlay** — Scanlines, flicker, and vignette effects
-- **Hexagon grid** — Animated cyberpunk background
-- **Heartbeat monitor** — Real-time pulse animation
-- **Circuit traces** — Animated SVG circuit board paths
-
-### 🎥 Cinematic 3D Scroll (Desktop)
-- **Dramatic zoom transitions** — Slides zoom in/out with depth
-- **Parallax depth layers** — Multi-layer parallax effects
-- **Blur depth of field** — Far slides blur for focus effect
-- **Zigzag animations** — Alternating slide directions
-- **Keyboard & touch support** — Arrow keys, wheel, and swipe
-- **Auto-advance** — Automatic slide progression after idle
-- **Mobile fallback** — Clean standard scroll on mobile devices
-
-### 🤖 Smart AI Chat (Jesun.AI Twin)
-- **Intelligent keyword matching** with fuzzy search
-- **Conversation memory** and context awareness
-- **Quick reply suggestions** for guided exploration
-- **14 knowledge categories** covering experience, skills, projects & more
-- **No API required** — works 100% offline
-
-### 🎨 Interactive Elements
-- **Vibe Generator** — AI-powered tech stack suggestions based on project ideas
-- **Smart Carousel** — Dynamic text timing based on content length
-- **Spotlight UI** — Cursor-tracking lighting effects on project cards
-- **Expandable Certifications** — 30+ certifications in a clean, collapsible grid
-- **Auto-scroll** — Automatic page scroll with 10s initial delay
-- **Floating buttons** — Coffee & chat buttons appear after scroll starts
-
-### 📱 Modern Design
-- **Glassmorphism** cards with frosted glass effects
-- **Responsive flux** — Mobile-first design with Tailwind CSS
-- **Dark mode** optimized with emerald accent colors
-- **Smooth animations** throughout
-
-### 🚀 Sections
-| Section | Description |
-|---------|-------------|
-| **Hero** | Animated typing carousel with role highlights |
-| **About** | Interactive code block + skill cards |
-| **Experience** | Timeline of KPMG, education, and work history |
-| **Certifications** | 30+ certs from Oracle, Cisco, Microsoft, KPMG & more |
-| **Projects** | Bento grid with PRISM, NoPara, SonicClear & research |
-| **Contact** | Email modal, social links, resume download |
-
-## 📦 Tech Stack
-
-| Layer | Technology |
-|-------|------------|
-| **Core** | HTML5, CSS3, Vanilla JavaScript (ES6+) |
-| **Styling** | Tailwind CSS (CDN), Custom CSS, Glassmorphism |
-| **Graphics** | Canvas API (Matrix rain, particles, lightning, vortex) |
-| **Audio** | Web Audio API (procedural sci-fi sounds) |
-| **Icons** | Lucide Icons |
-| **AI** | Smart offline response system (no API needed) |
-| **Deployment** | GitHub Pages + Custom Domain |
-
-## 🛠 Running Locally
+## Running locally
 
 ```bash
-# 1. Clone the repository
 git clone https://github.com/JesunAhmadUshno/Jesun_Dev.git
 cd Jesun_Dev
-
-# 2. Open in browser (no build step needed!)
-# Option A: Double-click index.html
-# Option B: Use a local server
-python -m http.server 8080
-# Then visit http://localhost:8080
+python3 -m http.server 8080   # then visit http://localhost:8080
 ```
 
-No configuration required — the AI chat works completely offline!
+## Checks and the dashboard
 
-## 📁 Project Structure
+```bash
+cd site
+npm ci
+npm run build     # extracts data, runs the twin, i18n and claims checks, then builds
+npm test          # the checks alone
+npm run publish   # build and copy site/dist to dashboard/ for the branch-based Pages build
+```
+
+The checks need Node 22 and Python 3. `.github/workflows/pages.yml` runs them on every push to `main`.
+
+## Project structure
 
 ```
 Jesun_Dev/
-├── index.html      # Main HTML structure
-├── style.css       # Custom styles & animations
-├── script.js       # AI chat, carousel, interactions
-├── favicon.png     # Site favicon
-├── CNAME           # Custom domain config
-├── LICENSE         # MIT License
-└── README.md       # This file
-```
-
-## 🎨 Customization
-
-Modify the color palette in `style.css` or Tailwind config:
-
-```javascript
-// In index.html - Tailwind config
-colors: {
-    neutral: {
-        850: '#1f1f1f',
-        900: '#171717',
-        950: '#0a0a0a',  // Background
-    }
-}
-// Accent: emerald-500 (#10b981)
+├── index.html, about.html, uses.html   # main pages
+├── projects/                           # one page per project
+├── roadmap/, muse-n8n-extraction-101/, knowledge-panel-service/, privacy/, terms/
+├── bangla/                             # Bangla mirror
+├── assets/js/                          # twin, chess, playground, i18n, motion and live widgets
+├── assets/jesun/                       # vendored Jesun.Code interpreter + examples
+├── content-strings.json                # EN/BN strings
+├── site/                               # dashboard source (React + Vite) and its checks
+├── dashboard/                          # built dashboard served at /dashboard/
+├── docs/research-review.md             # engineering scorecard
+└── sitemap.xml, llms.txt, robots.txt, CNAME
 ```
 
 ## 🔮 Featured Projects
