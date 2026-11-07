@@ -38,6 +38,7 @@
       } else if (m.type === 'done') {
         var cb = pending[m.id];
         delete pending[m.id];
+        if (m.id === -1) return; // boot warmup: keep the "runtime ready" status
         runBtn.disabled = false;
         stopBtn.classList.add('hidden');
         setStatus('done.');
