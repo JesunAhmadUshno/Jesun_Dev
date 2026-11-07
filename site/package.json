@@ -4,8 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "node src/extract.mjs && vite",
-    "build": "node src/extract.mjs && node src/twin.check.mjs && node src/i18n.check.mjs && node src/claims.check.mjs && vite build",
-    "test": "node src/twin.check.mjs && node src/i18n.check.mjs && node src/claims.check.mjs",
+    "build": "node src/extract.mjs && node src/twin.check.mjs && node src/i18n.check.mjs && node src/claims.check.mjs && node src/live.check.mjs && vite build",
+    "test": "node src/twin.check.mjs && node src/i18n.check.mjs && node src/claims.check.mjs && node src/live.check.mjs",
     "preview": "vite preview",
     "publish": "npm run build && rm -rf ../dashboard && cp -r dist ../dashboard"
   },

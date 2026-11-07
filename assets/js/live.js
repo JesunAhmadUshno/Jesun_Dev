@@ -13,6 +13,13 @@
     return d.toISOString().slice(0, 10);
   }
 
+  /* third-party text goes into innerHTML below, so escape it first */
+  function escH(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
   /* ---- GitHub stats ---- */
   var statsEl = document.getElementById('gh-stats');
   if (statsEl) {
@@ -68,10 +75,12 @@
       var items = (d.items || []).slice(0, 6);
       if (!items.length) throw new Error('no posts');
       medEl.innerHTML = items.map(function (it) {
-        var desc = String(it.description || '').replace(/<[^>]+>/g, '').slice(0, 160);
-        return '<a class="glass post reveal in" href="' + it.link + '" target="_blank" rel="noopener">' +
+        /* description is HTML: strip tags and any unclosed '<' or '>', keep its entities */
+        var desc = String(it.description || '').replace(/<[^>]+>/g, '').replace(/[<>]/g, '').slice(0, 160);
+        var link = /^https?:\/\//i.test(it.link) ? it.link : 'https://medium.com/@jesunahmadushno';
+        return '<a class="glass post reveal in" href="' + escH(link) + '" target="_blank" rel="noopener">' +
           '<div class="mono post-date">' + new Date(it.pubDate).toISOString().slice(0, 10) + '</div>' +
-          '<h3>' + it.title + '</h3><p>' + desc + '...</p>' +
+          '<h3>' + escH(it.title) + '</h3><p>' + desc + '...</p>' +
           '<span class="read-more">Read on Medium</span></a>';
       }).join('');
     }).catch(function () {
