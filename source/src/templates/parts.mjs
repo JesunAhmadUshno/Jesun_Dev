@@ -28,6 +28,7 @@ export function footer(d, fp) {
 <div><h2>Profiles</h2><ul>${prof}<li><a href="/contact/">Contact</a></li></ul></div>
 <div><h2>System</h2><ul><li><button class="linkish" type="button" data-replay>Replay the build</button></li><li><button class="linkish" type="button" data-palette>Command palette</button></li><li><button class="linkish" type="button" data-grid-toggle>Grid overlay</button></li><li><a href="/lab/">Lab</a></li><li><a href="/uses/">Uses</a></li><li><a href="/patterns/">Patterns registry</a></li><li><a href="/legal/">Legal and privacy</a></li><li><a href="#main">Back to top</a></li></ul></div>
 </div>
+<div class="support-links"><nav aria-label="Support this work"><a href="https://github.com/sponsors/JesunAhmadUshno">Sponsor this work</a><a href="https://github.com/sponsors/JesunAhmadUshno">Donate</a><a href="https://buymeacoffee.com/jesun">Buy Me a Coffee</a><a href="https://calendly.com/jesunahmadushno/30min">Work with me</a></nav></div>
 <div class="foot-base"><span class="label">&copy; ${new Date().getFullYear()} Jesun Ahmad Ushno. All rights reserved. Design, code, copy and interaction patterns are his property.</span><span class="label">Built with HTML, CSS and plain JavaScript. Inter, Inter Display, DejaVu Sans Mono. No trackers. Build <b>${fp}</b></span></div>
 <a href="/trap/" class="hp" tabindex="-1" aria-hidden="true" rel="nofollow">archive index</a>
 <i hidden data-fp="${fp}"></i>
@@ -84,6 +85,7 @@ ${body}
 </main>
 ${footer(d, fp)}` : body}
 <script type="module" src="${script}?v=${fp}"></script>
+<script defer src="/site-chat.js" data-endpoint="https://creations-gary-rules-richmond.trycloudflare.com/chat" data-site="Jesun_Dev"></script>
 </body>
 </html>`;
 }
