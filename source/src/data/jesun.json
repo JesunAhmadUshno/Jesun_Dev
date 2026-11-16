@@ -571,6 +571,50 @@
    "url": "https://medium.com/@jesunahmadushno",
    "summary": "An essay on applying data-driven Six Sigma methods to security.",
    "status": "SELF-REPORTED"
+  },
+  {
+   "slug": "peeking-pooling-locked-split-upworthy",
+   "type": "Preprint",
+   "title": "Peeking, Pooling, and a Locked Split: A Pre-registered Replication of the Question-Headline Effect on the Upworthy Archive, with an Always-Valid Sequential Testing Module",
+   "venue": "Zenodo",
+   "date": "2026-11-16",
+   "url": "https://doi.org/10.5281/zenodo.24282470",
+   "doi": "10.5281/zenodo.24282470",
+   "summary": "A pre-registered replication of the question-headline effect on the Upworthy Archive, with an always-valid sequential testing module.",
+   "status": "SELF-REPORTED with DOI"
+  },
+  {
+   "slug": "creditworthy-rejects-fair-access-scorecard",
+   "type": "Preprint",
+   "title": "Creditworthy Rejects: A Pre-registered Fair-Access Study of a Credit Scorecard, a Thin-File Model, and a Second-Look Policy That Failed Its Own Test",
+   "venue": "Zenodo",
+   "date": "2026-11-16",
+   "url": "https://doi.org/10.5281/zenodo.24283751",
+   "doi": "10.5281/zenodo.24283751",
+   "summary": "A pre-registered fair-access study of a credit scorecard, a thin-file model, and a second-look policy that failed its own pre-registered test.",
+   "status": "SELF-REPORTED with DOI"
+  },
+  {
+   "slug": "filtered-vector-search-regime-map",
+   "type": "Preprint",
+   "title": "Filtered Vector Search Is a Regime Map, Not a Leaderboard: FAISS, pgvector, and Qdrant under Selectivity, Churn, and Hybrid Fusion",
+   "venue": "Zenodo",
+   "date": "2026-11-16",
+   "url": "https://doi.org/10.5281/zenodo.24283784",
+   "doi": "10.5281/zenodo.24283784",
+   "summary": "A benchmark of FAISS, pgvector, and Qdrant under selectivity, churn, and hybrid fusion, reported as a regime map rather than a leaderboard.",
+   "status": "SELF-REPORTED with DOI"
+  },
+  {
+   "slug": "mapreduce-scale-ladder-small-file-effect",
+   "type": "Preprint",
+   "title": "Where MapReduce Catches Up: A Pre-registered Scale Ladder, the Small-File Effect Measured at 1,251.7 Percent, and a Spark Hypothesis Refuted",
+   "venue": "Zenodo",
+   "date": "2026-11-16",
+   "url": "https://doi.org/10.5281/zenodo.24283816",
+   "doi": "10.5281/zenodo.24283816",
+   "summary": "A pre-registered scale ladder for Hadoop MapReduce against a tuned single-node baseline, with the small-file effect measured at 1,251.7 percent.",
+   "status": "SELF-REPORTED with DOI"
   }
  ],
  "credentials": [

@@ -109,7 +109,7 @@ ${workGrid(d.projects)}
 ${rec.studies.length ? `<div class="ship-wrap" id="latest"><h3>Latest shipped</h3><p class="ship-sub">The twelve most recently updated public repositories, synced from GitHub on ${esc(fmtDate(rec.synced))}.</p>${latestShipped(rec, 12)}<p class="src" style="margin-top:16px"><a href="/studies/">All ${rec.totals.studies} studies</a></p></div>` : ''}
 </div></section>
 <section class="sec" id="ventures"><div class="wrap">${secHead({ label: 'Ventures', title: 'Offices <em>held.</em>' })}${orgBlock(d, rec)}</div></section>`;
-  page('/work/', { title: 'Work, projects and ventures', desc: `Work by Jesun Ahmad Ushno: ${d.projects.slice(0, 4).map(p => p.name).join(', ')} and more, two ML papers, and his ventures with his titles.`, body, crumbs: [['Home', '/'], ['Work', '/work/']], extra: [{ '@type': 'ItemList', itemListElement: d.projects.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}/projects/${p.slug}.html`, name: p.name })) }] });
+  page('/work/', { title: 'Work, projects and ventures', desc: `Work by Jesun Ahmad Ushno: ${d.projects.slice(0, 4).map(p => p.name).join(', ')} and more, two peer-reviewed ML papers and four sole-author preprints, and his ventures with his titles.`, body, crumbs: [['Home', '/'], ['Work', '/work/']], extra: [{ '@type': 'ItemList', itemListElement: d.projects.map((p, i) => ({ '@type': 'ListItem', position: i + 1, url: `${SITE}/projects/${p.slug}.html`, name: p.name })) }] });
 }
 
 /* ---------- PROJECT PAGES (old URLs stay canonical) ---------- */
@@ -210,7 +210,7 @@ ${secHead({ label: 'Arcade / four engines', title: 'Challenge <em>the machine.</
   const ch = d.journey.map(j => `<article class="chapter" id="${j.id}"><span class="yr">${esc(j.year)}</span><div><p class="label">${esc(j.dates)} / ${esc(j.place)}</p><h2>${esc(j.title)}</h2><p class="org">${esc(j.org)}</p><p class="muted">${esc(j.text)}</p>${j.count ? `<p class="jcount num reveal" data-count="${j.count}" data-suffix="${j.countSuffix || (j.count >= 1000 ? '+' : '')}"><span data-v>${j.count.toLocaleString('en-US')}${j.countSuffix || (j.count >= 1000 ? '+' : '')}</span><small>${esc(j.countLabel)}</small></p>` : ''}<p class="src">Source: ${esc(j.source)}</p></div><div>${j.photo ? `<figure class="exhibit protect" data-signature>${cutout('graduation-cutout', 'Jesun Ahmad Ushno holding his University of Niagara Falls Canada folder in graduation regalia', 820, 1167, '340px')}<figcaption class="src">Exhibit / UNF graduation, 2026</figcaption></figure>` : ''}</div></article>`).join('');
   const body = `<section class="sec" style="border-top:0"><div class="wrap">
 ${secHead({ label: 'Journey / Dhaka to Toronto', title: 'The record, <em>in order.</em>' })}
-${answer('Summary', 'Jesun Ahmad Ushno studied computer engineering at AIUB in Dhaka (2018 to 2023), co-founded the MIAS Foundation, published two ML papers, and worked in IT Advisory at KPMG Bangladesh. He moved to Canada in 2025, earned an MSc in Data Analytics with Distinction in 2026, and now runs three ventures in Toronto.')}
+${answer('Summary', 'Jesun Ahmad Ushno studied computer engineering at AIUB in Dhaka (2018 to 2023), co-founded the MIAS Foundation, published two peer-reviewed ML papers, and worked in IT Advisory at KPMG Bangladesh. He moved to Canada in 2025, earned an MSc in Data Analytics with Distinction in 2026, published four sole-author preprints, and now runs three ventures in Toronto.')}
 <div class="chapters">${ch}</div>
 ${frames([
   { name: 'cap-toss', widths: [480, 498], w: 498, h: 660, alt: 'Jesun Ahmad Ushno throwing his graduation cap on campus', cap: 'MSc conferred, with Distinction', tag: 'Toronto / 2026' },
@@ -256,12 +256,12 @@ const journal = readContent('journal');
   const list = posts.map(p => `<a href="/writing/${p.slug}/"><span class="label">${esc(fmtDate(p.date))}</span><div><h3>${esc(p.title)}</h3><p>${esc(p.description)}</p></div><span class="label">Essay</span></a>`).join('');
   const body = `<section class="sec" style="border-top:0"><div class="wrap">
 ${secHead({ label: 'Writing / canonical home', title: 'Essays, papers <em>and a book.</em>', side: 'New essays publish here first. Copies on other platforms point back to this site.' })}
-${answer('Summary', 'Jesun Ahmad Ushno has published two machine learning papers in AIP Conference Proceedings (2023), a book on data analytics (2025) and essays on Medium. Each has an entry here with its source. New essays are published on this site first and syndicated with a canonical link back.')}
+${answer('Summary', 'Jesun Ahmad Ushno has published two peer-reviewed machine learning papers in AIP Conference Proceedings (2023), four sole-author preprints on Zenodo (2026), a book on data analytics (2025) and essays on Medium. Each has an entry here with its source. New essays are published on this site first and syndicated with a canonical link back.')}
 ${list ? `<h2 class="label" style="margin:32px 0 12px">Essays</h2><div class="list">${list}</div>` : ''}
 <h2 class="label" style="margin:32px 0 12px">Back catalogue</h2><div class="list">${cat}</div>
 <p style="margin-top:28px"><a class="arrow-link" href="/writing/feed.xml">RSS feed ${icon.arrow}</a></p>
 </div></section>`;
-  page('/writing/', { title: 'Writing: essays, papers and a book', desc: 'Essays, two AIP Conference Proceedings papers and a book on data analytics by Jesun Ahmad Ushno, each with sources and links.', body, crumbs: [['Home', '/'], ['Writing', '/writing/']] });
+  page('/writing/', { title: 'Writing: essays, papers and a book', desc: 'Essays, two AIP Conference Proceedings papers, four Zenodo preprints and a book on data analytics by Jesun Ahmad Ushno, each with sources and links.', body, crumbs: [['Home', '/'], ['Writing', '/writing/']] });
   for (const p of d.publications) {
     const cw = { '@type': p.type, '@id': `${SITE}/writing/${p.slug}/#work`, name: p.title, headline: p.title, author: { '@id': PID }, datePublished: p.date, inLanguage: 'en', ...(p.url ? { url: p.url } : {}), ...(p.doi ? { identifier: { '@type': 'PropertyValue', propertyID: 'DOI', value: p.doi }, isPartOf: { '@type': 'Periodical', name: p.venue } } : {}), ...(p.type === 'Book' ? { bookFormat: 'https://schema.org/EBook' } : {}) };
     const body = `<section class="sec" style="border-top:0"><div class="wrap"><article class="article">
