@@ -1,6 +1,6 @@
 # Jesun Ahmad Ushno
 
-> Jesun Ahmad Ushno is a software engineer who builds AI and data systems, agent fleets and machine learning products. He is the Founder of Immitly and Co-Founder of Brimwood Innovation and Climeam. He holds an MSc in Data Analytics with Distinction from the University of Niagara Falls Canada, has published two machine learning papers, and is based in Toronto.
+> Jesun Ahmad Ushno is a software engineer who builds AI and data systems, agent fleets and machine learning products. He is the Founder of Immitly and Co-Founder of Brimwood Innovation and Climeam. He holds an MSc in Data Analytics with Distinction from the University of Niagara Falls Canada, has published two peer-reviewed machine learning papers and four sole-author preprints, and is based in Toronto.
 
 Also known as Jesun Ushno. Toronto, Ontario, Canada. Canonical entity: https://jesunahmadushno.com/#person
 
