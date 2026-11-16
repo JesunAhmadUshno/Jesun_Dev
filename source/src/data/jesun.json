@@ -45,7 +45,7 @@
    }
   ]
  },
- "description": "Jesun Ahmad Ushno is a software engineer who builds AI and data systems, agent fleets and machine learning products. He is the Founder of Immitly and Co-Founder of Brimwood Innovation and Climeam. He holds an MSc in Data Analytics with Distinction from the University of Niagara Falls Canada, has published two machine learning papers, and is based in Toronto.",
+ "description": "Jesun Ahmad Ushno is a software engineer who builds AI and data systems, agent fleets and machine learning products. He is the Founder of Immitly and Co-Founder of Brimwood Innovation and Climeam. He holds an MSc in Data Analytics with Distinction from the University of Niagara Falls Canada, has published two peer-reviewed machine learning papers and four sole-author preprints, and is based in Toronto.",
  "profiles": [
   {
    "name": "LinkedIn",
@@ -160,10 +160,10 @@
   },
   {
    "id": "papers",
-   "value": 2,
-   "display": "2",
-   "label": "Published ML papers",
-   "source": "AIP Conference Proceedings, 2023, DOIs below",
+   "value": 6,
+   "display": "6",
+   "label": "Papers and preprints",
+   "source": "AIP Conference Proceedings, 2023, and Zenodo, 2026, DOIs below",
    "date": "2023"
   },
   {
@@ -595,6 +595,38 @@
    "org": "AIP Conference Proceedings",
    "date": "2023",
    "proof": "https://doi.org/10.1063/5.0148618",
+   "proofLabel": "DOI",
+   "source": "DOIs"
+  },
+  {
+   "title": "Peeking, Pooling, and a Locked Split: A Pre-registered Replication of the Question-Headline Effect on the Upworthy Archive, with an Always-Valid Sequential Testing Module",
+   "org": "Preprint, Zenodo",
+   "date": "2026",
+   "proof": "https://doi.org/10.5281/zenodo.24282470",
+   "proofLabel": "DOI",
+   "source": "DOIs"
+  },
+  {
+   "title": "Creditworthy Rejects: A Pre-registered Fair-Access Study of a Credit Scorecard, a Thin-File Model, and a Second-Look Policy That Failed Its Own Test",
+   "org": "Preprint, Zenodo",
+   "date": "2026",
+   "proof": "https://doi.org/10.5281/zenodo.24283751",
+   "proofLabel": "DOI",
+   "source": "DOIs"
+  },
+  {
+   "title": "Filtered Vector Search Is a Regime Map, Not a Leaderboard: FAISS, pgvector, and Qdrant under Selectivity, Churn, and Hybrid Fusion",
+   "org": "Preprint, Zenodo",
+   "date": "2026",
+   "proof": "https://doi.org/10.5281/zenodo.24283784",
+   "proofLabel": "DOI",
+   "source": "DOIs"
+  },
+  {
+   "title": "Where MapReduce Catches Up: A Pre-registered Scale Ladder, the Small-File Effect Measured at 1,251.7 Percent, and a Spark Hypothesis Refuted",
+   "org": "Preprint, Zenodo",
+   "date": "2026",
+   "proof": "https://doi.org/10.5281/zenodo.24283816",
    "proofLabel": "DOI",
    "source": "DOIs"
   },
@@ -1036,7 +1068,7 @@
  "faq": [
   {
    "q": "Who is Jesun Ahmad Ushno?",
-   "a": "Jesun Ahmad Ushno is a Toronto-based software engineer who builds AI and data systems, agent fleets and machine learning products. He is the Founder of Immitly and Co-Founder of Brimwood Innovation and Climeam. He holds an MSc in Data Analytics with Distinction from the University of Niagara Falls Canada and has published two machine learning papers."
+   "a": "Jesun Ahmad Ushno is a Toronto-based software engineer who builds AI and data systems, agent fleets and machine learning products. He is the Founder of Immitly and Co-Founder of Brimwood Innovation and Climeam. He holds an MSc in Data Analytics with Distinction from the University of Niagara Falls Canada and has published two peer-reviewed machine learning papers and four sole-author preprints."
   },
   {
    "q": "What does Jesun Ahmad Ushno do?",
@@ -1048,7 +1080,7 @@
   },
   {
    "q": "What has Jesun published?",
-   "a": "Two machine learning papers in AIP Conference Proceedings (2023): one on fabric defect detection with the wavelet transform and a neural network (DOI 10.1063/5.0148618), one on an elitist particle swarm optimizer with mutation and adaptive inertia (DOI 10.1063/5.0148658). He also wrote a book on data analytics (2025) and essays on Medium."
+   "a": "Two machine learning papers in AIP Conference Proceedings (2023): one on fabric defect detection with the wavelet transform and a neural network (DOI 10.1063/5.0148618), one on an elitist particle swarm optimizer with mutation and adaptive inertia (DOI 10.1063/5.0148658). In 2026 he published four sole-author preprints on Zenodo: Peeking, Pooling, and a Locked Split (DOI 10.5281/zenodo.24282470), Creditworthy Rejects (DOI 10.5281/zenodo.24283751), Filtered Vector Search Is a Regime Map, Not a Leaderboard (DOI 10.5281/zenodo.24283784), and Where MapReduce Catches Up (DOI 10.5281/zenodo.24283816). He also wrote a book on data analytics (2025) and essays on Medium."
   },
   {
    "q": "Where is Jesun Ahmad Ushno based?",
