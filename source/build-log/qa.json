@@ -1,0 +1,18 @@
+{
+ "console": [],
+ "pages": {},
+ "bootSeconds": 30.219,
+ "bootText": "Built by 30 agents in 27.9s. Signed by the foreman. Build 227b18bcdf26.",
+ "bootHidden": 0,
+ "skipHidden": 0,
+ "skipArmed": false,
+ "returnArmed": false,
+ "reducedArmed": false,
+ "perf": {
+  "lcpMs": 976,
+  "cls": 0,
+  "domContentLoaded": 1902,
+  "transferKB": 290,
+  "conditions": "mobile 390x844, 4x CPU throttle, 1.6 Mbps, 150 ms latency (Fast 3G-like)"
+ }
+}

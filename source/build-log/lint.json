@@ -1,0 +1,16 @@
+{
+ "pages": 45,
+ "internalLinks": 1463,
+ "anchors": 91,
+ "jsInitialBytes": 113538,
+ "jsTotalBytes": 215282,
+ "cssBytes": 69444,
+ "errors": 0,
+ "warnings": 3,
+ "errorList": [],
+ "warnList": [
+  "description 360 chars: /about/index.html",
+  "description 360 chars: /index.html",
+  "description 63 chars: /writing/beyond-the-firewall-six-sigma/index.html"
+ ]
+}

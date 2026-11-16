@@ -1,0 +1,18 @@
+# Cloudflare Pages (free tier). Build output: dist/. Functions: functions/.
+name = "jesunahmadushno"
+pages_build_output_dir = "dist"
+compatibility_date = "2026-10-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "jesun"
+database_id = "REPLACE_WITH_D1_ID_AFTER: npx wrangler d1 create jesun"
+
+# Workers AI on the free plan (10,000 neurons a day). Cortex caps itself at 600 answers a day.
+[ai]
+binding = "AI"
+
+[vars]
+GITHUB_USER = "JesunAhmadUshno"
+FORWARD_URL = "https://formsubmit.co/ajax/jesunahmadushno@gmail.com"
+# Secrets (set with: npx wrangler pages secret put NAME): HASH_SALT, GITHUB_TOKEN (optional)

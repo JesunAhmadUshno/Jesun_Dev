@@ -1,0 +1,4 @@
+/* Shared design tokens. The full list, with roles, lives in DESIGN.md. Change a value there first. */
+:root{--ok:#3DDC84;--info:#4D7CFE;--warn:#F5A524;--violet:#B07CFF;--glitch-a:#FF2D55;--glitch-b:#22D3EE;
+  --ease-out:cubic-bezier(.23,1,.32,1);--ease-in-out:cubic-bezier(.65,0,.35,1);
+  --r-sm:6px;--r-md:10px;--r-lg:14px;--r-pill:999px}

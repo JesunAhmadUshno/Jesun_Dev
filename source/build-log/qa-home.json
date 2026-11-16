@@ -1,0 +1,25 @@
+{
+ "errors": [],
+ "nodes": true,
+ "console": false,
+ "consoleClosed": true,
+ "word": "PO50SXPGK",
+ "overflow": 0,
+ "bootLines": "> jesun --boot --build 227b18bcdf26\nregistry: 198 layers queued  OK\nfleet: 36 seats, foreman online  OK\nlint: 0 errors, 1463 links checked  PASSED\ntests: 63 passed, 0 failed  PASSED\nindex: 114 passages of record  OK\nhanding over to the foreman\n  ...",
+ "bootBox": "> jesun --boot --build 227b18bcdf26registry: 198 layers queued  OKfleet: 36 seats, foreman online  OKlint: 0 errors, 1463 links checked  PASSEDtests: 63 passed, 0 failed  PASSEDindex: 114 passages of record  OKhanding over to the foreman  ...",
+ "buildSeconds": 58.678,
+ "buildText": "Built by 30 agents in 51.9s, 1 seat failure recovered. 198 / 198 layers. Signed by the foreman.",
+ "feed": "CVega created a filecontact/based.html | CPeople created a filecontact/reel.html | *All layers placed. Fleet converging. | JForeman: build signed. Jesun Ahmad Ushno. | >Ship log 2026-11-11: rag-eval-harness, Functional, not pre-registered | >Ship log 2026-11-11: agent-evals-and-harness, Functional, not pre-registered | >Ship log 2026-11-11: structured-outputs-lab, Functional, not pre-registered",
+ "hiddenAfter": 0,
+ "hiddenAfterSkip": 0,
+ "twin": "From the record: \"Two machine learning papers in AIP Conference Proceedings (2023): one on fabric defect detection with the wavelet transform and a neural network (DOI 10.1063/5.0148618), one on an elitist particle swarm",
+ "twinRefuse": "That is not on the record. I only answer from what this site",
+ "palette": [
+  "Fabric defect detection: Wavelet transform plus neural network to detect and classify fabric defects. AIP Confere... RECORD",
+  "Designing an autonomous framework to detect and classify the fabric defects using wavelet transform and neural network: AIP Conference Proceedings, 2023. A framework that uses the wavelet transform to expose ... RECORD",
+  "Two ML papers, AIP Conference Proceedings: 2023, Published. Wavelets and neural networks for fabric defects. Elitist PSO with mutat... RECORD"
+ ],
+ "mobileOverflow": 0,
+ "reducedHidden": 0,
+ "reducedArmed": false
+}

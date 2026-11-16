@@ -1,0 +1,15 @@
+Jesun Ahmad Ushno site, version 2
+Author and owner: Jesun Ahmad Ushno, Toronto, Ontario, Canada.
+
+Owned works in this repository:
+- Visual design and design tokens (src/styles/site.css)
+- Source code (src/scripts, src/templates, scripts)
+- Copy, data and content (src/data, src/content)
+- Interaction patterns P-01 to P-06 (PATTERNS.md)
+
+Every production build embeds a unique fingerprint in four places: the CSS
+custom property --fp, the JavaScript banner comment, the meta tag "build", and
+a hidden DOM marker <i data-fp>. Fingerprints and dates are logged in
+build-log/fingerprints.jsonl. Release build: 227b18bcdf26, built 2026-11-01.
+
+Third-party: Inter and Inter Display (OFL 1.1), DejaVu Sans Mono (Bitstream Vera licence). No other third-party code ships to the browser.

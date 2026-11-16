@@ -1,0 +1,32 @@
+name: Check
+
+# The site is served by GitHub Pages straight from the repository root (deploy from branch).
+# This workflow deploys nothing: on every push and pull request it rebuilds the site from
+# source/ and runs the lint and the test suite, so a broken change shows up red before it ships.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: source
+    env:
+      PUPPETEER_SKIP_DOWNLOAD: 'true'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm install --no-audit --no-fund
+      - run: mkdir -p build-log && npm run build
+      - run: npm run lint
+      - run: npm test

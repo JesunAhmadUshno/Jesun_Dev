@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://static.cloudflareinsights.com; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self' https://formsubmit.co https://cloudflareinsights.com; form-action 'self' https://formsubmit.co; base-uri 'self'; object-src 'none'">
+<title>Fabric defect detection, Research / ML | Jesun Ahmad Ushno</title>
+<meta name="description" content="Wavelet transform plus neural network to detect and classify fabric defects. AIP Conference Proceedings.">
+<meta name="robots" content="index, follow, max-image-preview:large, noai, noimageai">
+<meta name="author" content="Jesun Ahmad Ushno">
+<meta name="theme-color" content="#0B0B0C">
+<meta name="build" content="227b18bcdf26">
+
+<link rel="canonical" href="https://jesunahmadushno.com/projects/fabric-defect-detection.html">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Jesun Ahmad Ushno">
+<meta property="og:title" content="Fabric defect detection, Research / ML | Jesun Ahmad Ushno">
+<meta property="og:description" content="Wavelet transform plus neural network to detect and classify fabric defects. AIP Conference Proceedings.">
+<meta property="og:url" content="https://jesunahmadushno.com/projects/fabric-defect-detection.html">
+<meta property="og:image" content="https://jesunahmadushno.com/og/projects-fabric-defect-detection-html.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.png" type="image/png" sizes="192x192">
+<link rel="icon" href="/img/icon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+<link rel="alternate" type="application/rss+xml" title="Writing, Jesun Ahmad Ushno" href="/writing/feed.xml">
+<link rel="alternate" type="application/rss+xml" title="Journal, Jesun Ahmad Ushno" href="/journal/feed.xml">
+<link rel="preload" href="/fonts/Anton.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/Manrope.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/css/site.css?v=16175f627f">
+<script src="/js/arm.js?v=b331d86c8f"></script>
+
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"WebSite","@id":"https://jesunahmadushno.com/#website","url":"https://jesunahmadushno.com/","name":"Jesun Ahmad Ushno","inLanguage":"en","publisher":{"@id":"https://jesunahmadushno.com/#person"},"about":{"@id":"https://jesunahmadushno.com/#person"}},{"@type":"Person","@id":"https://jesunahmadushno.com/#person","name":"Jesun Ahmad Ushno","alternateName":"Jesun Ushno","givenName":"Jesun","url":"https://jesunahmadushno.com/","image":"https://jesunahmadushno.com/img/jesun-ahmad-ushno.jpg","jobTitle":"Software Engineer, AI Engineer and Data Specialist","description":"Jesun Ahmad Ushno is a software engineer who builds AI and data systems, agent fleets and machine learning products. He is the Founder of Immitly and Co-Founder of Brimwood Innovation and Climeam. He holds an MSc in Data Analytics with Distinction from the University of Niagara Falls Canada, has published two machine learning papers, and is based in Toronto.","address":{"@type":"PostalAddress","addressLocality":"Toronto","addressRegion":"Ontario","addressCountry":"CA"},"alumniOf":[{"@type":"CollegeOrUniversity","name":"University of Niagara Falls Canada","url":"https://unfc.ca"},{"@type":"CollegeOrUniversity","name":"American International University-Bangladesh","url":"https://www.aiub.edu"}],"knowsAbout":["Machine learning","Retrieval-augmented generation","Agent orchestration","Data analytics","AI engineering"],"sameAs":["https://www.linkedin.com/in/jesunahmadushno","https://github.com/JesunAhmadUshno","https://www.youtube.com/channel/UC2hz7YG1MHMZIrp5g8JSyIg","https://about.me/JesunAhmadUshno"],"email":"mailto:jesunahmadushno@gmail.com","hasCredential":[{"@type":"EducationalOccupationalCredential","name":"MSc Data Analytics, Graduated With Distinction","credentialCategory":"degree","recognizedBy":{"@type":"CollegeOrUniversity","name":"University of Niagara Falls Canada"},"dateCreated":"2026-06-21"}]},{"@type":"Organization","@id":"https://jesunahmadushno.com/#org-immitly","name":"Immitly","description":"Immitly is an immigration guidance platform founded by Jesun Ahmad Ushno.","founder":{"@id":"https://jesunahmadushno.com/#person"},"url":"https://immitly.com","sameAs":["https://github.com/Immitly"]},{"@type":"Organization","@id":"https://jesunahmadushno.com/#org-brimwood-innovation","name":"Brimwood Innovation","description":"Brimwood Innovation is a Toronto innovation hub co-founded by Jesun Ahmad Ushno and Adam Sayani.","founder":{"@id":"https://jesunahmadushno.com/#person"},"url":"https://brimwoodinnovation.com","sameAs":["https://github.com/Brimwood-Innovation"]},{"@type":"Organization","@id":"https://jesunahmadushno.com/#org-climeam","name":"Climeam","description":"Climeam is an AI-native creative studio; Jesun Ahmad Ushno is its Co-Founder and directs its work.","founder":{"@id":"https://jesunahmadushno.com/#person"}},{"@type":"Organization","@id":"https://jesunahmadushno.com/#org-founders-hq","name":"Founders HQ","description":"Founders HQ is a founder platform founded by Jesun Ahmad Ushno.","founder":{"@id":"https://jesunahmadushno.com/#person"}},{"@type":"Organization","@id":"https://jesunahmadushno.com/#org-infosec-tribune","name":"The InfoSec Tribune","description":"The InfoSec Tribune is a cybersecurity news company founded by Jesun Ahmad Ushno.","founder":{"@id":"https://jesunahmadushno.com/#person"}},{"@type":"WebPage","@id":"https://jesunahmadushno.com/projects/fabric-defect-detection.html#page","url":"https://jesunahmadushno.com/projects/fabric-defect-detection.html","name":"Fabric defect detection, Research / ML | Jesun Ahmad Ushno","isPartOf":{"@id":"https://jesunahmadushno.com/#website"},"about":{"@id":"https://jesunahmadushno.com/#person"},"inLanguage":"en","dateModified":"2026-11-15"},{"@type":"SoftwareSourceCode","name":"Fabric defect detection","description":"Wavelet transform plus neural network to detect and classify fabric defects. AIP Conference Proceedings.","author":{"@id":"https://jesunahmadushno.com/#person"}},{"@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://jesunahmadushno.com/"},{"@type":"ListItem","position":2,"name":"Work","item":"https://jesunahmadushno.com/work/"},{"@type":"ListItem","position":3,"name":"Fabric defect detection","item":"https://jesunahmadushno.com/projects/fabric-defect-detection.html"}]}]}</script>
+
+</head>
+<body>
+<a class="z0" href="#main">Skip to content</a>
+<header class="top" role="banner"><div class="z1 z6">
+<a class="brand" href="/" aria-label="Jesun Ahmad Ushno, home">JESUN<span class="dot">.</span></a>
+<nav class="nav" id="site-nav" aria-label="Main"><a href="/work/">Work</a><a href="/studies/">Studies</a><a href="/lab/">Lab</a><a href="/journey/">Journey</a><a href="/about/">About</a><a href="/writing/">Writing</a><a href="/now/">Now</a><a href="/contact/">Contact</a></nav>
+<button class="z7 menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+<button class="z7" type="button" data-palette aria-label="Open command palette"><kbd class="k-mod">Ctrl</kbd><kbd>K</kbd><span class="z8">Command</span></button>
+</div></header>
+<main id="main" tabindex="-1">
+<section class="sec" style="border-top:0"><div class="z1">
+<p class="label"><a href="/work/">Work</a> / Research / ML</p>
+<h1 class="h1" style="margin:16px 0 28px">Fabric defect detection<em style="font-style:normal;color:var(--signal)">.</em></h1>
+<div class="z1h">
+<div style="display:grid;gap:22px"><div class="answer"><span class="label">In one paragraph</span>Wavelet transform plus neural network to detect and classify fabric defects. AIP Conference Proceedings.</div><p class="z4">Published research: an autonomous framework that uses the wavelet transform to expose texture defects and a neural network to classify them. Try a live version of the wavelet step in the Lab.</p><div class="chips"><span class="chip">Wavelets</span><span class="chip">Neural networks</span><span class="chip">Computer vision</span></div><p class="src">Source: resume; DOI 10.1063/5.0148618</p></div>
+<div><div class="z1i"><a href="/lab/#wavelet"><span>Live system</span>/lab/#wavelet <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg></a><a href="https://doi.org/10.1063/5.0148618" target="_blank" rel="noopener"><span>Paper</span>doi.org/10.1063/5.0148618 <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg></a></div></div>
+</div></div></section>
+<section class="sec"><div class="z1"><div class="zc"><p class="label">Related records</p><h2 class="h2">Same <em>discipline.</em></h2></div><div class="grid"><article class="card" data-cat="research" data-search="pulsekey measures how a person draws. 32 metrics per session from coordinates, time and pressure. a research build, not a clinical product. python signal processing feature extraction research / ml"><div class="card-in">
+<div class="zo" aria-hidden="true"><div class="spec"><b>Research / ML</b><span>Python</span><span>Signal processing</span><span>Feature extraction</span></div><span class="zp">PU</span><canvas class="gen" data-seed="pulsekey"></canvas></div>
+<div class="zq"><div class="zr"><h3><a href="/projects/pulsekey.html">PulseKey</a></h3><span class="label">2026</span></div>
+<p>Measures how a person draws. 32 metrics per session from coordinates, time and pressure. A research build, not a clinical product.</p><div class="proof"><a href="https://github.com/JesunAhmadUshno/drawing-modality-test" target="_blank" rel="noopener">Repo <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg></a></div></div></div></article><article class="card" data-cat="research" data-search="elitist pso elitist particle swarm optimization with a mutation operator and adaptive inertia weight. aip conference proceedings. optimization swarm intelligence research / ml"><div class="card-in">
+<div class="zo" aria-hidden="true"><div class="spec"><b>Research / ML</b><span>Optimization</span><span>Swarm intelligence</span></div><span class="zp">EL</span><canvas class="gen" data-seed="elitist-pso"></canvas></div>
+<div class="zq"><div class="zr"><h3><a href="/projects/elitist-pso.html">Elitist PSO</a></h3><span class="label">2023</span></div>
+<p>Elitist particle swarm optimization with a mutation operator and adaptive inertia weight. AIP Conference Proceedings.</p><div class="proof"><a href="/lab/#pso">Run it <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg></a><a href="https://doi.org/10.1063/5.0148658" target="_blank" rel="noopener">Paper <svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 11L11 5M6 5h5v5"/></svg></a></div></div></div></article></div></div></section>
+</main>
+<footer class="z1m" role="contentinfo"><div class="z1">
+<div class="z1n">
+<div><h2>Toronto, local time</h2><div class="clock z5" data-clock>--:--:--</div><p class="label">43.6532 N, 79.3832 W</p></div>
+<div><h2>Record</h2><ul><li><a href="/work/">Work</a></li><li><a href="/studies/">Studies</a></li><li><a href="/journey/">Journey</a></li><li><a href="/about/">About</a></li><li><a href="/resume/">Resume</a></li><li><a href="/writing/">Writing</a></li><li><a href="/journal/">Journal</a></li><li><a href="/now/">Now</a></li><li><a href="/roadmap/">Roadmaps</a></li><li><a href="/bangla/">Bangla</a></li></ul></div>
+<div><h2>Profiles</h2><ul><li><a href="https://www.linkedin.com/in/jesunahmadushno" rel="me noopener" target="_blank">LinkedIn</a></li><li><a href="https://github.com/JesunAhmadUshno" rel="me noopener" target="_blank">GitHub</a></li><li><a href="https://www.youtube.com/channel/UC2hz7YG1MHMZIrp5g8JSyIg" rel="me noopener" target="_blank">YouTube</a></li><li><a href="https://about.me/JesunAhmadUshno" rel="me noopener" target="_blank">about.me</a></li><li><a href="/contact/">Contact</a></li></ul></div>
+<div><h2>System</h2><ul><li><button class="z1p" type="button" data-replay>Replay the build</button></li><li><button class="z1p" type="button" data-palette>Command palette</button></li><li><button class="z1p" type="button" data-grid-toggle>Grid overlay</button></li><li><a href="/lab/">Lab</a></li><li><a href="/uses/">Uses</a></li><li><a href="/patterns/">Patterns registry</a></li><li><a href="/legal/">Legal and privacy</a></li><li><a href="#main">Back to top</a></li></ul></div>
+</div>
+<div class="z1o"><span class="label">&copy; 2026 Jesun Ahmad Ushno. All rights reserved. Design, code, copy and interaction patterns are his property.</span><span class="label">Built with HTML, CSS and plain JavaScript. Inter, Inter Display, DejaVu Sans Mono. No trackers. Build <b>227b18bcdf26</b></span></div>
+<a href="/trap/" class="z1g" tabindex="-1" aria-hidden="true" rel="nofollow">archive index</a>
+<i hidden data-fp="227b18bcdf26"></i>
+</div></footer>
+<script type="module" src="/js/main.js?v=abbe1d7345"></script>
+</body>
+</html>

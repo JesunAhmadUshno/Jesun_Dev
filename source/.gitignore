@@ -1,0 +1,5 @@
+node_modules/
+dist/
+private-originals/
+*.map
+.DS_Store

@@ -1,0 +1,8 @@
+[
+ { "id": "P-01", "name": "Agent swarm assembly", "date": "2026-11-01", "what": "A page assembled live by named cursor agents that place, drag, type and count each layer, with a human foreman who opens and signs the build." },
+ { "id": "P-02", "name": "HUD build log", "date": "2026-11-01", "what": "A control strip that counts agents and layers against the real registry total, streams a timestamped log of which seat placed which layer, and reports the measured build time." },
+ { "id": "P-03", "name": "Scroll-film dossier", "date": "2026-11-01", "what": "Pinned sections that play like film shots with a frame counter, a push-in on the exhibit, and a hand-off to the next section." },
+ { "id": "P-04", "name": "Data-strip hero", "date": "2026-11-01", "what": "A hero whose statistics each carry their source and date in the same cell, counting up on entry." },
+ { "id": "P-05", "name": "The System seat map", "date": "2026-11-01", "what": "An agent fleet shown as software seats with numbers, names, jobs and configuration status, with one human foreman seat." },
+ { "id": "P-06", "name": "Papers running live", "date": "2026-11-01", "what": "Published research methods presented as runnable in-browser instruments beside their citations." }
+]

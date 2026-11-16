@@ -1,0 +1,42 @@
+# Build, lint, score and audit on every push. No deploy step: going live is Jesun's tap.
+name: build
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fonts for OG image rendering
+        run: sudo apt-get update && sudo apt-get install -y fonts-inter fonts-dejavu-core && fc-cache -f
+      - run: npm ci || npm install
+      - name: Fresh public GitHub stats (falls back to last verified numbers)
+        run: node scripts/github-stats.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - run: npm run build
+      - name: Gates (em dash, banned names, hype words, alt text, links, anchors, meta, JSON-LD, budgets)
+        run: npm run lint
+      - name: API tests (D1 handlers against SQLite)
+        run: npm test
+      - run: npm run score
+      - name: Lighthouse with budgets
+        uses: treosh/lighthouse-ci-action@v12
+        with:
+          configPath: ./lighthouserc.json
+          budgetPath: ./budget.json
+          uploadArtifacts: true
+      - uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: |
+            dist
+            build-log
+            SEO-AEO-GEO-SCORECARD.md

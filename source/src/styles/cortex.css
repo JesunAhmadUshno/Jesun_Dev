@@ -1,0 +1,166 @@
+/* Cortex: the living orb, the agent panel, its trace and its cursor. Tokens from DESIGN.md. */
+.cx-orb{--cx:var(--accent,var(--signal));position:fixed;z-index:160;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(18px + env(safe-area-inset-bottom,0px));width:60px;height:60px;border-radius:50%;border:1px solid rgba(255,70,85,.5);background:radial-gradient(circle at 50% 45%,#1B0A0E,#07070B 70%);padding:0;cursor:pointer;box-shadow:0 0 0 6px rgba(255,70,85,.06),0 10px 40px rgba(232,50,63,.35);display:grid;place-items:center;transition:transform .2s var(--ease-out),box-shadow .3s ease}
+.cx-orb canvas{width:56px;height:56px;border-radius:50%}
+.cx-orb:hover{transform:scale(1.06)}.cx-orb:active{transform:scale(.96)}
+.cx-orb:focus-visible{outline:2px solid #F4F4F2;outline-offset:4px}
+.cx-orb-ring{position:absolute;inset:-7px;border-radius:50%;border:1px dashed rgba(255,70,85,.45);animation:cxspin 14s linear infinite}
+.cx-orb.busy .cx-orb-ring{animation-duration:2s;border-style:solid;border-color:rgba(255,89,100,.8) transparent rgba(255,89,100,.8) transparent}
+.cx-orb.busy{box-shadow:0 0 0 8px rgba(255,70,85,.12),0 10px 50px rgba(255,70,85,.55)}
+@keyframes cxspin{to{transform:rotate(360deg)}}
+.cx-tip{position:absolute;right:72px;bottom:12px;white-space:nowrap;max-width:min(320px,70vw);overflow:hidden;text-overflow:ellipsis;padding:9px 12px;border-radius:10px;background:rgba(11,13,20,.95);border:1px solid rgba(255,70,85,.4);color:#F4F4F2;font:500 12.5px/1.3 'Manrope',system-ui,sans-serif;opacity:0;transform:translateX(8px);transition:opacity .25s ease,transform .25s var(--ease-out);pointer-events:none}
+.cx-tip kbd{font:600 10px/1 'IBM Plex Mono',monospace;border:1px solid #262A38;border-radius:3px;padding:2px 5px;margin-left:6px;color:#9BA0AE}
+.cx-orb:hover .cx-tip,.cx-orb:focus-visible .cx-tip,.cx-orb.hint .cx-tip{opacity:1;transform:none}
+.cx-orb.hint{animation:cxhint 1.6s ease-in-out 2}
+@keyframes cxhint{50%{box-shadow:0 0 0 14px rgba(255,70,85,.14),0 10px 50px rgba(255,70,85,.5)}}
+.cx-open .cx-orb .cx-tip{opacity:0}
+.cx-panel{position:fixed;z-index:170;right:max(18px,env(safe-area-inset-right,0px));bottom:calc(92px + env(safe-area-inset-bottom,0px));width:min(430px,calc(100vw - 32px));height:min(680px,calc(100svh - 130px));display:grid;grid-template-rows:auto auto minmax(0,1fr) auto auto auto;border-radius:16px;border:1px solid rgba(255,70,85,.35);background:linear-gradient(180deg,rgba(16,10,14,.97),rgba(7,8,12,.98));box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(255,255,255,.03) inset;overflow:hidden;color:#F4F4F2;font-family:'Manrope',system-ui,sans-serif;animation:cxin .28s var(--ease-out);transform-origin:bottom right}
+@keyframes cxin{from{opacity:0;transform:scale(.96) translateY(10px)}}
+.cx-panel::before{content:"";position:absolute;inset:0;pointer-events:none;background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0 1px,transparent 1px 3px)}
+.cx-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:8px 12px;align-items:center;padding:14px 14px 12px 16px;border-bottom:1px solid #1A1D28}
+.cx-id b{display:block;font:400 22px/1 'Anton',Impact,sans-serif;letter-spacing:.04em;text-transform:uppercase}
+.cx-id span{font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--ok)}
+.cx-id span::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--ok);box-shadow:0 0 8px var(--ok);margin-right:6px;vertical-align:1px}
+.cx-vitals{grid-column:1/-1;display:flex;gap:14px;flex-wrap:wrap;font:500 10.5px/1 'IBM Plex Mono',monospace;color:#9BA0AE;letter-spacing:.06em;text-transform:uppercase}
+.cx-vitals i{font-style:normal;color:#FF5964;font-weight:600}
+.cx-acts{grid-row:1;grid-column:2;display:flex;gap:6px}
+.cx-ic{width:34px;height:34px;border-radius:10px;border:1px solid #262A38;background:transparent;color:#D9DAE0;display:grid;place-items:center;cursor:pointer}
+.cx-ic svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.cx-ic:hover{border-color:#FF4655}.cx-ic[aria-pressed="true"]{background:rgba(255,70,85,.18);border-color:#FF4655;color:#fff}
+.cx-ic:focus-visible,.cx-send:focus-visible,.cx-chip:focus-visible{outline:2px solid #FF5964;outline-offset:2px}
+.cx-log{overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;scroll-behavior:smooth;overscroll-behavior:contain}
+.cx-msg{max-width:92%}
+.cx-msg p{margin:0;padding:10px 13px;border-radius:12px;font-size:14.5px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+.cx-msg.me{align-self:flex-end}.cx-msg.me p{background:#E8323F;color:#fff;border-bottom-right-radius:4px}
+.cx-msg.ai p{background:#11141E;border:1px solid #1E2230;border-bottom-left-radius:4px}
+.cx-msg.ai p:empty{display:none}
+.cx-trace{list-style:none;margin:0 0 6px;padding:8px 12px;border-left:2px solid rgba(255,70,85,.5);display:grid;gap:5px;font:500 11.5px/1.3 'IBM Plex Mono',monospace;color:#9BA0AE}
+.cx-trace li{display:flex;gap:8px;align-items:center}
+.cx-trace li::before{content:"";width:9px;height:9px;flex:none;border-radius:50%;border:1.5px solid #FF5964;border-right-color:transparent;animation:cxspin .7s linear infinite}
+.cx-trace li.done{color:#D9DAE0}.cx-trace li.done::before{animation:none;border:0;width:9px;height:9px;background:var(--ok);box-shadow:0 0 6px var(--ok)}
+.cx-src{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.cx-src a{font:600 10.5px/1.2 'IBM Plex Mono',monospace;letter-spacing:.04em;color:#FF7A84;border:1px solid rgba(255,70,85,.35);border-radius:999px;padding:5px 9px;text-decoration:none}
+.cx-src a:hover{background:rgba(255,70,85,.12)}
+/* A source off this site says so, so nobody mistakes the open web for the record. */
+.cx-src a.web{color:#9FB7FF;border-color:rgba(130,160,255,.4)}
+.cx-src a.web::before{content:"web ";opacity:.6}
+.cx-src a.web:hover{background:rgba(130,160,255,.12)}
+/* What Cortex typed into the live search, shown before the answer. */
+.cx-searched{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:2px 0 6px;padding:7px 10px;border:1px dashed #262A38;border-radius:10px;background:#0A0C12}
+.cx-searched b{font:700 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#7B8091}
+.cx-searched span{font:500 11px/1.2 'Manrope',system-ui,sans-serif;color:#9FB7FF;border:1px solid rgba(130,160,255,.28);border-radius:999px;padding:4px 8px}
+/* Passing a note to Jesun. Everything it sends is on screen and typed by the visitor. */
+.cx-lead{display:grid;gap:9px;margin:10px 0 2px;padding:13px;border:1px solid #2A2F3E;border-radius:13px;background:linear-gradient(180deg,#0E1017,#0A0C12)}
+.cx-lead-h{margin:0;font:700 13px/1.35 'Manrope',system-ui,sans-serif;color:#F2F3F5}
+.cx-lead-s{margin:-4px 0 2px;font:500 11.5px/1.4 'Manrope',system-ui,sans-serif;color:#7B8091}
+.cx-lead label{display:grid;gap:4px}
+.cx-lead label span{font:700 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#7B8091}
+.cx-lead input,.cx-lead textarea{width:100%;box-sizing:border-box;border:1px solid #262A38;border-radius:9px;background:#07080C;color:#F2F3F5;padding:9px 10px;font:500 13px/1.45 'Manrope',system-ui,sans-serif;resize:vertical}
+.cx-lead input:focus,.cx-lead textarea:focus{outline:2px solid #FF4655;outline-offset:1px;border-color:#FF4655}
+.cx-lead-b{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.cx-lead-b button{border-radius:999px;padding:9px 15px;font:600 12.5px/1 'Manrope',system-ui,sans-serif;cursor:pointer;border:1px solid #FF4655;background:#FF4655;color:#0A0C12}
+.cx-lead-b button[data-no]{background:transparent;color:#9B9FAC;border-color:#262A38}
+.cx-lead-b button:disabled{opacity:.55;cursor:default}
+.cx-lead-e:empty{display:none}
+.cx-lead-e{margin:0;font:500 11.5px/1.45 'Manrope',system-ui,sans-serif;color:#FF9AA2}
+.cx-chips{display:flex;gap:6px;overflow-x:auto;padding:4px 14px 10px;scrollbar-width:none}
+.cx-chip{flex:none;border:1px solid #262A38;background:#0C0E15;color:#D9DAE0;border-radius:999px;padding:8px 12px;font:500 12px/1 'Manrope',system-ui,sans-serif;cursor:pointer;white-space:nowrap}
+.cx-chip:hover{border-color:#FF4655;color:#fff}
+.cx-form{display:flex;gap:8px;padding:10px 12px;border-top:1px solid #1A1D28}
+.cx-form input{flex:1;min-width:0;background:#0C0E15;border:1px solid #262A38;border-radius:12px;padding:12px 14px;color:#F4F4F2;font:400 15px 'Manrope',system-ui,sans-serif;outline:0}
+.cx-form input:focus{border-color:#FF4655}
+.cx-send{width:46px;border-radius:12px;border:0;background:linear-gradient(100deg,#E8323F,#FF5964);color:#0A0B10;display:grid;place-items:center;cursor:pointer}
+.cx-send svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round}
+.cx-foot{margin:0;padding:0 14px 12px;font:500 10.5px/1.4 'IBM Plex Mono',monospace;color:#7B8091}
+.cx-foot span{color:var(--ok)}
+.cx-lock{animation:cxlock 2.2s var(--ease-out)}
+@keyframes cxlock{0%{text-shadow:0 0 0 rgba(255,70,85,0)}20%{text-shadow:0 0 28px rgba(255,70,85,.9);filter:brightness(1.25)}100%{text-shadow:none;filter:none}}
+.cx-cursor{position:fixed;left:0;top:0;z-index:180;display:flex;align-items:center;gap:6px;pointer-events:none;transition:transform 1.4s cubic-bezier(.65,0,.35,1),opacity .35s ease}
+.cx-cursor svg{width:20px;height:20px;fill:#FF4655;stroke:#fff;stroke-width:1;filter:drop-shadow(0 0 8px rgba(255,70,85,.8))}
+.cx-cursor span{font:700 10px/1 'IBM Plex Mono',monospace;letter-spacing:.1em;text-transform:uppercase;background:#FF4655;color:#0A0B10;padding:4px 6px;border-radius:4px}
+.cx-cursor.out{opacity:0}
+@media (max-width:520px){.cx-panel{right:8px;left:8px;width:auto;bottom:calc(84px + env(safe-area-inset-bottom,0px));height:min(72svh,600px)}.cx-tip{display:none}}
+@media (prefers-reduced-motion:reduce){.cx-orb-ring,.cx-orb.hint,.cx-panel,.cx-trace li::before,.cx-lock{animation:none}.cx-orb,.cx-tip,.cx-cursor{transition:none}}
+.rm .cx-orb-ring,.rm .cx-orb.hint,.rm .cx-panel,.rm .cx-lock{animation:none}
+.cx-msg.tour-line{display:grid;gap:4px}
+.cx-stop{font:600 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;color:#FF5964}
+.cx-stopbtn{border-color:#FF4655;color:#fff;background:rgba(255,70,85,.14)}
+/* While touring, the panel shrinks to a subtitle strip so the page it is showing stays visible. */
+.cx-panel.cx-touring{height:min(300px,calc(100svh - 130px));width:min(380px,calc(100vw - 32px))}
+.cx-panel.cx-touring .cx-vitals,.cx-panel.cx-touring .cx-foot{display:none}
+/* Reasoning panel: the real retrieval working, shown as it runs. */
+.cx-reason{border:1px solid rgba(255,70,85,.28);border-radius:10px;background:rgba(255,70,85,.04);padding:12px;margin:0 0 10px;display:grid;gap:9px}
+.cx-rhead{display:flex;justify-content:space-between;align-items:baseline;gap:10px;font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#FF7A84}
+.cx-rhead em{font-style:normal;color:#9BA0AE;letter-spacing:.06em}
+.cx-rtok{display:flex;flex-wrap:wrap;gap:5px}
+.cx-tok{display:inline-flex;align-items:center;gap:5px;border:1px solid #262A38;border-radius:4px;padding:4px 7px;font:500 11px/1 'IBM Plex Mono',monospace;color:#D9DAE0;animation:cxpop .2s var(--ease-out)}
+.cx-tok i{font-style:normal;font-size:9px;color:#07070B;background:var(--ok);border-radius:2px;padding:2px 4px;font-weight:700}
+.cx-tok.miss{opacity:.45;border-style:dashed}.cx-tok.miss i{background:#4A4F5E;color:#D9DAE0}
+@keyframes cxpop{from{opacity:0;transform:translateY(4px) scale(.94)}}
+.cx-rline,.cx-rsum{margin:0;font:500 11px/1.5 'IBM Plex Mono',monospace;color:#9BA0AE}
+.cx-rsum b{color:#F4F4F2;font-weight:600}
+.cx-rcand{list-style:none;margin:0;padding:0;display:grid;gap:5px}
+.cx-rcand li{display:grid;grid-template-columns:minmax(0,1fr) 72px 34px;gap:8px;align-items:center;font:500 11px/1.3 'IBM Plex Mono',monospace;color:#9BA0AE;animation:cxpop .22s var(--ease-out)}
+.cx-cname{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cx-cbar{height:6px;border-radius:3px;background:#1A1D28;overflow:hidden}
+.cx-cbar i{display:block;height:100%;width:var(--w);background:#4A5270;border-radius:3px;animation:cxbar .4s var(--ease-out)}
+.cx-rcand b{text-align:right;color:#D9DAE0;font-weight:600}
+.cx-rcand li.win{color:#F4F4F2}.cx-rcand li.win .cx-cbar i{background:linear-gradient(90deg,#E8323F,#FF5964)}.cx-rcand li.win b{color:#FF5964}
+@keyframes cxbar{from{width:0}}
+.cx-conf{display:inline-block;border-radius:999px;padding:3px 8px;font-size:10px;letter-spacing:.1em;text-transform:uppercase;border:1px solid currentColor}
+.cx-conf.high{color:var(--ok)}.cx-conf.medium{color:#F5A524}.cx-conf.low,.cx-conf.none{color:#9BA0AE}
+@media (prefers-reduced-motion:reduce){.cx-tok,.cx-rcand li,.cx-cbar i{animation:none}}
+.rm .cx-tok,.rm .cx-rcand li,.rm .cx-cbar i{animation:none}
+.cx-rhead{all:unset;box-sizing:border-box;cursor:pointer;display:flex;justify-content:space-between;align-items:baseline;gap:10px;font:600 10px/1 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:#FF7A84}
+.cx-rhead:focus-visible{outline:2px solid #FF5964;outline-offset:3px}
+.cx-rhead i{margin-left:auto;width:7px;height:7px;border:1.5px solid currentColor;border-width:0 1.5px 1.5px 0;transform:rotate(45deg);transition:transform .2s var(--ease-out)}
+.cx-reason.shut .cx-rhead i{transform:rotate(-135deg)}
+.cx-reason.shut .cx-rbody{display:none}
+.cx-rbody{display:grid;gap:9px}
+/* The dot field: lattice, brain, face, then the agent's own constellation. */
+.cx-stage{position:relative;height:clamp(176px,26vh,268px);transition:height .5s cubic-bezier(.215,.61,.355,1);border-bottom:1px solid #1A1D28;background:radial-gradient(70% 90% at 50% 25%,rgba(255,70,85,.12),transparent 70%),#07080C;overflow:hidden}
+.cx-av{width:100%;height:100%;display:block;touch-action:none}
+.cx-phase{position:absolute;left:14px;bottom:10px;font:600 9.5px/1 'IBM Plex Mono',monospace;letter-spacing:.2em;text-transform:uppercase;color:#7B8091;transition:color .4s ease}
+.cx-phase::before{content:"";display:inline-block;width:5px;height:5px;border-radius:50%;background:currentColor;margin-right:7px;vertical-align:1px}
+.cx-phase.on{color:var(--ok)}
+.cx-panel.cx-touring .cx-stage{height:64px}
+/* Once there is a conversation to read, the face gives the log its room back. */
+.cx-panel.cx-chatting .cx-stage{height:clamp(112px,15vh,162px)}
+@media (max-width:520px){.cx-stage{height:clamp(150px,22vh,206px)}.cx-panel.cx-chatting .cx-stage{height:clamp(96px,13vh,132px)}}
+@media (prefers-reduced-motion:reduce){.cx-stage{transition:none}}
+.cx-head{padding-top:12px}
+
+/* ---- The companion: Jesun's full body avatar on a hologram pad, at the edge of every page ---- */
+.jx{--jx-h:clamp(190px,31vh,300px);--jx-w:calc(var(--jx-h) / 2);position:fixed;z-index:150;right:max(12px,env(safe-area-inset-right,0px));bottom:calc(86px + env(safe-area-inset-bottom,0px));width:var(--jx-w);height:var(--jx-h);pointer-events:none;perspective:720px;opacity:0;transition:opacity .45s cubic-bezier(.215,.61,.355,1),transform .45s cubic-bezier(.215,.61,.355,1)}
+.jx.jx-in{opacity:1}
+.jx.jx-away,.jx.jx-shy,.jx.jx-hero,.jx.jx-off,html.cx-open .jx,html.touring .jx{opacity:0;transform:translateX(34%) scale(.96)}
+.jx.jx-hero .jx-hit,.jx.jx-off .jx-hit,.jx.jx-away .jx-hit{pointer-events:none}
+.jx-body{position:absolute;inset:0;transform-style:preserve-3d;transform-origin:50% 88%;will-change:transform}
+/* backlight: red from his right, blue from his left, the site's two signal colours. A gradient, never a filter on the video, which some phones apply to the whole rectangle. */
+.jx-body::before{content:"";position:absolute;left:14%;right:14%;top:10%;bottom:8%;border-radius:45%;background:radial-gradient(ellipse 55% 60% at 30% 45%,rgba(255,70,85,.20),transparent 70%),radial-gradient(ellipse 55% 60% at 72% 45%,rgba(110,160,255,.14),transparent 70%);pointer-events:none}
+.jx-layer{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;object-position:50% 100%;opacity:0;transition:opacity .38s cubic-bezier(.215,.61,.355,1);user-select:none;-webkit-user-drag:none}
+.jx-layer.on{opacity:1}
+.jx-mirror{transform:scaleX(-1)}
+.jx-hit{position:absolute;left:24%;right:24%;top:6%;bottom:4%;pointer-events:auto;cursor:pointer;border-radius:40% 40% 12% 12%}
+/* the pad: a soft contact shadow, a red core, and three rings that breathe outward */
+.jx-pad{position:absolute;left:50%;bottom:-2px;width:74%;aspect-ratio:4/1;transform:translateX(-50%);pointer-events:none}
+.jx-pad::before{content:"";position:absolute;inset:-30% -6%;border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.75),rgba(0,0,0,0) 62%)}
+.jx-pad::after{content:"";position:absolute;inset:18% 14%;border-radius:50%;background:radial-gradient(ellipse at 50% 50%,rgba(255,70,85,.42),rgba(255,70,85,0) 70%);filter:blur(3px)}
+.jx-pad i{position:absolute;inset:0;border-radius:50%;border:1px solid rgba(255,90,100,.55);box-shadow:0 0 10px rgba(255,70,85,.35),inset 0 0 8px rgba(255,70,85,.2);animation:jx-ring 3.6s cubic-bezier(.215,.61,.355,1) infinite;opacity:0}
+.jx-pad i:nth-child(2){animation-delay:1.2s;border-color:rgba(140,180,255,.45);box-shadow:0 0 10px rgba(110,160,255,.3)}
+.jx-pad i:nth-child(3){animation-delay:2.4s}
+@keyframes jx-ring{0%{transform:scale(.55);opacity:0}25%{opacity:.9}100%{transform:scale(1.18);opacity:0}}
+/* arrival: he materialises upward out of the pad, behind a scan line */
+.jx.jx-in .jx-body{animation:jx-mat 1.15s cubic-bezier(.215,.61,.355,1) both}
+.jx-scan{position:absolute;left:8%;right:8%;height:2px;bottom:0;border-radius:2px;background:linear-gradient(90deg,transparent,rgba(160,200,255,.95) 30%,#fff 50%,rgba(255,110,120,.95) 70%,transparent);box-shadow:0 0 12px rgba(160,200,255,.8);opacity:0;pointer-events:none}
+.jx.jx-in .jx-scan{animation:jx-scan 1.15s cubic-bezier(.215,.61,.355,1) both}
+@keyframes jx-mat{0%{clip-path:inset(100% 0 0 0);filter:brightness(2.2) saturate(.4)}70%{filter:brightness(1.25) saturate(.85)}100%{clip-path:inset(0 0 0 0);filter:none}}
+@keyframes jx-scan{0%{bottom:0;opacity:1}90%{opacity:1}100%{bottom:100%;opacity:0}}
+.jx-hide{position:fixed;z-index:151;right:calc(max(12px,env(safe-area-inset-right,0px)) + var(--jx-w,95px) * .16);bottom:calc(86px + env(safe-area-inset-bottom,0px) + clamp(190px,31vh,300px) - 22px);width:24px;height:24px;border-radius:50%;border:1px solid rgba(255,255,255,.18);background:rgba(10,12,18,.82);color:#C9CCD6;display:grid;place-items:center;cursor:pointer;opacity:0;transition:opacity .2s ease}
+.jx-hide svg{width:10px;height:10px;stroke:currentColor;stroke-width:1.6;fill:none;stroke-linecap:round}
+.jx:hover+.jx-hide,.jx-hide:hover,.jx-hide:focus-visible{opacity:1}
+.jx-hide:focus-visible{outline:2px solid #FF4655;outline-offset:2px}
+.jx.jx-away+.jx-hide,.jx.jx-hero+.jx-hide,.jx.jx-off+.jx-hide,html.cx-open .jx-hide,html.touring .jx-hide{display:none}
+@media (max-width:759px){.jx{--jx-h:132px;right:max(6px,env(safe-area-inset-right,0px))}.jx-hide{right:calc(max(6px,env(safe-area-inset-right,0px)) + 10px);bottom:calc(86px + env(safe-area-inset-bottom,0px) + 110px)}}
+@media (max-height:520px){.jx,.jx-hide{display:none}}
+@media (prefers-reduced-motion:reduce){.jx,.jx-layer{transition:none}.jx.jx-in .jx-body,.jx.jx-in .jx-scan,.jx-pad i{animation:none}.jx-pad i:first-child{opacity:.6}}
+@media print{.jx,.jx-hide{display:none!important}}
