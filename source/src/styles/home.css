@@ -817,11 +817,3 @@ html{scroll-padding-bottom:72px}
 .v-stage{align-self:start;font:600 9.5px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);border-radius:999px;padding:6px 9px;margin-top:10px}
 .vents{grid-template-columns:repeat(auto-fit,minmax(min(100%,232px),1fr))}
 @media(max-width:1180px) and (min-width:861px){.vents{grid-template-columns:repeat(3,minmax(0,1fr))}}
-
-/* Batch 4 rollout additions: support links row in the footer */
-.support-links { margin-top: 28px; }
-.support-links nav { display: flex; gap: 18px; flex-wrap: wrap; }
-.support-links a { color: inherit; font-weight: 600; padding: 8px 4px; }
-.support-links a:hover { opacity: 0.75; }
-.support-links a:focus-visible { outline: 2px solid var(--glitch-a); outline-offset: 2px; }
-@media (prefers-reduced-motion: reduce) { .support-links a { transition: none; } }

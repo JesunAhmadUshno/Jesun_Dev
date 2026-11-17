@@ -255,8 +255,7 @@ ${d.record && d.record.studies.length ? homeStudies(d, d.record, L, H2) : ''}
       <div><h2>Profiles</h2><ul>${prof.map(p => `<li><a href="${esc(p.url)}" target="_blank" rel="me noopener">${esc(p.name)}</a></li>`).join('')}<li><a href="/contact/">Contact</a></li><li><a href="/guestbook/">Guestbook</a></li></ul></div>
       <div><h2>System</h2><ul><li><button class="linkish" type="button" data-replay>Replay the build</button></li><li><button class="linkish" type="button" data-palette>Command palette</button></li><li><button class="linkish" type="button" data-grid-toggle>Grid overlay</button></li><li><button class="linkish" type="button" data-motion-toggle aria-pressed="false">Reduce motion</button></li><li><a href="/build/">Build record</a></li><li><a href="/lab/">Lab</a></li><li><a href="/uses/">Uses</a></li><li><a href="/patterns/">Patterns registry</a></li><li><a href="/legal/">Legal and privacy</a></li></ul></div>
     </div>
-    <div class="support-links"><nav aria-label="Support this work"><a href="https://github.com/sponsors/JesunAhmadUshno">Sponsor this work</a><a href="https://github.com/sponsors/JesunAhmadUshno">Donate</a><a href="https://buymeacoffee.com/jesun">Buy Me a Coffee</a><a href="https://calendly.com/jesunahmadushno/30min">Work with me</a></nav></div>
-<div class="base"><span>&copy; ${new Date().getFullYear()} JESUN AHMAD USHNO. ALL RIGHTS RESERVED. <span data-hits></span></span><span>BUILD ${fp}</span></div>
+    <div class="base"><span>&copy; ${new Date().getFullYear()} JESUN AHMAD USHNO. ALL RIGHTS RESERVED. <span data-hits></span></span><span>BUILD ${fp}</span></div>
     <a href="/trap/" class="hp" tabindex="-1" aria-hidden="true" rel="nofollow">archive index</a>
     <i hidden data-fp="${fp}"></i>
   </div>

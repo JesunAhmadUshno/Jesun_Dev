@@ -1,6 +1,6 @@
 {
- "fingerprint": "0dc907b27259",
- "date": "2026-11-16",
+ "fingerprint": "227b18bcdf26",
+ "date": "2026-11-15",
  "pages": 38,
  "layers": 198,
  "seats": 36,
@@ -21,7 +21,11 @@
   "hiddenAfterSkip": 0,
   "errors": 0
  },
- "scores": null,
+ "scores": {
+  "SEO": 850,
+  "AEO": 900,
+  "GEO": 900
+ },
  "jsBytes": 215282,
- "cssBytes": 92597
+ "cssBytes": 92180
 }
