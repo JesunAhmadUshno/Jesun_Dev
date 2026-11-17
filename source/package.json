@@ -20,7 +20,7 @@
     "publish": "npm run build && npm run lint && npm test && node scripts/publish.mjs"
   },
   "devDependencies": {
-    "esbuild": "0.24.0",
+    "esbuild": "0.28.2",
     "marked": "14.1.3",
     "sharp": "0.33.5",
     "puppeteer": "23.6.0"
